@@ -1,23 +1,37 @@
 ---
+import type { componentIsHTMLElement } from "astro/dist/runtime/server/render/dom"
+
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../posts/**/*.md')
+  const posts = await Astro.glob('../posts/**/*.mdx')
   console.log("SLUG")
   console.log(posts[0].file)
+  console.log(process.cwd())
+  let root_dir = process.cwd()
 
   // Convert file into slug
 
-  return posts.map(post => ({
-    params: { 
-      slug: post.frontmatter.slug 
-    },
-    props: {
-      post
-    },
-  }))
+  return posts.map(post => 
+  {
+    console.log(post.file)
+    // Super hacky way of removing the "src/posts/"" from the start and "".md" from the end, fix this!
+    let slug = post.file.substring(root_dir.length + 11, post.file.length - 4)
+    console.log("slug = ", slug)
+    return ({
+      params: { 
+        slug: slug
+      },
+      props: {
+        post
+      },
+    })
+  })
 }
 
+import Aside from '../components/Aside.astro';
 const { Content } = Astro.props.post
+const { Components } = Astro.props
 ---
-<article>
-  <Content/>
-</article>
+<!-- <article> -->
+  <!-- Inject in components that we don't want to have to import manually into every Markdown file -->
+  <Content components={{...Components, Aside: Aside}}/>
+<!-- </article> -->
