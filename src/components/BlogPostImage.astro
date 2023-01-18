@@ -1,0 +1,13 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+const {src, ...attrs} = Astro.props;
+---
+<Picture src={src} widths={[400, 800, 1500]} sizes="(max-width: 767px) 100vw, 736px" {...attrs} />
+
+<style>
+  img, picture :global(img), svg {
+    margin-block: 2.5rem;
+    border-radius: 0.75rem;
+  }
+</style>

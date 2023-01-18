@@ -5,6 +5,9 @@ layout: "@layouts/MainLayout.astro"
 ---
 
 import ReactComponent from '@components/ReactComponent'
+import BImage from '@components/BlogPostImage.astro'
+
+import Test from './test-image.png'
 
 ## Code
 
@@ -27,3 +30,7 @@ std::cout << "test";
 ## React
 
 <ReactComponent/>
+
+## Image
+
+<Image src={Test} width="400px" alt="A rocket blasting off." />
