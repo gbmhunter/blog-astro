@@ -13,8 +13,8 @@ export async function getStaticPaths() {
   return posts.map(post => 
   {
     console.log(post.file)
-    // Super hacky way of removing the "src/posts/"" from the start and "".md" from the end, fix this!
-    let slug = post.file.substring(root_dir.length + 11, post.file.length - 4)
+    // Super hacky way of removing the "src/posts/"" from the start and "index.md" from the end, fix this!
+    let slug = post.file.substring(root_dir.length + 11, post.file.length - 10)
     console.log("slug = ", slug)
     return ({
       params: { 
