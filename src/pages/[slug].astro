@@ -3,6 +3,15 @@ import type { componentIsHTMLElement } from "astro/dist/runtime/server/render/do
 import BlogPostImage from '@components/BlogPostImage.astro';
 import { Image, Picture } from '@astrojs/image/components';
 
+class Node {
+  constructor(name) {
+    this.name = name
+    this.children = []
+  }
+}
+
+
+
 export async function getStaticPaths() {
   const posts = await Astro.glob('../posts/**/*.mdx')
   console.log("SLUG")
@@ -10,10 +19,45 @@ export async function getStaticPaths() {
   console.log(process.cwd())
   let root_dir = process.cwd()
 
-  // Convert file into slug
+  let buildTree = (parent, list, index) => {
+    console.log('buildTree() called. parent=', JSON.stringify(parent, null, 2), 'list=', list, 'index=', index)
+    if(index == list.length) {
+      return
+    }
+    let childName = list[index]
+    // Check if child already exists
+    let child = parent.children.find(node => {
+      return node.name == childName
+    })
 
-  return posts.map(post => 
-  {
+    if(child === undefined) {
+      console.log(childName, 'not found in', parent)
+      child = {}
+      child.name = childName
+      child.children = []
+      parent.children.push(child);
+    }
+    
+    buildTree(child, list, index + 1)
+  }
+
+  // Build tree structure from posts
+  let root = {}
+  root.name = 'root'
+  root.children = []
+  console.log('tree=', JSON.stringify(root))
+  posts.map(post => {
+    console.log('Inserting post', post)
+    let slug = post.file.substring(root_dir.length + 11, post.file.length - 10)
+    let urlPieces = slug.split('/')
+    console.log('urlPieces = ', urlPieces)
+    buildTree(root, urlPieces, 0)
+
+  })
+
+  console.log('tree=', JSON.stringify(root, null, 2))
+
+  return posts.map(post => {
     console.log(post.file)
     // Super hacky way of removing the "src/posts/"" from the start and "index.md" from the end, fix this!
     let slug = post.file.substring(root_dir.length + 11, post.file.length - 10)
