@@ -1,19 +1,18 @@
 ---
 title: Post 1
 description: Lorem ipsum dolor sit amet - 2
-layout: "@layouts/MainLayout.astro"
+# layout: "@layouts/MainLayout.astro"
 ---
 
 import ReactComponent from '@components/ReactComponent'
-import BImage from '@components/BlogPostImage.astro'
 
-import Test from './test-image.png'
+import { Chart } from './Chart'
 
 ## Code
 
 Code block:
 
-```c++
+```cpp
 std::cout << "test";
 ```
 
@@ -33,4 +32,20 @@ std::cout << "test";
 
 ## Image
 
-<Image src={Test} width="400px" alt="A rocket blasting off." />
+<Image src={import('./test-image.png')} width="400px" alt="A rocket blasting off." />
+
+## MathJax
+
+Some display math with a reference:
+
+<Latex formula="y=x" block/>
+
+Math:
+
+<Math math="y=x" block/>
+
+Some inline math. <Latex formula="f(x) = \frac{2}{3}"/>. More normal text.
+
+## Chart
+
+<Chart client:only />

@@ -5,3 +5,7 @@ layout: ../../layouts/MainLayout.astro
 ---
 
 Testing!
+
+## Asides
+
+<Aside type="note">This is a note aside.</Aside>
