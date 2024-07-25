@@ -1,0 +1,7 @@
+.katex * {
+    margin-top: 0px !important;
+}
+
+.katex-html {
+    display: none;
+}

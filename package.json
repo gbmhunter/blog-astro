@@ -1,0 +1,23 @@
+{
+  "name": "blog-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.8.2",
+    "@astrojs/starlight": "^0.25.2",
+    "astro": "^4.10.2",
+    "astro-auto-import": "^0.4.2",
+    "rehype-katex": "^7.0.0",
+    "rehype-mathjax": "^6.0.0",
+    "remark-math": "^6.0.0",
+    "sharp": "^0.32.5",
+    "typescript": "^5.5.4"
+  }
+}
