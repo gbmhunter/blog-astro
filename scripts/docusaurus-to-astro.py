@@ -86,9 +86,15 @@ def image_replace_fn(found_text, file_path):
     # Generage astro image
     # Create JS variable name from src
     src_var_name = src
-    src_var_name = src_var_name.split('/')[-1] # Just get filename
-    src_var_name = src_var_name.split('.')[0] # Remove extension
+    
+    # Trim off './_assets/' of the start
+    src_var_name = '_'.join(src_var_name.split('/')[2:])
+
+    # Remove file extension
+    src_var_name = src_var_name[:src_var_name.rfind('.')]
+
     src_var_name = src_var_name.replace('-', '_')
+    src_var_name = src_var_name.replace('.', '_')
 
     mdx_image = f"\nimport {src_var_name} from '{src}'\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
 
