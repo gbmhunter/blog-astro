@@ -55,6 +55,8 @@ def aside_replace_fn(found_text, file_path, match):
 
     if type == 'warning':
         type = 'caution'
+    elif type == 'info':
+        type = 'note'
 
     replaceText = f'<Aside type="{type}">\n{content}\n</Aside>\n'
 

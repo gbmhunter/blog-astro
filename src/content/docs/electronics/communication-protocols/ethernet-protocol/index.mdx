@@ -10,7 +10,8 @@ title: "Ethernet Protocol"
 type: "page"
 ---
 
-{/* {{% warning-is-notes %}} */}
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
 ## Overview
@@ -122,8 +123,9 @@ The _assured power_ is the amount of power available to the powered device at th
 
 PoE++ is also known as 4PPoE. UPoE is an acronym for _Ultra Power over Ethernet_.
 
-{/* {{% figure src="ltc4267-poe-regulator-typical-application.png" width="600px" caption="Typical application schematic for the Analog Devices LTC4267 PoE regulator IC. Image retrieved 2021-08-26 from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf." %}} */}
-<Image src={require('./ltc4267-poe-regulator-typical-application.png').default} width="600">Typical application schematic for the Analog Devices LTC4267 PoE regulator IC. Image retrieved 2021-08-26 from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf.</Image>
+import ltc4267_poe_regulator_typical_application from './ltc4267-poe-regulator-typical-application.png'
+
+<Image src={ltc4267_poe_regulator_typical_application} width="600">Typical application schematic for the Analog Devices LTC4267 PoE regulator IC. Image retrieved 2021-08-26 from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf.</Image>
 
 Signature resistance of 25kR.
 
@@ -146,9 +148,12 @@ The WIZnet W5xxx family of serial-to-ethernet ICs is very popular in the maker c
 
 * W5200: This chip implements the PHY, the TCP/IP stack (fully hardwired), and the 10/100 MAC Ethernet MAC, in a QFN-48 package. It uses the [SPI Protocol](/electronics/communication-protocols/spi-communication-protocol/) to talk to a microcontroller. It's power save features include power-down mode and WOL (wake on LAN). It runs of 3.3V but has 5V I/O tolerance.
 
+
 * [W5500](https://www.wiznet.io/product-item/w5500/): Supports up to 8 independent sockets (i.e. 8 different connections to different ports). Contains a 10BaseT/100BaseTX PHY. Like the W5200 is runs of 3.3V but has 5V I/O tolerance.
-    {/* {{% figure src="wiznet-w5500-ic-photo.jpg" width="200px" caption="Image of the WIZnet W5500 serial-to-ethernet IC. Image from https://www.wiznet.io/product-item/w5500/." %}} */}
-    <Image src={require('./wiznet-w5500-ic-photo.jpg').default} width="200">Image of the WIZnet W5500 serial-to-ethernet IC. Image from https://www.wiznet.io/product-item/w5500/.</Image>
+
+import wiznet_w5500_ic_photo from './wiznet-w5500-ic-photo.jpg'
+
+    <Image src={wiznet_w5500_ic_photo} width="200">Image of the WIZnet W5500 serial-to-ethernet IC. Image from https://www.wiznet.io/product-item/w5500/.</Image>
 
 ### Microchip LAN867x Family
 

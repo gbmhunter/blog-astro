@@ -12,7 +12,8 @@ title: USB Charging and Power Delivery
 type: page
 ---
 
-{/* {{% warning-is-notes %}} */}
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
 ## Overview
@@ -70,11 +71,9 @@ Summary of USB maximum voltages, currents and powers for each standard[^ti-prime
 </tbody>
 </table>
 
-{/* {{% aside type="info" %}} */}
-:::info
+<Aside type="note">
 According to the specification, all **USB type-C cables must be able to carry at least 3A** (at up to 20V, i.e. 60W). USB type-C cables supporting more than this (i.e. up to 5A) must contain e-marker chips, which identify the cable and it's current handling capabilities[^wikipedia-usb-c].
-{/* {{% /aside %}} */}
-:::
+</Aside>
 
 ## Data and Power Roles
 
@@ -107,8 +106,9 @@ There are some standard definitions in the battery charger spec:
 
 The below image shows the basic electrical wiring for the SDP, DCP and CDP ports defined by the BC 1.2 specification:
 
-{/* {{% figure ref="fig-battery-charging-spec-rev-1.2-different-types-of-ports" src="battery-charging-spec-rev-1.2-different-types-of-ports.webp" width="800px" caption="Diagram showing the basic electrical wiring for the various ports specified by BC 1.2." %}} */}
-<Image src={require('./battery-charging-spec-rev-1.2-different-types-of-ports.webp').default} width="800">Diagram showing the basic electrical wiring for the various ports specified by BC 1.2.</Image>
+import battery_charging_spec_rev_1_2_different_types_of_ports from './battery-charging-spec-rev-1.2-different-types-of-ports.webp'
+
+<Image src={battery_charging_spec_rev_1_2_different_types_of_ports} width="800">Diagram showing the basic electrical wiring for the various ports specified by BC 1.2.</Image>
 
 It's also important to distinguish between the following terms:
 
@@ -120,8 +120,9 @@ The PD needs to determine how much current it can draw from the upstream USB por
 
 The below image shows the internal circuitry in a Charging Downstream Port (CDP).
 
-{/* {{% figure ref="fig-battery-charging-spec-rev-1.2-charging-downstream-port" src="battery-charging-spec-rev-1.2-charging-downstream-port.webp" width="800px" caption="The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP). Numerical values are nominal values, the USB standard instead specifies ranges[^usb-org-battery-charging-v1.2-spec]." %}} */}
-<Image src={require('./battery-charging-spec-rev-1.2-charging-downstream-port.webp').default} width="800">The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP). Numerical values are nominal values, the USB standard instead specifies ranges[^usb-org-battery-charging-v1.2-spec].</Image>
+import battery_charging_spec_rev_1_2_charging_downstream_port from './battery-charging-spec-rev-1.2-charging-downstream-port.webp'
+
+<Image src={battery_charging_spec_rev_1_2_charging_downstream_port} width="800">The internal circuitry connected to the D+ and D- lines in a Charging Downstream Port (CDP). Numerical values are nominal values, the USB standard instead specifies ranges[^usb-org-battery-charging-v1.2-spec].</Image>
 
 ### USB Power Delivery 1.0
 
@@ -190,13 +191,15 @@ USB PD uses the two CC lines provided in the Type-C connector to perform negotia
 
 The below image is a photo of a USB Type-C plug on the end of a white cable.
 
-{/* {{% figure ref="usb-type-c-plug-photo" src="usb-type-c-plug-photo.jpg" width="600px" caption="Photo of a USB Type-C plug on the end of a cable." %}} */}
-<Image src={require('./usb-type-c-plug-photo.jpg').default} width="600">Photo of a USB Type-C plug on the end of a cable.</Image>
+import usb_type_c_plug_photo from './usb-type-c-plug-photo.jpg'
+
+<Image src={usb_type_c_plug_photo} width="600">Photo of a USB Type-C plug on the end of a cable.</Image>
 
 The below image shows the pinout for both the USB Type-C plug and the receptacle.
 
-{/* {{% figure ref="usb-type-c-connector-pinout" src="usb-type-c-connector-pinout.webp" width="800px" caption="Pinout for both the USB Type-C plug and receptacle[^wikipedia-usb-c]." %}} */}
-<Image src={require('./usb-type-c-connector-pinout.webp').default} width="800">Pinout for both the USB Type-C plug and receptacle[^wikipedia-usb-c].</Image>
+import usb_type_c_connector_pinout from './usb-type-c-connector-pinout.webp'
+
+<Image src={usb_type_c_connector_pinout} width="800">Pinout for both the USB Type-C plug and receptacle[^wikipedia-usb-c].</Image>
 
 ### USB 2.0 Without PD
 
@@ -204,8 +207,9 @@ Before we dive into PD, let's cover what happens without PD. The most basic powe
 
 The below image shows the basic connections on the CC lines when using USB 2.0 over a Type-C connector.
 
-{/* {{% figure ref="usb2.0-without-pd" src="usb2.0-without-pd.webp" width="800px" caption="Basic connection scheme for USB 2.0 without PD over a Type-C connector." %}} */}
-<Image src={require('./usb2.0-without-pd.webp').default} width="800">Basic connection scheme for USB 2.0 without PD over a Type-C connector.</Image>
+import usb2_0_without_pd from './usb2.0-without-pd.webp'
+
+<Image src={usb2_0_without_pd} width="800">Basic connection scheme for USB 2.0 without PD over a Type-C connector.</Image>
 
 The value of $R_p$ is how the source/DFP advertises it's current capability. The sink/UFP always has a fixed value for $R_d$ of $5.1k\Omega$. When connected together, they form a voltage-divider. The sink can measure the voltage at the center point and determine the current capability of the source. The below table shows the requirements for $R_p$.
 
@@ -279,20 +283,23 @@ Even though USB 3.0 allows more than 500mA, with just two resistors you can't te
 
 The Analog Devices MAX14747 is a IC which can detect a number of different USB charger types and charge a battery from the USB power source. It supports USB Battery Charger Detection Rev 1.2 but not USB PD. $V_{BAT}$ can range from 0-5.5V so single Li-Po cells are supported. It can be controlled from a MCU via I2C lines.
 
-{/* {{% figure ref="fig-max14747-typical-application-circuit" src="max14747-typical-application-circuit.png" width="800px" caption="Typical application circuit for the Analog Devices MAX14747 IC[^analog-devices-max14747-usb-charging-ic]." %}} */}
-<Image src={require('./max14747-typical-application-circuit.png').default} width="800">Typical application circuit for the Analog Devices MAX14747 IC[^analog-devices-max14747-usb-charging-ic].</Image>
+import max14747_typical_application_circuit from './max14747-typical-application-circuit.png'
+
+<Image src={max14747_typical_application_circuit} width="800">Typical application circuit for the Analog Devices MAX14747 IC[^analog-devices-max14747-usb-charging-ic].</Image>
 
 ### Standalone USB PD Sink Controller with the STUSB4500
 
 The _STMicroelectronics STUSB4500_ is a USB PD standalone sink controller. Standalone refers to the fact that it has non-volatile programmable memory that is used to configure the device, meaning the STUSB4500 can run by itself without the need for a MCU to be connected to it. The below image shows a 3D render of it in the WLCSP-25 package.
 
-{/* {{% figure ref="fig-stmicroelectronics-stusb4500-3d-render-wlcsp-25" src="stmicroelectronics-stusb4500-3d-render-wlcsp-25.png" width="200px" caption="The STUSB4500 in the WLCSP-25 package[^st-microelectronics-stusb4500-standalone-pd-sink]." %}} */}
-<Image src={require('./stmicroelectronics-stusb4500-3d-render-wlcsp-25.png').default} width="200">The STUSB4500 in the WLCSP-25 package[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
+import stmicroelectronics_stusb4500_3d_render_wlcsp_25 from './stmicroelectronics-stusb4500-3d-render-wlcsp-25.png'
+
+<Image src={stmicroelectronics_stusb4500_3d_render_wlcsp_25} width="200">The STUSB4500 in the WLCSP-25 package[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
 
 Below is a minimal application schematic using the IC act as a USB PD power sink without any connected MCU:
 
-{/* {{% figure ref="fig-stmicroelectronics-stusb4500-minimal-application-schematic" src="stmicroelectronics-stusb4500-minimal-application-schematic.png" width="900px" caption="Minimal application circuit for the STMicroelectronics STUSB4500 IC. Note that it is operated as a standalone controller and there is no MCU present[^st-microelectronics-stusb4500-standalone-pd-sink]." %}} */}
-<Image src={require('./stmicroelectronics-stusb4500-minimal-application-schematic.png').default} width="900">Minimal application circuit for the STMicroelectronics STUSB4500 IC. Note that it is operated as a standalone controller and there is no MCU present[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
+import stmicroelectronics_stusb4500_minimal_application_schematic from './stmicroelectronics-stusb4500-minimal-application-schematic.png'
+
+<Image src={stmicroelectronics_stusb4500_minimal_application_schematic} width="900">Minimal application circuit for the STMicroelectronics STUSB4500 IC. Note that it is operated as a standalone controller and there is no MCU present[^st-microelectronics-stusb4500-standalone-pd-sink].</Image>
 
 ### USB Charger Adapter Using The MAX14630
 
@@ -306,8 +313,9 @@ Some USB Type-C connectors do not have all 24 pins available, but just enough to
 
 One example is the Molex 2171750001, as shown below:
 
-{/* {{% figure ref="fig-molex-2171750001-type-c-6-lead-connector-photo-and-diagram" src="molex-2171750001-type-c-6-lead-connector-photo-and-diagram.webp" width="600px" caption="Photo and diagram of the Molex 2171750001 USB Type-C (6+18 Dummy) connector[^molex-2171750001-type-c-6-plus-18-dummy-connector-ds]." %}} */}
-<Image src={require('./molex-2171750001-type-c-6-lead-connector-photo-and-diagram.webp').default} width="600">Photo and diagram of the Molex 2171750001 USB Type-C (6+18 Dummy) connector[^molex-2171750001-type-c-6-plus-18-dummy-connector-ds].</Image>
+import molex_2171750001_type_c_6_lead_connector_photo_and_diagram from './molex-2171750001-type-c-6-lead-connector-photo-and-diagram.webp'
+
+<Image src={molex_2171750001_type_c_6_lead_connector_photo_and_diagram} width="600">Photo and diagram of the Molex 2171750001 USB Type-C (6+18 Dummy) connector[^molex-2171750001-type-c-6-plus-18-dummy-connector-ds].</Image>
 
 It has a description in [DigiKey](https://www.digikey.com/en/products/detail/molex/2171750001/13913745) of: "USB-C (USB TYPE-C) USB 2.0 Receptacle Connector 24 (6+18 Dummy) Position Surface Mount, Right Angle; Through Hole". The "6+18 Dummy" means only 6 of the 24 contacts are actually provided as SMD leads to the PCB. These are:
 

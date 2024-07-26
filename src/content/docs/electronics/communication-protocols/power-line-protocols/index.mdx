@@ -6,6 +6,8 @@ title: Power Line Protocols
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
 Also called Power Line Carrier Communication (PLCC). A "power line" can be any cable that distributes power, including mains (120-240VAC), the +12V from the battery in a car, or the DC power supply rails on embedded circuitry.
@@ -13,4 +15,6 @@ Also called Power Line Carrier Communication (PLCC). A "power line" can be any c
 An example circuit for the LM1893 from Texas Instruments.
 
 {/* {{% figure src="lm1893-example-circuit-power-line-comms-texas-instruments.png" caption="Example circuit from Texas Instruments for the LM1893. Image from http://www.ti.com/lit/ds/snas544a/snas544a.pdf."  width="800px" %}} */}
-<Image src={require('./lm1893-example-circuit-power-line-comms-texas-instruments.png').default} width="800">Example circuit from Texas Instruments for the LM1893. Image from http://www.ti.com/lit/ds/snas544a/snas544a.pdf.</Image>
+import lm1893_example_circuit_power_line_comms_texas_instruments from './lm1893-example-circuit-power-line-comms-texas-instruments.png'
+
+<Image src={lm1893_example_circuit_power_line_comms_texas_instruments} width="800">Example circuit from Texas Instruments for the LM1893. Image from http://www.ti.com/lit/ds/snas544a/snas544a.pdf.</Image>
