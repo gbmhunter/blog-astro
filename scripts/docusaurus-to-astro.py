@@ -20,12 +20,18 @@ def main():
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% link[^%]+%}}', replace=link_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[([^\]]+)\]\(([^)]+)\)', replace=markdown_link_replace_fn, multiline=True)
 
+        # Add imports
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'---[\s\S]*?authors[\s\S]*?---', replace=import_insert_fn, multiline=True)
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'<Image .*?<\/Image>', replace=image_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'`?\\\((((?!\\\)).)+)\\\)`?', replace=inline_eq_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'\$\$\\begin{align}[\s\S]*?(?=\\end{align}\$\$)\\end{align}\$\$', replace=block_eq_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% aside type="(.*?)" %}}(.*?){{% /aside %}}', replace=aside_replace_fn, multiline=True)
         
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', replace=paragraph_eq_replace_fn, multiline=True)
+
+def import_insert_fn(found_text, file_path, match):
+    replace_text = found_text + "\n\nimport { Aside, Image } from './src/components/General.astro';"
+    return replace_text
 
 def aside_replace_fn(found_text, file_path, match):
     type = match.group(1)
@@ -109,7 +115,7 @@ def image_replace_fn(found_text, file_path):
     src_var_name = src_var_name.split('.')[0] # Remove extension
     src_var_name = src_var_name.replace('-', '_')
 
-    mdx_image = f"import {src_var_name} from {src}\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
+    mdx_image = f"import {src_var_name} from '{src}'\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
 
     print(f'====================================================================')
     print(f'mdx_image')
