@@ -12,6 +12,8 @@ title: "Small-Signal Analysis"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
 ## Overview
@@ -30,17 +32,25 @@ Taking it a step further: The complete solution is just the sum of the DC operat
 
 ## Analysis Of A Resistor Divider
 
-<Image src={require('./resistor-divider-01-before-replacing-vin.png').default} width="500" caption="Resistor divider, before replacing Vin." />
+import resistor_divider_01_before_replacing_vin from './resistor-divider-01-before-replacing-vin.png'
+
+<Image src={resistor_divider_01_before_replacing_vin} width="500">Resistor divider, before replacing Vin.</Image>
 
 We assume Vin is a perfect voltage source, therefore we can replace it with a short.
 
-<Image src={require('./resistor-divider-02-vin-replaced-with-short.png').default} width="500" caption="Resistor divider, Vin replaced with short." />
+import resistor_divider_02_vin_replaced_with_short from './resistor-divider-02-vin-replaced-with-short.png'
+
+<Image src={resistor_divider_02_vin_replaced_with_short} width="500">Resistor divider, Vin replaced with short.</Image>
 
 These two resistors are now in parallel, we can re-arrange the circuit as below to clearly show this:
 
-<Image src={require('./resistor-divider-03-rearranged.png').default} width="500" caption="Circuit re-arranged to highlight both resistors in parallel." />
+import resistor_divider_03_rearranged from './resistor-divider-03-rearranged.png'
+
+<Image src={resistor_divider_03_rearranged} width="500">Circuit re-arranged to highlight both resistors in parallel.</Image>
 
 The two resistors in parallel can be replaced with a single equivalent resistor (remembering $ R_{parallel
 } = \frac{R_1 R_2}{R_1 + R_2} $):
 
-<Image src={require('./resistor-divider-04-equivalent-output-resistance.png').default} width="500" caption="Equivalent resistance of the two resistors in parallel." />
+import resistor_divider_04_equivalent_output_resistance from './resistor-divider-04-equivalent-output-resistance.png'
+
+<Image src={resistor_divider_04_equivalent_output_resistance} width="500">Equivalent resistance of the two resistors in parallel.</Image>

@@ -11,6 +11,8 @@ title: Switched-Capacitor Circuits
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Switched-capacitor circuits are circuits which move electronic charge in and out of capacitors using electronics switches. They are commonly manipulated to make a "tunable" resistance which depends on the switching frequency. They are used in circuits such as [switched-capacitor filters](/electronics/components/switched-capacitor-filters/) and  [charge pumps](/electronics/components/power-regulators/charge-pumps/).
@@ -18,12 +20,16 @@ Switched-capacitor circuits are circuits which move electronic charge in and out
 The basic switched-capacitor circuit is shown below:
 
 {/* {{% figure src="basic-switched-capacitor-circuit.png" width="400px" caption="A basic switched-capacitor circuit." %}} */}
-<Image src={require('./basic-switched-capacitor-circuit.png').default} width="400">A basic switched-capacitor circuit.</Image>
+import basic_switched_capacitor_circuit from './basic-switched-capacitor-circuit.png'
+
+<Image src={basic_switched_capacitor_circuit} width="400">A basic switched-capacitor circuit.</Image>
 
 The switches are switched on/off in an alternating fashion, where $\Phi_1$ controls `SW1` and $\Phi_2$ controls `SW2`. This is shown in the below graph. A switching frequency of $100kHz$ is assumed.
 
 {/* {{% figure src="phase-graph.png" width="600px" caption="Plot showing the on/off sequencing for the switches in the above schematic." %}} */}
-<Image src={require('./phase-graph.png').default} width="600">Plot showing the on/off sequencing for the switches in the above schematic.</Image>
+import phase_graph from './phase-graph.png'
+
+<Image src={phase_graph} width="600">Plot showing the on/off sequencing for the switches in the above schematic.</Image>
 
 ## Equivalent Resistance
 

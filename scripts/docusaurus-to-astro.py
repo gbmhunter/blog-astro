@@ -28,6 +28,7 @@ def main():
 
         # Replace images
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'<Image .*?<\/Image>', replace=image_replace_fn, multiline=False)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'<Image .*?\/>', replace=image_no_child_replace_fn, multiline=False)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'`?\\\((((?!\\\)).)+)\\\)`?', replace=inline_eq_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'\$\$\\begin{align}[\s\S]*?(?=\\end{align}\$\$)\\end{align}\$\$', replace=block_eq_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% aside type="(.*?)" %}}(.*?){{% /aside %}}', replace=aside_replace_fn, multiline=True)
@@ -78,6 +79,58 @@ def image_replace_fn(found_text, file_path):
 
     # Extract caption
     match = re.search(r'<Image .*?>(.*?)<\/Image>', found_text)
+    if match is not None:
+        caption = match.group(1)
+    else:
+        caption = ''
+
+    # Generate astro image
+    # Create JS variable name from src
+    src_var_name = src
+    
+    # Trim off './_assets/' of the start if present
+    path_does_start_with_assets = src_var_name.startswith('./_assets')
+    if path_does_start_with_assets:
+        src_var_name = '_'.join(src_var_name.split('/')[2:])
+
+    path_does_start_with_dot_slash = src_var_name.startswith('./')
+    if path_does_start_with_dot_slash:
+        src_var_name = src_var_name[2:]
+
+    # Remove file extension
+    src_var_name = src_var_name[:src_var_name.rfind('.')]
+
+    # If first character is a number, prepend with an "n_"
+    if src_var_name[0].isdigit():
+        src_var_name = 'n_' + src_var_name
+
+    src_var_name = src_var_name.replace('-', '_')
+    src_var_name = src_var_name.replace('.', '_')
+    src_var_name = src_var_name.replace('/', '_')
+
+    mdx_image = f"import {src_var_name} from '{src}'\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
+
+    print('=====================================================')
+    print(f'IMAGE MATCH FOUND IN: {file_path}')
+    print('=====================================================')
+    print(f'========= Replacing: =============')
+    print(found_text)
+    print('============ with: =============')
+    print(mdx_image)
+
+    return mdx_image
+
+def image_no_child_replace_fn(found_text, file_path):
+    # Extract src
+    match = re.search(r"src={require\('(.*?)'\).default}", found_text)
+    src = match.group(1)
+
+    # Extract width
+    match = re.search(r'width="([^"]+)"', found_text)
+    width = match.group(1)
+
+    # Extract caption
+    match = re.search(r'caption="([^"]+)"', found_text)
     if match is not None:
         caption = match.group(1)
     else:
