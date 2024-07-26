@@ -103,7 +103,7 @@ def image_replace_fn(found_text, file_path):
     src_var_name = src_var_name.replace('.', '_')
     src_var_name = src_var_name.replace('/', '_')
 
-    mdx_image = f"\nimport {src_var_name} from '{src}'\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
+    mdx_image = f"import {src_var_name} from '{src}'\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
 
     print('=====================================================')
     print(f'IMAGE MATCH FOUND IN: {file_path}')
