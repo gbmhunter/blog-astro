@@ -87,8 +87,10 @@ def image_replace_fn(found_text, file_path):
     # Create JS variable name from src
     src_var_name = src
     
-    # Trim off './_assets/' of the start
-    src_var_name = '_'.join(src_var_name.split('/')[2:])
+    # Trim off './_assets/' of the start if present
+    path_does_start_with_assets = src_var_name.find('./_assets')
+    if path_does_start_with_assets != -1:
+        src_var_name = '_'.join(src_var_name.split('/')[2:])
 
     # Remove file extension
     src_var_name = src_var_name[:src_var_name.rfind('.')]
