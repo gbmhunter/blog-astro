@@ -35,7 +35,7 @@ def main():
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', replace=paragraph_eq_replace_fn, multiline=True)
 
 def import_insert_fn(found_text, file_path, match):
-    replace_text = found_text + "\n\nimport { Aside, CircuitJs, Image } from './src/components/General.astro';"
+    replace_text = found_text + "\n\nimport { Aside, CircuitJs, Image, WarningIsNotes } from './src/components/General.astro';"
 
     print('=====================================================')
     print(f'IMPORT MATCH FOUND IN: {file_path}')
