@@ -52,7 +52,10 @@ def aside_replace_fn(found_text, file_path, match):
     content = match.group(2)
     print(f'type: {type}')
 
-    replaceText = f'<Aside type="{type}">\n{content}\n</Aside>'
+    if type == 'warning':
+        type = 'caution'
+
+    replaceText = f'<Aside type="{type}">\n{content}\n</Aside>\n'
 
     print('=====================================================')
     print(f'ASIDE MATCH FOUND IN: {file_path}')
