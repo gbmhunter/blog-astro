@@ -1,3 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  // This mdx section is so that mdx-analyze can parse frontmatter and math
+  // as per example on https://github.com/mdx-js/mdx-analyzer.
+  // Without this it gets confused about Latex math when the math contains "{".
+  // This also makes the "Outline" work in VS Code (show headings)
+  "mdx": {
+    "plugins": [
+      "remark-math"
+    ]
+  }
 }
