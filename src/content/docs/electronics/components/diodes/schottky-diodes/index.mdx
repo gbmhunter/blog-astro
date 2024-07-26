@@ -12,6 +12,8 @@ title: "Schottky Diodes"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 _Schottky diodes_ (a.k.a. _Schottky barrier diode_ or _hot-carrier diode_) are diodes formed from a semiconductor-metal junction, rather than a semiconductor-semiconductor junction of a traditional diode. This creates a lower forward voltage drop than standard diodes (typically 0.3V instead of 0.7V), and consequentially also faster switching speeds. They are used in applications where:
@@ -26,7 +28,9 @@ Unlike general purpose diodes which are formed from the junction of N-doped and 
 
 ## Schematic Symbol And Designator
 
-<Image src={require('./schottky-diode-schematic-symbol.svg').default} width="300px">The schematic symbol and designator for the Schottky diode. Note the curls on the bar, which differs from the general-purpose diode symbol. The anode is the left pin and the cathode is the right pin.</Image>
+import schottky_diode_schematic_symbol from './schottky-diode-schematic-symbol.svg'
+
+<Image src={schottky_diode_schematic_symbol} width="300px">The schematic symbol and designator for the Schottky diode. Note the curls on the bar, which differs from the general-purpose diode symbol. The anode is the left pin and the cathode is the right pin.</Image>
 
 ## Popular Schottky Diode Part Numbers
 

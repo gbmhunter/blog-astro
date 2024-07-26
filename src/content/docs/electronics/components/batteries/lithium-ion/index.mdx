@@ -10,6 +10,8 @@ title: "Lithium-ion Batteries"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 {/* {{% warning-is-notes %}} */}
 <WarningIsNotes />
 
@@ -72,10 +74,10 @@ The common way to charge a Lithium-ion battery is to follow these steps:
 1. Stop charging once the current drops to approximately 0.1C. 
 
 {/* {{% aside type="warning" %}} */}
-:::warning
+<Aside type="caution">
 It is not healthy to store a Lithium-ion battery for a long time at 100% charge. Storing them for a long time at 40-50% capacity appears to be provide the best lifetime[^battery-university-bu-702-how-to-store-batteries]. 
 {/* {{% /aside %}} */}
-:::
+</Aside>
 
 1C is the current required to drain the battery in 1 hour, e.g. for a 500mAh battery, 1C is 500mA. Most battery charger ICs will automatically perform the above steps for you.
 

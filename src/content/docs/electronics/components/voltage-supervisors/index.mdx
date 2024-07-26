@@ -11,6 +11,8 @@ title: Voltage Supervisors
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
 ## Overview
@@ -19,7 +21,9 @@ _Voltage supervisors_ (a.k.a. reset ICs[^ti-voltage-supervisors-and-reset-ics]) 
 
 The below image shows the functional block diagram for a typical simple voltage supervisor.
 
-<Image src={require('./apx803l-voltage-supervisor-functional-block-diagram.png').default} width="600px">The functional block diagram for the Diodes Inc. APX803L voltage supervisor IC[^diodes-inc-apx803l-voltage-supervisor-ds].</Image>
+import apx803l_voltage_supervisor_functional_block_diagram from './apx803l-voltage-supervisor-functional-block-diagram.png'
+
+<Image src={apx803l_voltage_supervisor_functional_block_diagram} width="600px">The functional block diagram for the Diodes Inc. APX803L voltage supervisor IC[^diodes-inc-apx803l-voltage-supervisor-ds].</Image>
 
 Simple voltage supervisors are very similar to [comparators](/electronics/components/comparators/), except for a few key differences:
 

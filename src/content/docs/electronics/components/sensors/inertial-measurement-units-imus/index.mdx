@@ -6,6 +6,8 @@ title: Inertial Measurement Units (IMUs)
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 The IMU can either consist of 3 separate chips mounted onto a small piece of PCB, or a single system-on-chip that integrated all of the components into one package.
@@ -38,7 +40,9 @@ More and more GPS units are beginning to support integration with an IMU unit to
 
 [RTIMULib](https://github.com/RTIMULib/RTIMULib) is a pretty nice software package which makes it easier to get IMUs working with operating systems (including "embedded" ones such as the RaspberryPi). The writer, "richards-tech", also has a version of this for the Arduino, which makes it easy to use the Arduino as an I2C host to read back data from popular IMUs, send it via UART to a computer, where it can be processed.
 
-<Image src={require('./screenshot-playing-around-with-rthostimugl.png').default} width="782px">Playing around with RTHostIMUGL and a connected IMU through an Arduino.</Image>
+import screenshot_playing_around_with_rthostimugl from './screenshot-playing-around-with-rthostimugl.png'
+
+<Image src={screenshot_playing_around_with_rthostimugl} width="782px">Playing around with RTHostIMUGL and a connected IMU through an Arduino.</Image>
 
 ## Packages
 

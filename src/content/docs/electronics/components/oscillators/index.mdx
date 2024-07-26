@@ -11,6 +11,8 @@ title: Oscillators
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 This site uses the word _oscillator_ to represent a component with an **self-contained** oscillating feature that has power, ground, and signal out pins. This site uses the word _crystal_ to represent an component which contains a oscillating element (in the form of a crystal), which requires an **external oscillation circuit** before it useful.
@@ -43,7 +45,9 @@ They use less power than a crystal-based oscillator, making them suitable for ba
 
 MEMS oscillators have been made in packages which are also commonly used for crystal packages, such as the 2012 SMD package.
 
-{/* <Image src={require('./_assets/mems-vs-crystal-oscillator-package-size.png').default} width="700px">A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground.</Image> */}
+{/* import mems_vs_crystal_oscillator_package_size from './_assets/mems-vs-crystal-oscillator-package-size.png'
+
+<Image src={mems_vs_crystal_oscillator_package_size} width="700px">A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground.</Image> */}
 
 Some common industry sizes for oscillators include:
 
@@ -58,11 +62,15 @@ Some common industry sizes for oscillators include:
 
 The Wien bridge oscillator is a relatively simple oscillator that can generate reasonably accurate sine waves. It is named after a bridge circuit designed by Max Wien in 1891 for the measurement of impedances. William R. Hewlett (of Hewlett-Packard fame) designed the Wein bridge oscillator using the Wein bridge circuit and the differential amplifier. 
 
-<Image src={require('./_assets/wien-bridge-oscillator/schematic-traditional-as-bridge.svg').default} width="800px">Schematics of a Wien bridge oscillator circuit, drawn in the traditional way with the RC and R networks shown as a bridge.</Image>
+import wien_bridge_oscillator_schematic_traditional_as_bridge from './_assets/wien-bridge-oscillator/schematic-traditional-as-bridge.svg'
+
+<Image src={wien_bridge_oscillator_schematic_traditional_as_bridge} width="800px">Schematics of a Wien bridge oscillator circuit, drawn in the traditional way with the RC and R networks shown as a bridge.</Image>
 
 However the modern way to draw this is to split up the non-inverting and inverting feedback circuits like this:
 
-<Image src={require('./_assets/wien-bridge-oscillator/schematic-modern.svg').default} width="800px">The modern way to draw the Wien bridge oscillator circuit, separating the non-inverting and inverting feedback sections.</Image>
+import wien_bridge_oscillator_schematic_modern from './_assets/wien-bridge-oscillator/schematic-modern.svg'
+
+<Image src={wien_bridge_oscillator_schematic_modern} width="800px">The modern way to draw the Wien bridge oscillator circuit, separating the non-inverting and inverting feedback sections.</Image>
 
 In my opinion this is a clearer way of drawing the circuit. Wien bridge oscillators are used in audio applications.
 
@@ -248,11 +256,15 @@ R_{3, no-diode} &= R_3 - R_{3,diode}      \\
 \end{align}
 $$
 
-<Image src={require('./_assets/wien-bridge-oscillator/schematics.png').default} width="800px">Wien Bridge oscillator circuit.</Image>
+import wien_bridge_oscillator_schematics from './_assets/wien-bridge-oscillator/schematics.png'
+
+<Image src={wien_bridge_oscillator_schematics} width="800px">Wien Bridge oscillator circuit.</Image>
 
 We can then simulate the circuit using ngspice (an open-source SPICE-like circuit simulator):
 
-<Image src={require('./_assets/wien-bridge-oscillator/v-sine-out.png').default} width="800px">SPICE simulation results for the Wien Bridge oscillator circuit shown above. Note how the circuit takes approx. 350ms to start-up, relying on noise (which SPICE does simulate) for the initial 'kick' to begin oscillating.</Image>
+import wien_bridge_oscillator_v_sine_out from './_assets/wien-bridge-oscillator/v-sine-out.png'
+
+<Image src={wien_bridge_oscillator_v_sine_out} width="800px">SPICE simulation results for the Wien Bridge oscillator circuit shown above. Note how the circuit takes approx. 350ms to start-up, relying on noise (which SPICE does simulate) for the initial 'kick' to begin oscillating.</Image>
 
 You can count 6 cycles in approx. 6ms, which puts the simulated frequency at:
 
@@ -276,23 +288,31 @@ Using a JFET to partially switch in another resistor in parallel with the ground
 
 Schematics of this technique are shown below, with the circuit setup to oscillate at the same frequency as the diode gain-limited variant mentioned above.
 
-<Image src={require('./_assets/wien-bridge-oscillator-jfet/schematics.png').default} width="700px">A practical Wien bridge oscillator circuit using a JFET (Q1) as the non-element to actively limit the gain and prevent the oscillator from saturating.</Image>
+import wien_bridge_oscillator_jfet_schematics from './_assets/wien-bridge-oscillator-jfet/schematics.png'
+
+<Image src={wien_bridge_oscillator_jfet_schematics} width="700px">A practical Wien bridge oscillator circuit using a JFET (Q1) as the non-element to actively limit the gain and prevent the oscillator from saturating.</Image>
 
 Note the diode and RC circuit controlling the JFET's gate. When the circuit is first powered up, the gate is at ground and hence the gate-source voltage $V_{GS} = 0V$. Therefore the JFET is almost fully on (remember, [JFETs are depletion mode devices](/electronics/components/transistors/junction-gate-field-effect-transistor-jfets)), and $R_5$ is in parallel with $R_4$, increasing the gain of the op-amp. As the output voltage beings to oscillate, on the negative part of the cycle, diode $D_1$ will conduct and charge the RC low-pass filter $C_3$ and $R_6$ with a negative voltage. This will decrease $V_{GS}$ below $0V$, which will begin to turn the JFET off. This will then increase the equivalent resistance of $R_5$ in parallel with $R_4$ and decrease the op-amp gain. This will continue until the system reaches a steady-state and oscillates forever.
 
 And below are the simulation results for this circuit:
 
-<Image src={require('./_assets/wien-bridge-oscillator-jfet/v-sine-out.png').default} width="800px">SPICE simulation results for the JFET gain-limited Wien bridge oscillator circuit shown above. Notice the ringing on the gain that takes a few hundred milliseconds to stabilize.</Image>
+import wien_bridge_oscillator_jfet_v_sine_out from './_assets/wien-bridge-oscillator-jfet/v-sine-out.png'
+
+<Image src={wien_bridge_oscillator_jfet_v_sine_out} width="800px">SPICE simulation results for the JFET gain-limited Wien bridge oscillator circuit shown above. Notice the ringing on the gain that takes a few hundred milliseconds to stabilize.</Image>
 
 ## Ring Oscillators
 
 A _ring oscillator_ (a.k.a. _RO_) is an electronic oscillator made up of a **chain of an odd-number of digital logic NOT gates**. The output of the last NOT gate is fed into the input of the first. The oscillator relies on the _propagation delay_ from the input of the first NOT gate to the output of the last NOT gate to set the oscillation frequency.
 
-<Image src={require('./_assets/ring-oscillator-single/schematic.svg').default} width="500px">The world's most basic ring oscillator, using one NOT gate.</Image>
+import ring_oscillator_single_schematic from './_assets/ring-oscillator-single/schematic.svg'
+
+<Image src={ring_oscillator_single_schematic} width="500px">The world's most basic ring oscillator, using one NOT gate.</Image>
 
 ### Simulation
 
-<Image src={require('./_assets/ring-oscillator-triple/simulation.png').default} width="700px">KiCad schematic of a three stage ring oscillator (ready for simulation).</Image>
+import ring_oscillator_triple_simulation from './_assets/ring-oscillator-triple/simulation.png'
+
+<Image src={ring_oscillator_triple_simulation} width="700px">KiCad schematic of a three stage ring oscillator (ready for simulation).</Image>
 
 I ran into convergence issues when using the `74HCU04` SPICE model I found floating around on the internet (located in a file called [74HCng.lib](./_assets/ring-oscillator-single/74HCng.lib)). Simulating one instance of the inverter worked fine, but I got the dreaded `doAnalyses: TRAN:  Timestep too small` error when connecting the second/third/e.t.c inverter in the ring. The convergence issue still occurred even when driving the first inverter instance from a slow frequency `PULSE` voltage source (rather than the driving it from the output of the last inverter), indicating it wasn't a problem with the ring structure.
 
@@ -302,7 +322,9 @@ I then looked harder around the internet and found the `MyHCU04` SPICE model [po
 
 This SPICE model for an inverter fixed the convergence issues I was having (if anyone else is interested in this file, I've saved it [here](./_assets/ring-oscillator-triple/MyHCU04.lib)). Hurrah!
 
-<Image src={require('./_assets/ring-oscillator-triple/out.png').default} width="700px">It's working! Simulated output of the three stage ring oscillator schematic shown above.</Image>
+import ring_oscillator_triple_out from './_assets/ring-oscillator-triple/out.png'
+
+<Image src={ring_oscillator_triple_out} width="700px">It's working! Simulated output of the three stage ring oscillator schematic shown above.</Image>
 
 ## Manufacturer Part Numbers
 

@@ -12,21 +12,27 @@ title: Light-emitting Diodes (LEDs)
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 _Light-emitting diodes_ (LEDs) are electrical components which when provided with voltage and current, emit light. Although there are many ways to make light from electricity (hot filaments, lasers, plasma, e.t.c.), by-definition LEDs are built from a basic diode. They typically have two electrical connections, just like a standard diode. They emit light when forward biased, and block reverse current just like normal diodes (a warning here: some LEDs DO NOT like being reverse biased, please read the datasheet). 
 
-<Image src={require('./_assets/red-led-5mm-th-diffused.jpg').default} width="250px">A diffused-lens, red, 5mm through-hole LED.</Image>
+import red_led_5mm_th_diffused from './_assets/red-led-5mm-th-diffused.jpg'
+
+<Image src={red_led_5mm_th_diffused} width="250px">A diffused-lens, red, 5mm through-hole LED.</Image>
 
 ## Schematic Symbol
 
 The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives of light. The schematic symbol for a LED is shown below. As with a normal diode, the anode is on the left, and the cathode on the right.
 
-<Image src={require('./_assets/led-diode-schematic-symbol.webp').default} width="300">Schematic symbol for an LED (light emitting diode).</Image>
+import led_diode_schematic_symbol from './_assets/led-diode-schematic-symbol.webp'
 
-:::warning
+<Image src={led_diode_schematic_symbol} width="300">Schematic symbol for an LED (light emitting diode).</Image>
+
+<Aside type="caution">
 It's worth pointing out that the LED's schematic symbol looks very similar to a [photodiodes](/electronics/components/diodes/photodiodes/), except the "light arrows" on a photodiode's symbol point inwards.
-:::
+</Aside>
 
 A more positive voltage is needed on the anode w.r.t to the cathode for current to flow through the LED and it emit light.
 
@@ -160,7 +166,9 @@ Reverse mounting LED's are SMD LEDs which have the light source emitting in the 
 
 WARNING: Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
 
-<Image src={require('./osram-ls-p47k-reverse-mount-led-photo.png').default} width="450">An Osram reverse-mount LED (P47K series).</Image>
+import osram_ls_p47k_reverse_mount_led_photo from './osram-ls-p47k-reverse-mount-led-photo.png'
+
+<Image src={osram_ls_p47k_reverse_mount_led_photo} width="450">An Osram reverse-mount LED (P47K series).</Image>
 
 ## Multiplexing
 
@@ -202,7 +210,9 @@ A little known fact about LEDs is that they can be used for light detection. Alt
 
 The schematic below shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
 
-<Image src={require('./led-connected-to-micro-for-light-detection-schematic.png').default} width="500">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
+import led_connected_to_micro_for_light_detection_schematic from './led-connected-to-micro-for-light-detection-schematic.png'
+
+<Image src={led_connected_to_micro_for_light_detection_schematic} width="500">Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.</Image>
 
 The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.HighLED is binned according to flux output. There are 5 bins:
 
@@ -216,7 +226,9 @@ You can get RGD LEDs which already have the control and drive circuitry (e.g. th
 
 One popular example, the Worldsemi WS2811, uses it's own custom communications protocol running at 800kHz.
 
-<Image src={require('./ws2811-rgb-led-front-and-back-photo.png').default} width="500">The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.</Image>
+import ws2811_rgb_led_front_and_back_photo from './ws2811-rgb-led-front-and-back-photo.png'
+
+<Image src={ws2811_rgb_led_front_and_back_photo} width="500">The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.</Image>
 
 Overview of Worldsemi's RGB LED product offering:
 
@@ -226,7 +238,9 @@ Overview of Worldsemi's RGB LED product offering:
 
 The WS28xx series of LEDs uses a custom, 1-wire, daisy-chainable protocol for communication. The below image shows an example application schematic showing how they can daisy-chained together. Microcontroller SPI peripherals running at 16x the WS28xx bit rate can be used to generate the data stream.
 
-<Image src={require('./_assets/ws2812b-typical-application-schematic.webp').default} width="900px">Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together.</Image>
+import ws2812b_typical_application_schematic from './_assets/ws2812b-typical-application-schematic.webp'
+
+<Image src={ws2812b_typical_application_schematic} width="900px">Typical application schematic of the WS2812B RGB LED, showing how they can be daisy-chained together.</Image>
 
 For information on how a MCU SPI peripheral can be used to send data to a WS2812 LED, see the [SPI Communication Protocol page](/electronics/communication-protocols/spi-communication-protocol/#ws2812-rgb-leds).
 
@@ -267,7 +281,9 @@ Laser diodes are LEDs which emits 'lasered' light using a similar method to stan
 
 Some laser diodes have integrated switching FETs and capacitors for high-speed, high-power applications (such as laser range finding).
 
-<Image src={require('./laser-diode-with-integrated-fet-and-cap.png').default} width="500">A laser diode with an integrated FET and capacitor for high-seed, high-power switching.</Image>
+import laser_diode_with_integrated_fet_and_cap from './laser-diode-with-integrated-fet-and-cap.png'
+
+<Image src={laser_diode_with_integrated_fet_and_cap} width="500">A laser diode with an integrated FET and capacitor for high-seed, high-power switching.</Image>
 
 ## Pulse-Width Extending
 
@@ -277,7 +293,9 @@ The problem with this is that the length of time that the output pin is active f
 
 One way to fix this with hardware to to use a simple pulse-width extender circuit as shown below:
 
-<Image src={require('./led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png').default} width="650">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
+import led_pulse_extending_circuit_schematic_annotated_rc_mosfet from './led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png'
+
+<Image src={led_pulse_extending_circuit_schematic_annotated_rc_mosfet} width="650">The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.</Image>
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
@@ -287,7 +305,9 @@ LEDs are usually given with two different quantifiers regarding their wavelength
 
 Most LEDs emit a **narrow spectrum of light** (as opposed to filament-style bulbs, which emit a broad spectrum of light). The **spectral shape is approximately Gaussian** (a.k.a. the normal distribution).
 
-<Image src={require('./green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png').default} width="650">A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm.</Image>
+import green_led_relative_intensity_vs_wavelength_ltst_c190kgkt from './green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png'
+
+<Image src={green_led_relative_intensity_vs_wavelength_ltst_c190kgkt} width="650">A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm.</Image>
 
 The peak wavelength is the wavelength at the peak of the spectral density curve. The dominant wavelength is a _colorimetric_ quantity that describes the perceived colour of the LED with respect to the human eye. The human eye essentially sees a weighted average of all the wavelengths emitted by the LED, and perceives a single colour based on this averaging.
 
@@ -365,9 +385,9 @@ PAR_{[umols/s/m2]} &= 8.36e^{-5}\cdot {Irr}_{[uW/cm2]} \cdot \lambda_{peak[nm]} 
 \end{align}
 $$
 
-:::warning
+<Aside type="caution">
 Remember that PAR is defined as radiation between 400 and 700nm, so this equation only applicable to wavelengths within this band (although if you drop the "photo-synthetic" bit, this conversion could be useful for other purposes). Also don't forget that using the peak wavelength rather than looking at the spectrum could introduce significant errors. 
-:::
+</Aside>
 
 If you use the equation before we compensated for the different popular units of $cm^2$ for irradiance and $m^2$ for PAR, you can use also use this equation for radiance (e.g. output light power from an LED or collection of LEDs).
 
@@ -375,7 +395,9 @@ If you use the equation before we compensated for the different popular units of
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
 
-<Image src={require('./0603-led-up-close.jpg').default} width="700">A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light).</Image>
+import n_0603_led_up_close from './0603-led-up-close.jpg'
+
+<Image src={n_0603_led_up_close} width="700">A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light).</Image>
 
 ## Lifetime And Reliability
 

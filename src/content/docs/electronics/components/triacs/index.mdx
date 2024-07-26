@@ -8,6 +8,8 @@ title: TRIACs
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 A TRIAC is a 4-layer semiconductor device that conducts current in either direction when given a signal.
@@ -18,7 +20,9 @@ The name TRIAC is a generic trademark and is an abbreviation of _TRIode for Alte
 
 The schematic symbol for the TRIAC is shown below:
 
-<Image src={require('./triac-schematic-symbol-with-pin-names.png').default} width="255px">The schematic symbol for the TRIAC, with pin names.</Image>
+import triac_schematic_symbol_with_pin_names from './triac-schematic-symbol-with-pin-names.png'
+
+<Image src={triac_schematic_symbol_with_pin_names} width="255px">The schematic symbol for the TRIAC, with pin names.</Image>
 
 The anodes A1 and A2 may be called Main Terminal 1 (MT1) and Main Terminal 2 (MT2) respectively.
 

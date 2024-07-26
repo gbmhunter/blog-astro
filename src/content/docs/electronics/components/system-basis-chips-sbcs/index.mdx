@@ -11,6 +11,8 @@ title: System Basis Chips (SBCs)
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 A system basis chip (SBC) is a integrated circuit which contains many of the functions of an automotive electronic control unit (ECU) on a single die[^wikipedia-system-basic-chip].
@@ -22,7 +24,9 @@ SBCs are offered by many IC manufacturers including:
 * Infineon
 * STMicroelectronics
 
-<Image src={require('./_assets/nxp-fs26-architecture-block-diagram.png').default} width="700px">Architecture block diagram of the NXP FS26 SBC[^nxp-fs26-product-page].</Image>
+import nxp_fs26_architecture_block_diagram from './_assets/nxp-fs26-architecture-block-diagram.png'
+
+<Image src={nxp_fs26_architecture_block_diagram} width="700px">Architecture block diagram of the NXP FS26 SBC[^nxp-fs26-product-page].</Image>
 
 SBCs are similar in functionality to power management ICs (PMICs). SBCs appear to have more of a automotive focus with the addition of CAN and LIN transceivers, along with the addition of automotive functional safety blocks (e.g. rated to ASIL-B, ASIL-D) such as fail-safe outputs.
 

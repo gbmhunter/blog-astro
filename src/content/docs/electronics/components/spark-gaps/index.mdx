@@ -10,6 +10,10 @@ title: "Spark Gaps"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
-<Image src={require('./spark-gap-mean-well-idpc-45-350.png').default} width="800px">A PCB copper based spark gap on the underside of a Mean Well IDPC-45-350 constant-current LED driver.</Image>
+import spark_gap_mean_well_idpc_45_350 from './spark-gap-mean-well-idpc-45-350.png'
+
+<Image src={spark_gap_mean_well_idpc_45_350} width="800px">A PCB copper based spark gap on the underside of a Mean Well IDPC-45-350 constant-current LED driver.</Image>

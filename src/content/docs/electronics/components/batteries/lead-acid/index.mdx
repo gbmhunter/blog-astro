@@ -10,6 +10,8 @@ title: Lead-Acid Batteries
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Lead-acid batteries are the oldest form of rechargeable battery, invented in 1859.
@@ -65,7 +67,9 @@ It is recommended to charge a lead-acid at C/10 or less. There are three differe
 
 Non-repetitive charging of lead-acids allows you to charge it to a higher voltage than with repetitive charging (float charging). The battery can be charged to 2.4V per cell. Charging should be terminated when the current (in Amps) drops to 0.02C (where C is the Amp-hour rating of the battery, but to all those concerned that the unit don't match up, ignore the hour bit when doing this calculation).
 
-<Image src={require('./_assets/lead-acid-charging-showing-voltage-and-current.jpg').default} width="600">Monitoring the voltage and current is important while charging a lead-acid battery.</Image>
+import lead_acid_charging_showing_voltage_and_current from './_assets/lead-acid-charging-showing-voltage-and-current.jpg'
+
+<Image src={lead_acid_charging_showing_voltage_and_current} width="600">Monitoring the voltage and current is important while charging a lead-acid battery.</Image>
 
 The table below shows a list of common lead-acid battery voltages and the voltage you should charge them to, based on a charge voltage 2.4V per cell and an ambient temperature of 25C.
 
@@ -88,7 +92,9 @@ The table below shows a list of common lead-acid battery voltages and the voltag
 </tbody>
 </table>
 
-<Image src={require('./_assets/charging-a-lead-acid.jpg').default} width="800">Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply.</Image>
+import charging_a_lead_acid from './_assets/charging-a-lead-acid.jpg'
+
+<Image src={charging_a_lead_acid} width="800">Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply.</Image>
 
 ### Float Charging
 

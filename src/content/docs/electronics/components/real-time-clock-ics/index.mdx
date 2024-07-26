@@ -11,6 +11,8 @@ title: Real Time Clock (RTC) ICs
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 _Real-Time Clock_ (RTC) ICs are chips which accurately track calender time. They are generally designed for low-power operation so that they can run of a small battery such as a [coin cell](/docs/electronics/components/batteries/coin-cells/index.mdx). They are normally included on circuits and connected to a microcontroller when the application requires the microcontroller to keep track of time. They are better at keeping track of time than the MCUs internal oscillator due to:
@@ -72,7 +74,9 @@ The NXP PCF85263A is a low-power [I2C](/electronics/communication-protocols/i2c-
 
 The below image shows the block diagram for this IC. You can see the pins that connect to an external [32.768kHz oscillator](/docs/electronics/components/crystals/index.mdx#32678khz-crystals) in the bottom left corner.
 
-<Image src={require('./_assets/nxp-pcf85263a-block-diagram.png').default} width="700px">The block diagram for the NXP PCF85263A RTC[^nxp-pcf85263a-rtc-ds].</Image>
+import nxp_pcf85263a_block_diagram from './_assets/nxp-pcf85263a-block-diagram.png'
+
+<Image src={nxp_pcf85263a_block_diagram} width="700px">The block diagram for the NXP PCF85263A RTC[^nxp-pcf85263a-rtc-ds].</Image>
 
 The time-based values (100ths of a second, seconds, minutes, hours, days, months, years) are all stored in Binary Coded Decimal (BCD) format (each group of 4 bits represents a number in the range [0, 9]). To prevent time values updating mid-read and producing inconsistent results, all time registers are frozen during reads over the I2C.
 

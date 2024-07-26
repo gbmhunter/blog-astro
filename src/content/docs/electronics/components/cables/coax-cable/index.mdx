@@ -12,12 +12,16 @@ title: "Coax Cable"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Coaxial Cable
 
 _Coaxial cable_ (or just _coax cable_) is a type of cable consisting of single core surrounded by a circular outer shield, with a insulating dielectric sandwiched between the two. The term _coaxial_ comes from the inner conductor and outer shield sharing the same axis (they are concentric with one another). Coax is most commonly used to transmit high frequency signals over small (oscilloscope probes) and large distances (transatlantic phone cables).
 
 {/* {{% figure src="coax-cable-cut-away-annotated.png" width="700px" caption="The make-up of a standard coaxial cable. Relative dimensions accurate for RG-6 (dimensions taken from http://www.farnell.com/datasheets/1697593.pdf)." %}} */}
-<Image src={require('./coax-cable-cut-away-annotated.png').default} width="700">The make-up of a standard coaxial cable. Relative dimensions accurate for RG-6 (dimensions taken from http://www.farnell.com/datasheets/1697593.pdf).</Image>
+import coax_cable_cut_away_annotated from './coax-cable-cut-away-annotated.png'
+
+<Image src={coax_cable_cut_away_annotated} width="700">The make-up of a standard coaxial cable. Relative dimensions accurate for RG-6 (dimensions taken from http://www.farnell.com/datasheets/1697593.pdf).</Image>
 
 RG-6 is one of the most common types of coaxial cable in residual homes due to it's use with TVs.
 

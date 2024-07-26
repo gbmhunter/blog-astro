@@ -11,6 +11,8 @@ title: "Varistors (VDRs)"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 A _varistor_ (also known as a voltage-dependent resistor, VDR) is an electrical component whose resistance depends on the applied voltage. As the voltage increases, the resistance of a varistor drops. Their voltage-resistance behaviour is similar to that of a diode, except a varistor exhibits this behaviour with voltages of both polarities (where diodes are a one-way device).
@@ -23,7 +25,9 @@ Because their resistance in not fixed, they are called _non-Ohmic devices_.
 
 ## Schematic Symbol and Designators
 
-<Image src={require('./varistor-symbol-mov.svg').default} width="200px">The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR).</Image>
+import varistor_symbol_mov from './varistor-symbol-mov.svg'
+
+<Image src={varistor_symbol_mov} width="200px">The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR).</Image>
 
 Common designators used for varistors:
 

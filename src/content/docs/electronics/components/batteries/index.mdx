@@ -10,6 +10,8 @@ title: Batteries
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 If you want a small battery for powering a low energy product or keeping a real-time clock (RTC) running, have a look at [coin cells](/electronics/components/batteries/coin-cells/).
@@ -74,7 +76,9 @@ Note that the following table describes the reactions for **discharging**, the r
 Zinc-air batteries are batteries characterised by their use of zinc and a reaction with atmospheric oxygen. There is both non-rechargeable (primary) and rechargeable (secondary) zinc-air batteries, although the primary batteries are far more common.
 
 {/* {{% figure src="zinc-air-battery-cut-away-annotated.jpg" width="450px" caption="A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/." %}} */}
-<Image src={require('./zinc-air-battery-cut-away-annotated.jpg').default} width="450">A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/.</Image>
+import zinc_air_battery_cut_away_annotated from './zinc-air-battery-cut-away-annotated.jpg'
+
+<Image src={zinc_air_battery_cut_away_annotated} width="450">A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/.</Image>
 
 ### Chemistry
 

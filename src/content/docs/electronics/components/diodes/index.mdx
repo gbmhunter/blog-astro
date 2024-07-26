@@ -12,6 +12,8 @@ title: Diodes
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Diodes are passive semiconductor components consisting of a single P-N junction. Their main property is that they only allow conduction of current in one direction but not in the other, which makes them a useful component in many electronic circuits.
@@ -44,11 +46,15 @@ Steering diodes is a name given to a configuration of two or more diodes that ch
 
 They can be used to provide transient ESD protection.
 
-<Image src={require('./steering-diodes-used-for-transient-esd-protection.png').default} width="500">Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf.</Image>
+import steering_diodes_used_for_transient_esd_protection from './steering-diodes-used-for-transient-esd-protection.png'
+
+<Image src={steering_diodes_used_for_transient_esd_protection} width="500">Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf.</Image>
 
 They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
 
-<Image src={require('./schematic-steering-diodes-used-for-555-timer-pwm-circuit.png').default} width="700">Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications).</Image>
+import schematic_steering_diodes_used_for_555_timer_pwm_circuit from './schematic-steering-diodes-used-for-555-timer-pwm-circuit.png'
+
+<Image src={schematic_steering_diodes_used_for_555_timer_pwm_circuit} width="700">Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications).</Image>
 
 ## Manufacturer Part Numbers
 
@@ -68,12 +74,16 @@ The DIAC is a form of diode which conducts current only after it reaches it's br
 
 Below is the schematic symbol for the DIAC.
 
-<Image src={require('./diac-diode-schematic-symbol.svg').default} width="300">The schematic symbol for a DIAC.</Image>
+import diac_diode_schematic_symbol from './diac-diode-schematic-symbol.svg'
+
+<Image src={diac_diode_schematic_symbol} width="300">The schematic symbol for a DIAC.</Image>
 
 ## Constant-Current Diodes
 
 _Constant-current diodes_ are two terminal current sources made from a N-channel JFET and resistor. You can either make one yourself or buy a discrete component containing the JFET and resistor built-in. See [Current Sources And Sinks: Constant-Current Diode (JFET Current Source)](/docs/electronics/components/current-sources-and-sinks/index.mdx#constant-current-diode-jfet-current-source) for schematics, equations and worked examples.
 
-<Image src={require('./constant-current-diode-schematic.png').default} width="350">Schematic of a constant-current diode. See [Current Sources And Sinks: Constant-Current Diode (JFET Current Source)](/docs/electronics/components/current-sources-and-sinks/index.mdx#constant-current-diode-jfet-current-source) for more info.</Image>
+import constant_current_diode_schematic from './constant-current-diode-schematic.png'
+
+<Image src={constant_current_diode_schematic} width="350">Schematic of a constant-current diode. See [Current Sources And Sinks: Constant-Current Diode (JFET Current Source)](/docs/electronics/components/current-sources-and-sinks/index.mdx#constant-current-diode-jfet-current-source) for more info.</Image>
 
 [^bib-digikey-onsemi-1n4148]:  DigiKey. _onsemi 1N4148_. Retrieved 2021-11-25, from https://www.digikey.co.nz/en/products/detail/onsemi/1N4148/458603.
