@@ -60,13 +60,14 @@ export default defineConfig({
 				},
 				{
 					label: 'Electronics',
-					items: [
-						{ label: 'Circuit Design',
-							items: [
-								'electronics/circuit-design/antenna-design',
-							]
-						 }
-					]
+					// items: [
+					// 	{ label: 'Circuit Design',
+					// 		items: [
+					// 			'electronics/circuit-design/antenna-design',
+					// 		]
+					// 	 }
+					// ]
+					autogenerate: { directory: 'electronics' },
 				},
 				{
 					label: 'Test',
