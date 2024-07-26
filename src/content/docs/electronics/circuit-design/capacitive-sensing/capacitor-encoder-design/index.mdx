@@ -10,6 +10,8 @@ title: "Capacitor Encoder Design"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image } from './src/components/General.astro';
+
 ## Overview
 
 This page describes how to design a capacitor encoder with just two PCBs with cleverly etched tracks, a capacitance-to-digital converter IC, and a microcontroller with some signal processing/algorithm code.
@@ -17,10 +19,10 @@ This page describes how to design a capacitor encoder with just two PCBs with cl
 ## Terminology
 
 {/* {{% aside type="warning" %}} */}
-:::warning
+<Aside type="caution">
 This is my terminology, and may not be consistent with other designs (as far as I'm aware, there is no industry standard).
 {/* {{% /aside %}} */}
-:::
+</Aside>
 
 * Encoders: A encoder is a complete system which can be used to measure a position. It may have one (relative) or more (two for absolute) **tracks**.
 * Tracks: A sequence of capacitance pads and tracks used for measuring the position of an object. One or more of these make up a complete **encoder**. A track contains many **channels**.
@@ -72,13 +74,14 @@ The Altium script takes input variables such as N track length, number of passiv
 
 ## Linear
 
+import linear_nm1_cap_encoder_passive_pcb_image from './linear-nm1-cap-encoder-passive-pcb-image.png'
+import linear_nm1_cap_encoder_active_pcb_image from './linear-nm1-cap-encoder-active-pcb-image.png'
+
 <table>
   <tbody>
     <tr>
-      {/* <td>{{% figure src="linear-nm1-cap-encoder-passive-pcb-image.png" caption="A linear capacitive encoder passive PCB."  width="400px" %}}</td> */}
-      <td><Image src={require('./linear-nm1-cap-encoder-passive-pcb-image.png').default} width="400">A linear capacitive encoder passive PCB.</Image></td>
-      {/* <td>{{% figure src="linear-nm1-cap-encoder-active-pcb-image.png" caption="A linear capacitive encoder active PCB."  width="400px" %}}</td> */}
-      <td><Image src={require('./linear-nm1-cap-encoder-active-pcb-image.png').default} width="400">A linear capacitive encoder active PCB.</Image></td>
+      <td><Image src={linear_nm1_cap_encoder_passive_pcb_image} width="400">A linear capacitive encoder passive PCB.</Image></td>
+      <td><Image src={linear_nm1_cap_encoder_active_pcb_image} width="400">A linear capacitive encoder active PCB.</Image></td>
     </tr>
   </tbody>
 </table>
@@ -86,13 +89,16 @@ The Altium script takes input variables such as N track length, number of passiv
 ## Rotational
 
 A rotational capacitive encoder design is very much like the linear one, except everything is drawn on polar co-ordinate system rather than a cartesian. The biggest difference is that the rotational one can be continuous (i.e. the tracks can rotate a full 360, and there is no stop or end point).
+
+import rotational_nm1_capacitive_encoder_passive_pcb_image from './rotational-nm1-capacitive-encoder-passive-pcb-image.png'
+import rotational_nm1_capacitive_encoder_active_pcb_image from './rotational-nm1-capacitive-encoder-active-pcb-image.png'
+
 <table>
   <tbody>
     <tr>
-      {/* <td>{{% figure src="rotational-nm1-capacitive-encoder-passive-pcb-image.png" caption="A rotational capacitive encoder passive PCB." width="400px" %}}</td> */}
-      <td><Image src={require('./rotational-nm1-capacitive-encoder-passive-pcb-image.png').default} width="400">A rotational capacitive encoder passive PCB.</Image></td>
+      <td><Image src={rotational_nm1_capacitive_encoder_passive_pcb_image} width="400">A rotational capacitive encoder passive PCB.</Image></td>
       {/* <td>{{% figure src="rotational-nm1-capacitive-encoder-active-pcb-image.png" caption="A rotational capacitive encoder active PCB." width="400px" %}}</td> */}
-      <td><Image src={require('./rotational-nm1-capacitive-encoder-active-pcb-image.png').default} width="400">A rotational capacitive encoder active PCB.</Image></td>
+      <td><Image src={rotational_nm1_capacitive_encoder_active_pcb_image} width="400">A rotational capacitive encoder active PCB.</Image></td>
     </tr>
   </tbody>
 </table>
@@ -106,7 +112,9 @@ The reason I recommend adding a dielectric is that it **stabilizes** the capacit
 I achieved good results when using 0.165mm thick acrylic adhesive transfer tape (3M code 467MP), as shown below.
 
 {/* {{% figure src="165um-dielectric-3m-467mp-half-peeled-off-backing.jpg" caption="165um plastic dielectric (3M 467MP)."  width="400px" %}} */}
-<Image src={require('./165um-dielectric-3m-467mp-half-peeled-off-backing.jpg').default} width="400">165um plastic dielectric (3M 467MP).</Image>
+import n_165um_dielectric_3m_467mp_half_peeled_off_backing from './165um-dielectric-3m-467mp-half-peeled-off-backing.jpg'
+
+<Image src={n_165um_dielectric_3m_467mp_half_peeled_off_backing} width="400">165um plastic dielectric (3M 467MP).</Image>
 
 ## Maximum Velocities
 
@@ -123,17 +131,23 @@ The skewing can be prevented by:
 The following image shows the individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).
 
 {/* {{% figure src="cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg" caption="The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" %}} */}
-<Image src={require('./cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg').default} width="800">The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).</Image>
+import cap_encoder_individual_cdc_waveform_graphs_for_both_tracks from './cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg'
+
+<Image src={cap_encoder_individual_cdc_waveform_graphs_for_both_tracks} width="800">The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).</Image>
 
 The following image shows the grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).
 
 {/* {{% figure src="cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg" caption="The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" %}} */}
-<Image src={require('./cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg').default} width="800">The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).</Image>
+import cap_encoder_grouped_cdc_waveform_graphs_for_both_tracks from './cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg'
+
+<Image src={cap_encoder_grouped_cdc_waveform_graphs_for_both_tracks} width="800">The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).</Image>
 
 What makes the signal processing difficult is that the channels of CDC values can have different offset's. The graph below shows this (notice the light green channel which has a much higher offset than all the others.
 
 {/* {{% figure src="cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg" caption="CDC values vs. time graph showing the different offsets each channel can have."  width="800px" %}} */}
-<Image src={require('./cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg').default} width="800">CDC values vs. time graph showing the different offsets each channel can have.</Image>
+import cdc_vs_time_graph_showing_different_offsets_of_each_channel from './cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg'
+
+<Image src={cdc_vs_time_graph_showing_different_offsets_of_each_channel} width="800">CDC values vs. time graph showing the different offsets each channel can have.</Image>
 
 ## Firmware And Algorithm
 
@@ -144,10 +158,10 @@ Correlation is used to determine the position of the passive PCB relative to the
 The exact correlation used is called Pearson's linear correlation. The code below shows how the correlation coefficient is calculated between two arrays of the same size. 
 
 {/* {{% aside type="note" %}} */}
-:::note
+<Aside type="note">
 Note that the following example uses doubles and math operations such as `pow()` and `sqrt()`, which on some embedded systems (especially 8-bit ones) may slow down the processor too much. These doubles can be converted to integers with careful consideration about scaling and overflow.
 {/* {{% /aside %}} */}
-:::
+</Aside>
 
 ```c
 //! @brief   Calculates the correlation coefficient
@@ -211,7 +225,9 @@ The absolute position can be found if the capacitive encoder has two tracks (usi
 The phase difference between the tracks increments stepwise every time the N track loop phase distance loops from max to 0 (the encoder is moving in the forward direction) decrements in the same fashion every time the phase distance loops from 0 to max. The graph below shows the phase difference incrementing (nosily) by about 0.95 everytime the N track completes one cycle.
 
 {/* {{% figure src="cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg" caption="Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks."  width="800px" %}} */}
-<Image src={require('./cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg').default} width="800">Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks.</Image>
+import cdc_phase_difference_graph_showing_noisy_stepwise_increments from './cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg'
+
+<Image src={cdc_phase_difference_graph_showing_noisy_stepwise_increments} width="800">Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks.</Image>
 
 A maths function, `Maths_RoundToPrecision()` needs to be used to round the phase difference to the closest expected value.
 
