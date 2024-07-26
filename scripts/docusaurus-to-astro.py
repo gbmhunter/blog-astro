@@ -21,13 +21,13 @@ def main():
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[([^\]]+)\]\(([^)]+)\)', replace=markdown_link_replace_fn, multiline=True)
 
         # Add imports
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'---[\s\S]*?authors[\s\S]*?---', replace=import_insert_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'---[\s\S]*?authors[\s\S]*?---', replace=import_insert_fn, multiline=False)
 
         # Replace asides
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r':::(.*)\n([\s\S]*?)\n:::', replace=aside_replace_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r':::(.*)\n([\s\S]*?)\n:::\n', replace=aside_replace_fn, multiline=False)
 
         # Replace images
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'<Image .*?<\/Image>', replace=image_replace_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'<Image .*?<\/Image>', replace=image_replace_fn, multiline=False)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'`?\\\((((?!\\\)).)+)\\\)`?', replace=inline_eq_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'\$\$\\begin{align}[\s\S]*?(?=\\end{align}\$\$)\\end{align}\$\$', replace=block_eq_replace_fn, multiline=True)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% aside type="(.*?)" %}}(.*?){{% /aside %}}', replace=aside_replace_fn, multiline=True)
@@ -36,15 +36,26 @@ def main():
 
 def import_insert_fn(found_text, file_path, match):
     replace_text = found_text + "\n\nimport { Aside, Image } from './src/components/General.astro';"
+
+    print('=====================================================')
+    print(f'IMPORT MATCH FOUND IN: {file_path}')
+    print('=====================================================')
+    print(f'========= Replacing: =============')
+    print(found_text)
+    print('============ with: =============')
+    print(replace_text)
     return replace_text
 
 def aside_replace_fn(found_text, file_path, match):
+    print(match)
     type = match.group(1)
     content = match.group(2)
+    print(f'type: {type}')
+
     replaceText = f'<Aside type="{type}">\n{content}\n</Aside>'
 
     print('=====================================================')
-    print(f'MATCH FOUND IN: {file_path}')
+    print(f'ASIDE MATCH FOUND IN: {file_path}')
     print('=====================================================')
     print(f'========= Replacing: =============')
     print(found_text)
@@ -53,35 +64,14 @@ def aside_replace_fn(found_text, file_path, match):
 
     return replaceText
 
-def markdown_link_replace_fn(found_text, file_path):
-    print(file_path)
-    print(f'found_text = {found_text}')
-
-    match = re.search(r'\[([^\]]+)\]\(([^)]+)\)', found_text)
-    text = match.group(1)
-    print(f'text={text}')
-
-    src = match.group(2)
-    print(f'src={src}')
-
-    asciidoc_link = f'link:{src}[{text}]'
-    print(f'asciidoc_link={asciidoc_link}')
-
-    return asciidoc_link
-
 def image_replace_fn(found_text, file_path):
-    print(file_path)
-    print(f'found_text = {found_text}')
-
     # Extract src
     match = re.search(r"src={require\('(.*?)'\).default}", found_text)
     src = match.group(1)
-    print(f'src={src}')
 
     # Extract width
     match = re.search(r'width="([^"]+)"', found_text)
     width = match.group(1)
-    print(f'width={width}')
 
     # Extract caption
     match = re.search(r'<Image .*?>(.*?)<\/Image>', found_text)
@@ -89,7 +79,6 @@ def image_replace_fn(found_text, file_path):
         caption = match.group(1)
     else:
         caption = ''
-    print(f'caption={caption}')
 
     # Generage astro image
     # Create JS variable name from src
@@ -100,10 +89,14 @@ def image_replace_fn(found_text, file_path):
 
     mdx_image = f"\nimport {src_var_name} from '{src}'\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
 
-    print(f'====================================================================')
-    print(f'mdx_image')
-    print(f'====================================================================')
+    print('=====================================================')
+    print(f'IMAGE MATCH FOUND IN: {file_path}')
+    print('=====================================================')
+    print(f'========= Replacing: =============')
+    print(found_text)
+    print('============ with: =============')
     print(mdx_image)
+
     return mdx_image
 
 if __name__ == '__main__':

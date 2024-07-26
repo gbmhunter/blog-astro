@@ -96,7 +96,7 @@ class PowerEdit:
 
             for match in matches:
                 # match = regex.search(filedata, curr_pos)
-                print('match =', match.group())
+                # print('match =', match.group())
 
                 # # Exit out of find/replace loop if we don't find anymore matches
                 # if match is None:
