@@ -99,6 +99,10 @@ def image_replace_fn(found_text, file_path):
     # Remove file extension
     src_var_name = src_var_name[:src_var_name.rfind('.')]
 
+    # If first character is a number, prepend with an "n_"
+    if src_var_name[0].isdigit():
+        src_var_name = 'n_' + src_var_name
+
     src_var_name = src_var_name.replace('-', '_')
     src_var_name = src_var_name.replace('.', '_')
     src_var_name = src_var_name.replace('/', '_')
