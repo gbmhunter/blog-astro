@@ -35,7 +35,7 @@ def main():
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', replace=paragraph_eq_replace_fn, multiline=True)
 
 def import_insert_fn(found_text, file_path, match):
-    replace_text = found_text + "\n\nimport { Aside, Image } from './src/components/General.astro';"
+    replace_text = found_text + "\n\nimport { Aside, CircuitJs, Image } from './src/components/General.astro';"
 
     print('=====================================================')
     print(f'IMPORT MATCH FOUND IN: {file_path}')
@@ -83,20 +83,25 @@ def image_replace_fn(found_text, file_path):
     else:
         caption = ''
 
-    # Generage astro image
+    # Generate astro image
     # Create JS variable name from src
     src_var_name = src
     
     # Trim off './_assets/' of the start if present
-    path_does_start_with_assets = src_var_name.find('./_assets')
-    if path_does_start_with_assets != -1:
+    path_does_start_with_assets = src_var_name.startswith('./_assets')
+    if path_does_start_with_assets:
         src_var_name = '_'.join(src_var_name.split('/')[2:])
+
+    path_does_start_with_dot_slash = src_var_name.startswith('./')
+    if path_does_start_with_dot_slash:
+        src_var_name = src_var_name[2:]
 
     # Remove file extension
     src_var_name = src_var_name[:src_var_name.rfind('.')]
 
     src_var_name = src_var_name.replace('-', '_')
     src_var_name = src_var_name.replace('.', '_')
+    src_var_name = src_var_name.replace('/', '_')
 
     mdx_image = f"\nimport {src_var_name} from '{src}'\n\n<Image src={{{src_var_name}}} width=\"{width}\">{caption}</Image>"
 
