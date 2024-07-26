@@ -8,6 +8,8 @@ title: "Light Dimmers"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from './src/components/General.astro';
+
 ## Overview
 
 Light dimmers are circuits which vary the amount of power going to a light source. The common one associated with the word "light dimmer" is a circuit which dims incandescent bulbs running of a mains (110, 230VAC) supply.
@@ -28,7 +30,9 @@ There are two types of phase-cutting:
 Here is a VERY simple two-component zero-cross detection circuit by Atmel:
 
 {/* {{% figure src="two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png" width="333px" caption="A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/."  %}} */}
-<Image src={require('./two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png').default} width="333">A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/.</Image>
+import two_resistor_one_micro_very_simple_zero_cross_detector_atmel from './two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png'
+
+<Image src={two_resistor_one_micro_very_simple_zero_cross_detector_atmel} width="333">A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/.</Image>
 
 More info on this circuit can be found [here](http://www.atmel.com/Images/doc2508.pdf).
 

@@ -21,7 +21,6 @@ This page explains some of the ways you can go about protecting IO lines on a PC
 
 One of the simplest ways of protecting an I/O line from ESD is to add a series resistor, as shown in the schematic below:
 
-{/* {{% figure src="io-protection-with-resistor.png" width="600px" caption="Simple IO protection with a series resistor." %}} */}
 import io_protection_with_resistor from './io-protection-with-resistor.png'
 
 <Image src={io_protection_with_resistor} width="600">Simple IO protection with a series resistor.</Image>
@@ -36,7 +35,6 @@ One thing to be aware of is that this will limit the maximum frequency that can 
 
 To improve on the simple series resistor, a capacitor can be added to further improve ESD protection. The capacitor is between the I/O line (once it has past through the resistor) and ground. This forms a low-pass filter which will help quench short (high frequency) ESD spikes.
 
-{/* {{% figure src="io-protection-with-resistor-capacitor.png" width="600px" caption="Simple IO protection with a series resistor." %}} */}
 import io_protection_with_resistor_capacitor from './io-protection-with-resistor-capacitor.png'
 
 <Image src={io_protection_with_resistor_capacitor} width="600">Simple IO protection with a series resistor and capacitor.</Image>
@@ -115,6 +113,7 @@ Some ESD diode arrays incorporate steering diodes and a TVS diode to do just thi
 import littelfuse_sp3012_06utg_esd_array_functional_block_diagram from './littelfuse-sp3012-06utg-esd-array-functional-block-diagram.png'
 
 <Image src={littelfuse_sp3012_06utg_esd_array_functional_block_diagram} width="300">Functional block diagram for the Littelfuse SP3012-06UTG ESD diode array[^bib-littelfuse-sp3012-ds].</Image>
+
 import littelfuse_sp3012_06utg_esd_array_usb30_application_example from './littelfuse-sp3012-06utg-esd-array-usb30-application-example.png'
 
 <Image src={littelfuse_sp3012_06utg_esd_array_usb30_application_example} width="300">Using the Littelfuse SP3012-06UTG to protect data lines on USB3.0[^bib-littelfuse-sp3012-ds].</Image>

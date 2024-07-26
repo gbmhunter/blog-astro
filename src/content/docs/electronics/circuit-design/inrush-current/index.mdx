@@ -11,6 +11,8 @@ title: Inrush Current
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from './src/components/General.astro';
+
 ## Overview
 
 Power supplies are responsible for a large number of inrush current issues due to their large amounts of input and output capacitance. Advanced switch-mode power supplies will limit the inrush current to the output appropriately (either fixed or set by a resistor to a dedicated pin on the SMPS controller), but you still have the input capacitance to deal with.
@@ -24,7 +26,9 @@ Standard resistors are one of the simplest ways of limiting inrush current. They
 NTC thermistors can be used for reducing the amount of inrush current.
 
 {/* {{% figure src="inrush-current-limiting-with-thermistor.jpg" width="475px" caption="A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit."  %}} */}
-<Image src={require('./inrush-current-limiting-with-thermistor.jpg').default} width="475">A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit.</Image>
+import inrush_current_limiting_with_thermistor from './inrush-current-limiting-with-thermistor.jpg'
+
+<Image src={inrush_current_limiting_with_thermistor} width="475">A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit.</Image>
 
 They will always be some measurable amount of voltage drop when using a NTC, as some continuous thermal dissipation is required to keep the thermistor warm enough to be in it's low resistance state.
 
@@ -41,10 +45,10 @@ $$
     $V_{in}$ = the input voltage, in Volts<br/></p>
 
 {/* {{% aside type="note" %}} */}
-:::note
+<Aside type="note">
 You may be initially confused, thinking, wait, this is the equation for the energy stored in the capacitor, not the energy dissipated by the thermistor. The cool thing is, in this circuit, the energy stored in the capacitor and the energy dissipated by the thermistor (or any resistor) is exactly the same!
 {/* {{% /aside %}} */}
-:::
+</Aside>
 
 The minimum resistance (provided by the NTC thermistor), $R_{min}$, is given by:
 
