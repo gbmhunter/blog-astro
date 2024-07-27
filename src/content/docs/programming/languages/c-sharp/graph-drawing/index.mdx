@@ -6,9 +6,13 @@ title: Graph Drawing
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## NPlot
 
-<Image src={require('./_assets/nplot-screenshot.png').default} width="300px">Screenshot of the NPlot charting library for .NET. Features a 2D candleplot, filled region, line plot and datetime axis.</Image>
+import nplot_screenshot from './_assets/nplot-screenshot.png'
+
+<Image src={nplot_screenshot} width="300px">Screenshot of the NPlot charting library for .NET. Features a 2D candleplot, filled region, line plot and datetime axis.</Image>
 
 * Supported Platforms: .NET (WinForms)
 * Dimension Support : 2D
@@ -50,7 +54,9 @@ ls.smooth = true;
 
 ## RadChart
 
-<Image src={require('./_assets/telerik-radchart-screenshot.png').default} width="300px">Screenshot of the Telerik charting library for .NET applications. Comes with some very nice skins and tutorials.</Image>
+import telerik_radchart_screenshot from './_assets/telerik-radchart-screenshot.png'
+
+<Image src={telerik_radchart_screenshot} width="300px">Screenshot of the Telerik charting library for .NET applications. Comes with some very nice skins and tutorials.</Image>
 
 * Supported Platforms: .NET (WinForms, WPF)
 * Dimension Support : 2D
@@ -113,7 +119,9 @@ private void DrawInstantaneousGraph(RadChart radChart) {
 
 ## ZedGraph
 
-<Image src={require('./_assets/zedgraph-screenshot.png').default} width="300px">Screenshot of the ZedGraph charting library for .NET. One of the most powerful and widely used free charting libraries.</Image>
+import zedgraph_screenshot from './_assets/zedgraph-screenshot.png'
+
+<Image src={zedgraph_screenshot} width="300px">Screenshot of the ZedGraph charting library for .NET. One of the most powerful and widely used free charting libraries.</Image>
 
 * Supported Platforms: .NET (Windows Forms)
 * Dimension Support : 2D

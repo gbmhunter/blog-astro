@@ -6,15 +6,19 @@ title: Yocto Project
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 The _Yocto Project_, or more commonly just called _Yocto_, is a build system used to create custom Linux distributions for embedded systems.
 
-:::note
+<Aside type="note">
 It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
-:::
+</Aside>
 
-<Image src={require('./the-yocto-project-logo.png').default} width="404px">The logo for the Yocto project.</Image>
+import the_yocto_project_logo from './the-yocto-project-logo.png'
+
+<Image src={the_yocto_project_logo} width="404px">The logo for the Yocto project.</Image>
 
 ## Quick Start
 
@@ -22,9 +26,9 @@ This is a Yocto "Quick Start", aimed to get you familiar with the basics of the 
 
 This quick start has been tested with Ubuntu 16.04 64-bit, running in VMWare on a Windows host (the free VirtualBox VM should also work fine).
 
-:::warning
+<Aside type="caution">
 Give your VM a ton of hard drive space, memory and processors. You will be building Linux from source code, and this is very resource intensive! I gave the VM 120GB hard drive space (grows as needed), 8GB memory and 8 processors.**
-:::
+</Aside>
 
 Yocto has it's own quick start guide at [http://www.yoctoproject.org/docs/2.2.1/yocto-project-qs/yocto-project-qs.html](http://www.yoctoproject.org/docs/2.2.1/yocto-project-qs/yocto-project-qs.html). However, I have has problems with this, including errors such as:
 
@@ -86,7 +90,9 @@ $ bitbake core-image-sato
 
 Now go grab a coffee. Or better yet, take your family out to a restaurant for a nice meal. This is going to **TAKE A WHILE**.
 
-<Image src={require('./yocto-linux-build-in-progress-showing-cpu-usage.png').default} width="1491px">An embedded Linux build in progress (using Yocto), note the CPU usage!</Image>
+import yocto_linux_build_in_progress_showing_cpu_usage from './yocto-linux-build-in-progress-showing-cpu-usage.png'
+
+<Image src={yocto_linux_build_in_progress_showing_cpu_usage} width="1491px">An embedded Linux build in progress (using Yocto), note the CPU usage!</Image>
 
 **Make sure your computer is not set to go to sleep/shutdown after 1-2 hours of activity, otherwise you might find the build won't complete!**
 
@@ -102,7 +108,9 @@ $ runqemu qemux86
 
 This should load up a separate window, and display a GUI of the Linux image you just built.
 
-<Image src={require('./yocto-running-qemu-after-building-default-linux-image.png').default} width="1327px">Running the finished Yocto build in QEMU (an emulator).</Image>
+import yocto_running_qemu_after_building_default_linux_image from './yocto-running-qemu-after-building-default-linux-image.png'
+
+<Image src={yocto_running_qemu_after_building_default_linux_image} width="1327px">Running the finished Yocto build in QEMU (an emulator).</Image>
 
 ## The Project Configuration File
 

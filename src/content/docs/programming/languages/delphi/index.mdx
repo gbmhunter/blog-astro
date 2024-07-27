@@ -6,6 +6,8 @@ title: "Delphi"
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Delphi grew out of the Turbo Pascal language.
@@ -18,7 +20,9 @@ Delphi uses begin and end; keywords to create blocks of code (similar to the `{`
 
 Note that after the end keyword you must include a semi-colon, but
 
-<Image src={require('./_assets/delphi-logo.png').default} width="261px">The Delphi logo.</Image>
+import delphi_logo from './_assets/delphi-logo.png'
+
+<Image src={delphi_logo} width="261px">The Delphi logo.</Image>
 
 not after the begin keyword!
 

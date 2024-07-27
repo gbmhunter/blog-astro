@@ -8,6 +8,8 @@ title: Bit Banding
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <h2>Overview</h2>
 
 <p>Bit banding maps a complete word in one memory space (this can be virtual) to a single bit in another memory space (this has to be a real memory space). This allows you to perform single-instruction read and write operations on individual bits. The benefit of single instruction reads and writes is that it is atomic and uses less processor time.</p>
@@ -20,7 +22,9 @@ type: page
 
 <p>The Cortex-M3 has two 32MB regions that map onto the two 1MB bit-band regions. The two regions are separate, one in the SRAM region and one in the peripheral region (but both of course in the same memory space). The diagram below shows the entire Cortex-M3 memory space, with the bit band locations being close to the bottom of memory.</p>
 
-<Image src={require('./cortex-m3-memory-regions.png').default} width="500px">The ARM Cortex-M3 memory regions.</Image>
+import cortex_m3_memory_regions from './cortex-m3-memory-regions.png'
+
+<Image src={cortex_m3_memory_regions} width="500px">The ARM Cortex-M3 memory regions.</Image>
 
 <p>Each bit in the bit-band region is addressed sequentially in the 32MB alias region. For example, the eighth bit in the bit-band region can be accessed using the eighth word in the 32MB alias region.</p>
 

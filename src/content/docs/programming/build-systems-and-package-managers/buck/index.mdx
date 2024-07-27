@@ -7,6 +7,8 @@ title: Buck
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Installation
 
 **Ubuntu**
@@ -39,9 +41,9 @@ $ ant
 $ .\bin\buck build --show-output buck
 ```
 
-:::note
+<Aside type="note">
 As of Buck v2018.02.16.01, python 2.7 is required. If you try a build will python v3.x, you will get the following error when running the ant command:
-:::
+</Aside>
 
 ```sh    
 gen-buck-info:

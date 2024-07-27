@@ -6,6 +6,8 @@ title: Removing Product Count From Categories
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 The product count that is automatically added to product categories can disrupt the visual appearance of the site, gives the user no really useful information, and can make your store look empty or poorly maintained if you have a small number of products.
 
 The product is easy to remove in code, and even easier to remove using a VQmod file.
@@ -14,4 +16,6 @@ You can download the free OpenCart extension, [Simple Remove Product Count From 
 
 The following image shows the before and after when removing the product count from the categories on OpenCart's front page.
 
-<Image src={require('./_assets/open-cart-product-count-next-to-categories-before-and-after.jpg').default} width="600px">Removing the product count from the categories in OpenCart. This uses the free VSmod extension 'Simple Remove Product Count From Categories'.</Image>
+import open_cart_product_count_next_to_categories_before_and_after from './_assets/open-cart-product-count-next-to-categories-before-and-after.jpg'
+
+<Image src={open_cart_product_count_next_to_categories_before_and_after} width="600px">Removing the product count from the categories in OpenCart. This uses the free VSmod extension 'Simple Remove Product Count From Categories'.</Image>

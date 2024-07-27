@@ -7,11 +7,15 @@ title: SCons
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 SCons is a build system.
 
-<Image src={require('./scons-build-system-logo.png').default} width="310px">The logo for the SCons build system.</Image>
+import scons_build_system_logo from './scons-build-system-logo.png'
+
+<Image src={scons_build_system_logo} width="310px">The logo for the SCons build system.</Image>
 
 ## Installation
 
@@ -43,9 +47,9 @@ $ sudo apt install scons
 
 * scons is installed on your system
 
-:::note
+<Aside type="note">
 The console commands assume a UNIX-style terminal, although the example should be easily doable on any OS supported by scons.
-:::
+</Aside>
 
 **Steps**
 

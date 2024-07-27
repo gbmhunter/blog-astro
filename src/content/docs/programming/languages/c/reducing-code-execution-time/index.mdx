@@ -6,6 +6,8 @@ title: Reducing Code Execution Time
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Multiplication And Division
 
 Fixed multiplication and division can converted to bit shifting to optimise code. The bit shifting operations can be found by doing a Taylor's expansion of the equation. The error in the result depends on how many bit shifting operations you wish to perform. The below example uses bit shifting instead of fixed-number multiplication to reduces the number of execution cycles, and shows the difference and error between the result and the actual value.

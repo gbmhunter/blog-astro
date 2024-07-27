@@ -12,6 +12,8 @@ title: "rsync"
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 `rsync` is a file copying utility for Linux which is similar to `scp` (secure copy), but with more functionality. It can be used to **copy/sync files locally or between computers connected on a network**. Unlike `scp`, it can **compare the source and destination and only copy over the differences**, reducing the amount of data transferred and the transfer time. It even supports the resuming of partially transferred files. For this reason it is very popular for backup purposes and other situations where either large files or a large amount of files need to be transferred.
@@ -99,9 +101,9 @@ Long Option: n/a
 
 Compress data while doing transfer. Some files cannot be compressed, which includes the following extensions: `gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg`. 
 
-:::warning
+<Aside type="caution">
 When using rsync to copy locally, compressing can SLOW DOWN the transfer as the time cost of compressing/decompressing outweighs the slightly faster transfer time.
-:::
+</Aside>
 
 ## Popular Use Cases
 

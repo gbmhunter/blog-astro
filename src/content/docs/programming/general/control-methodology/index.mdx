@@ -6,6 +6,8 @@ title: Control Methodology
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 You may think that after writing the state machine for flashing a few LEDs and a buzzer that control metholody is a simple task that doesn't require further discussion. However, add in a multi-threaded operating system, asynchronous events, more objects to control and boom, suddenly control methodlogy is no simple topic.
@@ -118,7 +120,9 @@ However, you guessed it, preemptive RTOS's can halt the current process to execu
 
 FreeRTOS ([http://www.freertos.org/](http://www.freertos.org/))
 
-<Image src={require('./_assets/freertos-logo.jpg').default} width="320px">The FreeRTOS logo. Image from http://www.freertos.org/.</Image>
+import freertos_logo from './_assets/freertos-logo.jpg'
+
+<Image src={freertos_logo} width="320px">The FreeRTOS logo. Image from http://www.freertos.org/.</Image>
 
 Currently officially supports 20+ architectures and is open-source and free to use in commercial applications without having to disclose your code. Huge support from its large user-base. Designed for embedded systems. Can be both co-operative or pre-emptive.
 

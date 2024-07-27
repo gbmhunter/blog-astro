@@ -12,6 +12,8 @@ title: "The Sigmoid Function"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 The sigmoid function is a mathematical function which when plotted, has a characteristic "S" shape or sigmoid curve. Sigmoid curves include many cumulative distribution functions (CDFs), including the CDF of the normal distribution. They are also used in neural networks as an activation function.
 
 ## Logistic Function
@@ -24,7 +26,9 @@ $$
 
 Plotted from $x = -10$ to $x = 10$, the function looks like this:
 
-<Image src={require('./graph-logistic-function.png').default} width="700px">A graph of the logistic function.</Image>
+import graph_logistic_function from './graph-logistic-function.png'
+
+<Image src={graph_logistic_function} width="700px">A graph of the logistic function.</Image>
 
 The logistic function pops up in _logistic regression_ (a popular algorithm used in machine learning) in the form:
 

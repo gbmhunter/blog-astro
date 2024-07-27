@@ -12,11 +12,15 @@ title: "Docker"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Docker is container software. It is commonly used as a lightweight alternative to a virtual machine.
 
-<Image src={require('./docker-logo.png').default} width="300px"></Image>
+import docker_logo from './docker-logo.png'
+
+<Image src={docker_logo} width="300px"></Image>
 
 ## Running Docker Without sudo
 
@@ -143,9 +147,9 @@ The `-v` flag is used in conjunction with `docker run` to start a new container 
 docker run -v /host/directory:/container/directory <image_name> <cmd>
 ```
 
-:::note
+<Aside type="note">
 The path to the host directory must be absolute, `docker run` does not allow you to specify a relative path.
-:::
+</Aside>
 
 ### To Start A New Bash Session Within A Running Container
 
@@ -155,9 +159,9 @@ Enter this on the a shell session running in the host computer to enter a shell 
 $ docker exec -it <container_id> bash
 ```
 
-:::note
+<Aside type="note">
 This assumes you already have a container running!
-:::
+</Aside>
 
 ### To Exit A Container Without Stopping It
 

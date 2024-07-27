@@ -12,11 +12,15 @@ title: "Convex Hull Algorithms"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Given a cloud of points on a 2D plane, a convex hull is the smallest set of points which encloses all of the points.
 
-<Image src={require('./convex_hull.png').default} width="700px">The 2D convex hull for a set of points.</Image>
+import convex_hull from './convex_hull.png'
+
+<Image src={convex_hull} width="700px">The 2D convex hull for a set of points.</Image>
 
 Another useful concept related to convex hulls is the _minimum bounded rectangle_. The minimum bounded rectangle is the smallest rectangle (measured by area) which encompasses the entire convex hull (by extension, it is also the smallest rectangle that encompasses all points).
 

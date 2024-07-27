@@ -11,6 +11,8 @@ title: ARM Cortex-M3
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed for microcontrollers. It uses the 32-bit Thumb-2 instruction set (which supports the 16-bit Thumb instructions). It **does not** support ARM instructions.
@@ -37,7 +39,9 @@ The Cortex-M3 has two stack pointers, the main stack pointer (MSP) and the proce
 
 The memory on the Cortex-M3 has a single continuously mapped memory address space. The memory map is shown below.
 
-<Image src={require('./_assets/arm-cortex-m3-complete-fixed-memory-map.png').default} width="700px">The ARM Cortex-M3 CPU fixed memory map. Image from http://infocenter.arm.com/help/topic/com.arm.doc.ddi0337e/DDI0337E_cortex_m3_r1p1_trm.pdf.</Image>
+import arm_cortex_m3_complete_fixed_memory_map from './_assets/arm-cortex-m3-complete-fixed-memory-map.png'
+
+<Image src={arm_cortex_m3_complete_fixed_memory_map} width="700px">The ARM Cortex-M3 CPU fixed memory map. Image from http://infocenter.arm.com/help/topic/com.arm.doc.ddi0337e/DDI0337E_cortex_m3_r1p1_trm.pdf.</Image>
 
 ## Data Types
 

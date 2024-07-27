@@ -12,6 +12,8 @@ title: "find"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 `find` is a UNIX utility program which searches directory trees for files matching particular patterns.
@@ -30,9 +32,9 @@ $ find . -name '*.cpp'
 
 You have to provide the `*` at the start because find matches against the whole path (it doesn't allow partial matches).
 
-:::warning
+<Aside type="caution">
 Always make sure to make the search path **the first argument** to `find`, as `find` is sensitive to the argument order (even with optional arguments!).
-:::
+</Aside>
 
 ## Multiple Patterns
 

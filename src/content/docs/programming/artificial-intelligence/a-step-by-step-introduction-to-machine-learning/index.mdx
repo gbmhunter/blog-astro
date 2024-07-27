@@ -12,6 +12,8 @@ title: "A Step-by-Step Introduction to Machine Learning in Python"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 The "Hello, World" of machine learning is the [Iris Dataset](http://archive.ics.uci.edu/ml/datasets/Iris) (Iris flower). The Iris dataset is part of the [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.php), and originally comes from R.A. Fisher's classic 1936 paper, _The Use of Multiple Measurements in Taxonomic Problems_.
@@ -97,11 +99,11 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(iris_dataset['data'], iris_dataset['target'], test_size=0.2)
 ```
 
-:::note
+<Aside type="note">
 It is important to note the difference between the training and test set created here, and the training and test sets created as part of the `StratifiedKFold`. The test set created here will not be used again until we have a trained model, while as part of training, we further split the training set here into more training and tests sets.
 
 This dual purpose for a `test` set can be quite confusing for a newcomer.
-:::
+</Aside>
 
 
 ## Select A Model

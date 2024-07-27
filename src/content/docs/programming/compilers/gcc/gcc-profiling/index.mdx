@@ -11,9 +11,11 @@ title: "GCC Profiling"
 type: page
 ---
 
-:::note
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
+<Aside type="note">
 This article assumes you are using a Debian-based Linux machine (e.g. Ubuntu).
-:::
+</Aside>
 
 ## Overview
 
@@ -60,9 +62,9 @@ $ gcc -pg profiling_test.c -o profiling_test
 
 This creates what is called an instrumented executable. It contains additional code which records the time spent in each function.
 
-:::warning
+<Aside type="caution">
 If gprof does not appear to produce any output, it may be because of a bug in GCC versions 5 and 6. As a workout, provide the additional flag -no-pie to compilation and linking. Make sure there is only one hyphen at the start of the argument (NOT --no-pie).
-:::
+</Aside>
 
 When run, the program will produce a file `gmon.out` in the same directory as it is run. You can pass your program to gprof to display the profiling results:
 
@@ -121,9 +123,9 @@ int main() {
 }
 ```
 
-:::note
+<Aside type="note">
 You must compile and link with the `-ldl` option for `dlsym` to be found.
-:::
+</Aside>
 
 ## gprof2dot
 
@@ -147,4 +149,6 @@ $ gprof2dot ./profiling.txt | dot -Tpng -o profiling.png
 
 This created the below image for the example code above:
 
-<Image src={require('./gprof2dot-profiling-dot-graph.png').default} width="442px">A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool.</Image>
+import gprof2dot_profiling_dot_graph from './gprof2dot-profiling-dot-graph.png'
+
+<Image src={gprof2dot_profiling_dot_graph} width="442px">A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool.</Image>

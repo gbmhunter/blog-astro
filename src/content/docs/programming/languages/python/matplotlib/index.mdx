@@ -12,6 +12,8 @@ title: "matplotlib"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Importing
 
 `matplotlib`, just like `numpy`, is one of those libraries which has so much legacy behind the import statement that it's worth breaking Python style rules and using the `at` keyword to change the name of the imported library. Traditionally, `matplotlib.pyplot` is imported as `plt`, with the statement:
@@ -60,7 +62,9 @@ plt.show()
 
 This will produce the following graph:
 
-<Image src={require('./_assets/matplotlib-two-y-axis-example.png').default} width="500px">Example matplotlib graph using two separate Y-axis.</Image>
+import matplotlib_two_y_axis_example from './_assets/matplotlib-two-y-axis-example.png'
+
+<Image src={matplotlib_two_y_axis_example} width="500px">Example matplotlib graph using two separate Y-axis.</Image>
 
 ## Matching The Legend Text Color To The Plot Line Color
 
@@ -91,7 +95,9 @@ plt.savefig('legend-text-color-matches-plot-line-color.png')
 
 This will produce a plot which looks like:
 
-<Image src={require('./_assets/legend-text-color-matches-plot-line-color.png').default} width="700px"></Image>
+import legend_text_color_matches_plot_line_color from './_assets/legend-text-color-matches-plot-line-color.png'
+
+<Image src={legend_text_color_matches_plot_line_color} width="700px"></Image>
 
 ## Creating Animated Plots
 
@@ -99,9 +105,9 @@ When using the `pillow` writer, the GIF will not loop. When using the `imagemagi
 
 ## Using The Basemap
 
-:::warning
+<Aside type="caution">
 As of 2016, `Basemap` has been deprecated. However, it is still a viable choice for plotting maps in Python/Jupyter.
-:::
+</Aside>
 
 ```py
 from mpl_toolkits.basemap import Basemap

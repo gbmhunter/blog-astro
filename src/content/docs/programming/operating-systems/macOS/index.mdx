@@ -12,6 +12,8 @@ title: "macOS"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 ## iTerm2
@@ -22,7 +24,9 @@ Enable "Natural Text Editing" in iTerm2 to incorporate typical macOS-style text 
 
 To enable Natural Text Editing, click _iTerm2_->_Preferences_->_Profiles_->_Keys_. Then click _Load Preset_, and select _Natural Text Editing_ from the dropdown.
 
-<Image src={require('./iterm2-enabling-natural-text-editing.png').default} width="500px">Enabling the 'Natural Text Editing' key mapping reset in iTerm2.</Image>
+import iterm2_enabling_natural_text_editing from './iterm2-enabling-natural-text-editing.png'
+
+<Image src={iterm2_enabling_natural_text_editing} width="500px">Enabling the 'Natural Text Editing' key mapping reset in iTerm2.</Image>
 
 ### Clearing The Buffer
 
@@ -61,9 +65,9 @@ Once the tmux session has been started inside iTerm2, you can then also use stan
 * `Cmd-d`: Split vertically
 * `Cmd-Shift-d`: Split horizontally
 
-:::note
+<Aside type="note">
 Note that an iTerm2 tmux session and a standard iTerm2 non-tmux session can not share the same tab, i.e. the tmux session has to be either a completely new tab or a new window.
-:::
+</Aside>
 
 ## Showing Hidden Files
 

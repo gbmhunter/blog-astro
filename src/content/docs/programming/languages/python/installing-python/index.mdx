@@ -12,6 +12,8 @@ title: "Installing Python"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Python can be installed onto operating systems in a variety of different ways.
@@ -38,7 +40,9 @@ Windows 10 introduced what I consider a really annoying "feature" called _App Ex
 
 You can disable App Execution Aliases for `python.exe` and `python3.exe` by searching for _Managing App Execution Aliases_ in the Windows Search. Load up the settings window and deselect all versions of `python`.
 
-<Image src={require('./windows-manage-app-execution-aliases-python.png').default} width="400px">Deselect all flavours of python.exe from the App Execution Aliases settings dialogue in Windows to prevent the Windows Store from opening when you try and invoke a non-existent python.exe.</Image>
+import windows_manage_app_execution_aliases_python from './windows-manage-app-execution-aliases-python.png'
+
+<Image src={windows_manage_app_execution_aliases_python} width="400px">Deselect all flavours of python.exe from the App Execution Aliases settings dialogue in Windows to prevent the Windows Store from opening when you try and invoke a non-existent python.exe.</Image>
 
 You might get an error like shown below if you try and invoke a non-existent `python.exe` when arguments are provided (Windows Store will NOT load in this case):
 

@@ -11,6 +11,8 @@ title: "How To Write Super Loops In Firmware"
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 A _super loop_ (a.k.a. _mega loop_, _main loop_ or _infinite loop_) is a popular way to architect firmware code for simple firmware applications. It involves looping through your code which loosely follows the following three steps:
@@ -31,9 +33,9 @@ The disadvantages to a super loop include:
 * Not as modular as an application running on an OS, and sometimes you run into complexity issues when using a super loop for large firmware projects.
 * No ability to prioritize certain tasks (except for using interrupts). This can lead to responsivity issues for large or complex projects.
 
-:::tip
+<Aside type="tip">
 The basic idea of a super loop could still be used for a single thread running on an RTOS, so it that sense, it **could** run on an operating system.  
-:::
+</Aside>
 
 ## Basic Top-Level Code
 

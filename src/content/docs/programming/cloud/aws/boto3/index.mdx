@@ -12,6 +12,8 @@ title: "boto3"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Boto is a **Python based API to Amazon's AWS resources**. Boto 3 is the most current release (as of Jan 2019). All of the examples on this page use Boto 3.
@@ -43,9 +45,9 @@ for bucket in s3.buckets.all():
     print(bucket.name)
 ```
 
-:::note
+<Aside type="note">
 This will print out the names of all buckets in the region specified by the credentials/config file.
-:::
+</Aside>
 
 ## Copying Between Two Buckets
 

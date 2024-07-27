@@ -11,13 +11,15 @@ title: Assertions (assert())
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 `assert()` is a useful tool to check that certain conditions hold true during the runtime.
 
-:::tip
+<Aside type="tip">
 You can use similar `assert()` like calls to perform certain checks at compile time. More on this below!
-:::
+</Aside>
 
 The basic premise behind an `assert(bool_t value)` is that the **macro/function checks to make sure that value is true.** The developer adds the checks where the expected result should be true. If the value is not true (i.e. false), the software/firmware takes specific action.
 
@@ -198,13 +200,17 @@ error: void value not ignored as it ought to be
 
 Note that I was using gcc-5.1 when I was presented with this error.
 
-<Image src={require('./_assets/screenshot-of-compiler-error-disallowing-assert-side-effects.png').default} width="700px">A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert().</Image>
+import screenshot_of_compiler_error_disallowing_assert_side_effects from './_assets/screenshot-of-compiler-error-disallowing-assert-side-effects.png'
+
+<Image src={screenshot_of_compiler_error_disallowing_assert_side_effects} width="700px">A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert().</Image>
 
 ## Complete Code Example
 
 I have written a working `assert()` example at [http://ideone.com/CSX6wN](http://ideone.com/CSX6wN). It employs all of the functionality described above, including filename and line number reporting, expression printing, and syntax which disallows the use of assignments or function calls within the parameter passed to `assert()`.
 
-<Image src={require('./_assets/assert-example-code-on-ide-one.png').default} width="900px">Example assert() code on Ideone (http://ideone.com/CSX6wN).</Image>
+import assert_example_code_on_ide_one from './_assets/assert-example-code-on-ide-one.png'
+
+<Image src={assert_example_code_on_ide_one} width="900px">Example assert() code on Ideone (http://ideone.com/CSX6wN).</Image>
 
 ## Assert With printf() Style Messages
 

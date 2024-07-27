@@ -8,6 +8,8 @@ title: PSoC Creator
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Cypress provides PSoC Designer (for PSoC 1's) and PSoC Creator (for PSoC 3 and 5's). PSoC 5 uses the Cortex-M3 ARM architecture, and uses a free GCC compiler. As of writing, PSoC Creator 2 has just been released which has more pre-made modules and integration into 3rd party IDE's (as of Feb 2013, only Keil, but Cypress plans on extending this in the next year).
@@ -132,7 +134,9 @@ As part of the compile process, a very nice table showing the utilisation of the
 
 As shown in the image below, the table shows you useful things like how many of the following you are using: UDB Macrocells and Datapath Cells, analog and digital clock dividers, DMA channels, interrupts and pins.
 
-<Image src={require('./_assets/psoc-creator-verilog-report-file-technology-mapping-summary-hardware-utilisation.png').default} width="800px">The PSoC Creator 'Technology Mapping Table' in the .rpt file, showing a breakdown of the hardware utilisation.</Image>
+import psoc_creator_verilog_report_file_technology_mapping_summary_hardware_utilisation from './_assets/psoc-creator-verilog-report-file-technology-mapping-summary-hardware-utilisation.png'
+
+<Image src={psoc_creator_verilog_report_file_technology_mapping_summary_hardware_utilisation} width="800px">The PSoC Creator 'Technology Mapping Table' in the .rpt file, showing a breakdown of the hardware utilisation.</Image>
 
 ## Bugs
 

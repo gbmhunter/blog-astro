@@ -13,6 +13,8 @@ title: Linux Serial Ports Using C/C++
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Unluckily, using serial ports in Linux is not the easiest thing in the world. When dealing with the `termios.h` header, **there are many finicky settings buried within multiple bytes worth of bitfields**. This page is an attempt to help explain these settings and show you how to configure a serial port in Linux correctly.
@@ -29,15 +31,17 @@ Common names are:
 * `/dev/ttyUSB0` - Most USB-to-serial cables will show up using a file named like this.
 * `/dev/pts/0` - A pseudo terminal. These can be generated with `socat`.
 
-<Image src={require('./_assets/linux-dev-dir-ttyacm0-arduino-serial.png').default} width="600px">A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACM0.</Image>
+import linux_dev_dir_ttyacm0_arduino_serial from './_assets/linux-dev-dir-ttyacm0-arduino-serial.png'
+
+<Image src={linux_dev_dir_ttyacm0_arduino_serial} width="600px">A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACM0.</Image>
 
 **To write to a serial port, you write to the file. To read from a serial port, you read from the file.** Of course, this allows you to send/receive data, but how do you set the serial port parameters such as baud rate, parity, e.t.c? This is set by a special `tty` configuration `struct`.
 
 ## Basic Setup In C
 
-:::note
+<Aside type="note">
 This code is also applicable to C++.
-:::
+</Aside>
 
 First we want to include a few things:
 
@@ -244,9 +248,9 @@ Both `VMIN` and `VTIME` can be 0 or a positive number. Let's explore the differe
 
 `VMIN` and `VTIME` are both defined as the type `cc_t`, which I have always seen be an alias for unsigned char (1 byte). This puts an upper limit on the number of `VMIN` characters to be 255 and the maximum timeout of 25.5 seconds (255 deciseconds).
 
-:::note
+<Aside type="note">
 "Returning as soon as any data is received" does not mean you will only get 1 byte at a time. Depending on the OS latency, serial port speed, hardware buffers and many other things you have no direct control over, **you may receive any number of bytes**.
-:::
+</Aside>
 
 For example, if we wanted to wait for up to 1s, returning as soon as any data was received, we could use:
 
@@ -348,9 +352,9 @@ ioctl(serial_port, TCSETS2, &tty);
 
 Please read the comment above about `BOTHER`. Perhaps on your system this method will work!
 
-:::note
+<Aside type="note">
 Not all hardware will support all baud rates, so it is best to stick with one of the standard `BXXX` rates above if you have the option to do so. If you have no idea what the baud rate is and you are trying to communicate with a 3rd party system, try `B9600`, then `B57600` and then `B115200` as they are the most common rates.
-:::
+</Aside>
 
 ## Saving termios
 

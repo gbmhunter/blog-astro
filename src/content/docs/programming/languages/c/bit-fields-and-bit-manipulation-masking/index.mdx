@@ -6,6 +6,8 @@ title: Bit Fields And Bit Manipulation/Masking
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 A _bit field_ is a software/firmware variable that stores many bits in a **consecutive memory** structure.
@@ -75,9 +77,9 @@ SET_BITS(aRegister, 0, 3, 0b011);
 // aRegister = 0b00101011;
 ```
 
-:::note
+<Aside type="note">
 The above `BIT_MASK` and `SET_BITS` macros only work for variables up to `MAX_BIT_FIELD_WIDTH_BITS` wide!
-:::
+</Aside>
 
 ## Use In The Industry
 

@@ -6,11 +6,15 @@ title: Installing xsdb And JTAG Drivers
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Use this page to **help you install Diligent JTAG drivers on your computer so you can use JTAG to the Xilinx Zynq-7000 ZC702 board via the micro-USB connection**. No special JTAG programmer is required, as the ZC702 development board has a USB-to-JTAG module on board.
 
-<Image src={require('./_assets/xilinx-zc702-usb-to-jtag-module-highlighted.png').default} width="548px">The Xilinx Zynq-7000 ZC702 development board with the USB-to-JTAG module highlighted.</Image>
+import xilinx_zc702_usb_to_jtag_module_highlighted from './_assets/xilinx-zc702-usb-to-jtag-module-highlighted.png'
+
+<Image src={xilinx_zc702_usb_to_jtag_module_highlighted} width="548px">The Xilinx Zynq-7000 ZC702 development board with the USB-to-JTAG module highlighted.</Image>
 
 This tutorial is designed for people running a Ubuntu client using VMware on a Windows host.
 
@@ -22,9 +26,9 @@ Once the drivers have been installed on Windows, VMware detects the cable as "Fu
 
 Plug the micro USB cable into the ZC702 dev. board and your computer.
 
-:::note
+<Aside type="note">
 On recent versions of Mac OS (as of Aug 2017), it looks like the JTAG device on the ZC-702 is recognized as a "Digilent Adept USB Device" without the installation of any additional drivers.
-:::
+</Aside>
 
 ## Install Diligent JTAG Drivers And SDK On Ubuntu
 
@@ -44,4 +48,6 @@ And then run the install_drivers script (with admin privileges) that resides in 
 gbmhunter@ubuntu:/opt/Xilinx/Vivado/2017.1/data/xicom/cable_drivers/lin64/install_script/install_drivers$ sudo ./install_drivers
 ```
 
-<Image src={require('./_assets/installing-xilinx-digilent-jtag-drivers-ubuntu-snapshot.png').default} width="587px">A snapshot of the terminal output while installing the Xilinx 'Digilent' JTAG drivers on Ubuntu.</Image>
+import installing_xilinx_digilent_jtag_drivers_ubuntu_snapshot from './_assets/installing-xilinx-digilent-jtag-drivers-ubuntu-snapshot.png'
+
+<Image src={installing_xilinx_digilent_jtag_drivers_ubuntu_snapshot} width="587px">A snapshot of the terminal output while installing the Xilinx 'Digilent' JTAG drivers on Ubuntu.</Image>

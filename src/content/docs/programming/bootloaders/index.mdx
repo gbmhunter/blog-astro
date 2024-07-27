@@ -10,6 +10,8 @@ title: Bootloaders
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
 ## Overview
@@ -24,7 +26,9 @@ Bootloaders are typically the first thing that is run whenever the microcontroll
 
 The image below shows what the memory layout might look like for a microcontroller using a basic bootloader. The _Reset Vector_ is the first instruction executed by the microcontroller on start-up. This is typically located at memory address `0x0000 0000` (the Intel 8086 processor is a notable exception). The reset vector usually contains a "goto" (jump) instruction will tells the CPU to jump to the bootloaders entry point. The bootloader will then execute. The bootloader could then initialise a transport to download new firmware, e.g. over UART. It then might wait for a message for a fixed amount of time. After 10s the chance to download firmware passes, and then the bootloader jumps to the start of the application executable.
 
-<Image src={require('./_assets/basic-bootloader-memory-map.webp').default} width="700px">A basic example showing the layout of a microcontrollers memory when a bootloader is used.</Image>
+import basic_bootloader_memory_map from './_assets/basic-bootloader-memory-map.webp'
+
+<Image src={basic_bootloader_memory_map} width="700px">A basic example showing the layout of a microcontrollers memory when a bootloader is used.</Image>
 
 ## Erase Cycles
 
@@ -44,7 +48,9 @@ The scratch area must be large enough to hold the largest sector that is going t
 
 ### Swap-Move Algorithm
 
-<Image src={require('./_assets/swap-move-algorithm-mcuboot.webp').default} width="900px">Illustration of the swap-move algorithm to swap two firmware images using just a single extra erase sector in slot 0.</Image>
+import swap_move_algorithm_mcuboot from './_assets/swap-move-algorithm-mcuboot.webp'
+
+<Image src={swap_move_algorithm_mcuboot} width="900px">Illustration of the swap-move algorithm to swap two firmware images using just a single extra erase sector in slot 0.</Image>
 
 * **a):** All of the segments in slot 0 are moved one segment up, starting by copying segment 3 into the empty sector, then segment 2 into where segment 3 used to be, e.t.c. This moves the empty segment to the start of slot 0.
 * **b)**: The first segment of slot 1 is moved down to the empty segment.
@@ -53,9 +59,9 @@ The scratch area must be large enough to hold the largest sector that is going t
 * **e)**: This continues until...
 * **f)**: All segments have been swapped over and the empty segment is back at the end of slot 0. Job done! Note that the contents of each slot have been swapped. I've get the old names for each slot to highlight the fact they have moved. Technically speaking though, slot 0 is still in the same place, it just now has the contents of what used to be in slot 1.
 
-:::note
+<Aside type="note">
 To illustrate examples clearly, we only show a small number of segments. In reality, each firmware image will consume a much larger number of segments.
-:::
+</Aside>
 
 Each segment in slot 0 is erased/written to twice and each segment in slot 1 is erased/written to once. This is a significant improvement over the Swap-Scratch algorithm which performs as many erase/write cycles as there are segments.
 
@@ -74,7 +80,9 @@ A golden image is a firmware application with minimal support for firmware updat
 
 MCUboot is a popular, open-source, secure bootloader for 32-bit microcontrollers. As of Jan 2024 it has 1.1k star on GitHub, 2,201 commits and active development month over month. It is designed to be run from flash memory[^mcuboot-doc].
 
-<Image src={require('./_assets/mcuboot-homepage-screenshot.png').default} width="700px">A screenshot of MCUboot's homepage as of Jan 2024.</Image>
+import mcuboot_homepage_screenshot from './_assets/mcuboot-homepage-screenshot.png'
+
+<Image src={mcuboot_homepage_screenshot} width="700px">A screenshot of MCUboot's homepage as of Jan 2024.</Image>
 
 It currently supports the following frameworks/OSes:
 
@@ -89,7 +97,9 @@ It currently supports the following frameworks/OSes:
 
 The MCUboot implementation for Zephyr supports Bluetooth bootloading. The Nordic nRF app can be used to bootload during development.
 
-<Image src={require('./_assets/zephyr-mcuboot-shell-output-during-swap.png').default} width="700px">The output to the Zephyr shell just after a new image has been downloaded, the MCU reboots and MCUboot performs a swap of the images.</Image>
+import zephyr_mcuboot_shell_output_during_swap from './_assets/zephyr-mcuboot-shell-output-during-swap.png'
+
+<Image src={zephyr_mcuboot_shell_output_during_swap} width="700px">The output to the Zephyr shell just after a new image has been downloaded, the MCU reboots and MCUboot performs a swap of the images.</Image>
 
 [^mcuboot-doc]: MCUboot. _MCUboot - Secure boot for 32-bit Microcontrollers!_ [project homepage]. Retrieved 2024-01-27, from https://docs.mcuboot.com/.
 [^mcuboot-sim-readme]: MCUboot. _MCUboot simulator - README_. Retrieved 2024-01-27, from https://github.com/mcu-tools/mcuboot/blob/main/sim/README.rst.

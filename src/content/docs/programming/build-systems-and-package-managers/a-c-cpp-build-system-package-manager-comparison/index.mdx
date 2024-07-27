@@ -7,15 +7,17 @@ title: A C/C++ Build System/Package Manager Comparison
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 This article is a *opinionated* comparison of popular, open-source build systems/package managers for C/C++. This review looks at both programs that compile your code and those that manage dependencies, as the line between build systems and package managers is blurred. The build and packaging support are treated as separate qualities which will be reviewed for each.
 
 The build systems are listed in alphabetical order.
 
-:::warning
+<Aside type="caution">
 DISCLAIMER: I have had much experience with CMake and Makefiles, and moderate experience with autotools. For some of the other build systems, upon researching/testing for this comparison was the first time I had ever used or sometimes even heard of them.
-:::
+</Aside>
 
 The [GitHub repository mbedded-ninja/CppBuildSystemReview](https://github.com/gbmhunter/CppBuildSystemReview) contains a example/demo project for each build/packaging system mentioned below (one per folder). In each folder, there is a `build.sh` bash script which should automatically run the build on a Linux system, provided you have the build system installed.
 
@@ -27,7 +29,9 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 
 ## Bazel
 
-<Image src={require('./bazel-build-system-logo.png').default} width="150px"></Image>
+import bazel_build_system_logo from './bazel-build-system-logo.png'
+
+<Image src={bazel_build_system_logo} width="150px"></Image>
 
 * Website: [https://bazel.build/](https://bazel.build/)
 * Code: [https://github.com/bazelbuild/bazel](https://github.com/bazelbuild/bazel)
@@ -85,7 +89,9 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buck
 
-<Image src={require('./buck-build-system-logo.png').default} width="150px"></Image>
+import buck_build_system_logo from './buck-build-system-logo.png'
+
+<Image src={buck_build_system_logo} width="150px"></Image>
 
 * Website: [https://buckbuild.com/](https://buckbuild.com/)
 * Code: [https://github.com/facebook/buck](https://github.com/facebook/buck)
@@ -133,7 +139,9 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buckaroo
 
-<Image src={require('./buckaroo-package-manager-logo.png').default} width="150px"></Image>
+import buckaroo_package_manager_logo from './buckaroo-package-manager-logo.png'
+
+<Image src={buckaroo_package_manager_logo} width="150px"></Image>
 
 * Website: [https://buckaroo.pm/](https://buckaroo.pm/)
 * Code: [https://github.com/LoopPerfect/buckaroo](https://github.com/LoopPerfect/buckaroo)
@@ -145,7 +153,9 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 
 ## CMake
 
-<Image src={require('./cmake-build-system-logo.png').default} width="150px"></Image>
+import cmake_build_system_logo from './cmake-build-system-logo.png'
+
+<Image src={cmake_build_system_logo} width="150px"></Image>
 
 * Website: [https://cmake.org/](https://cmake.org/)
 * Code: [https://gitlab.kitware.com/cmake/cmake](https://gitlab.kitware.com/cmake/cmake)
@@ -210,7 +220,9 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 
 ## Conan
 
-<Image src={require('./conan-c-cpp-package-manager-logo.png').default} width="150px"></Image>
+import conan_c_cpp_package_manager_logo from './conan-c-cpp-package-manager-logo.png'
+
+<Image src={conan_c_cpp_package_manager_logo} width="150px"></Image>
 
 * Website: [https://conan.io/](https://conan.io/)
 * Code: [https://github.com/conan-io/conan](https://github.com/conan-io/conan)
@@ -264,7 +276,9 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 
 ## Makefiles
 
-<Image src={require('./gnu-logo.png').default} width="150px"></Image>
+import gnu_logo from './gnu-logo.png'
+
+<Image src={gnu_logo} width="150px"></Image>
 
 * Website: [https://www.gnu.org/software/make/](https://www.gnu.org/software/make/)
 * Code: [http://savannah.gnu.org/projects/make/](http://savannah.gnu.org/projects/make/)
@@ -315,7 +329,9 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 
 ## Scons
 
-<Image src={require('./scons-build-system.png').default} width="200px"></Image>
+import scons_build_system from './scons-build-system.png'
+
+<Image src={scons_build_system} width="200px"></Image>
 
 * Website: [https://scons.org/](https://scons.org/)
 * Code: [https://github.com/SCons/scons](https://github.com/SCons/scons)

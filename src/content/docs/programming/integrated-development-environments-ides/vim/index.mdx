@@ -10,6 +10,8 @@ title: "vim"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 vim is a command-line based text editor.
@@ -87,9 +89,9 @@ $ vim --version | grep clipboard
 
 The `-clipboard` indicates that this feature was not includes. What you want to see is `+clipboard`!
 
-:::note
+<Aside type="note">
 Most VIM extensions for IDEs (including the one for IntelliJ and VS Code) support copying to the system clipboard.
-:::
+</Aside>
 
 ## Movement
 

@@ -8,11 +8,15 @@ title: "Assembly"
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 <p>If you are writing assembly for ARM processors, make sure to check out the [GNU ARM Assembler Quick Reference](http://bel.gsi.de/scripts/gnu-arm-assy-quick-ref.pdf).</p>
 
-<Image src={require('./_assets/assembly-code-example.png').default} width="481px">An example of assembly code from the glibc library (an optimised memcpy() function).</Image>
+import assembly_code_example from './_assets/assembly-code-example.png'
+
+<Image src={assembly_code_example} width="481px">An example of assembly code from the glibc library (an optimised memcpy() function).</Image>
 
 <h2>Intel vs. AT&T Syntax</h2>
 
@@ -59,9 +63,9 @@ $ nasm -f elf64 test.asm
 ```
 This will produce an object file called <code>myfile.o</code>.
 
-:::note
+<Aside type="note">
 Not all assembly instructions are supported for both 32-bits and 64-bits.
-:::
+</Aside>
 
 <p>You then have two options for linking:</p>
 

@@ -6,6 +6,8 @@ title: "CRCs (Cyclic Redundancy Checks)"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 > "Everything you wanted to know about CRC algorithms, but were afraid to ask for fear that errors in your understanding might be detected." - Ross N. Williams.
@@ -32,7 +34,9 @@ When checking a CRC, rather than recalculating the CRC for the message and compa
 
 [NinjaCalc has a CRC calculator](https://ninjacalc.mbedded.ninja/calculators/software/crc-calculator) which allows you to calculate the CRC value for ASCII or hex data, using either common pre-loaded CRC algorithms or your own custom algorithm.
 
-<Image src={require('./_assets/ninja-calc-crc-calculator-example.gif').default} width="1094px">Example usage of the CRC Calculator within NinjaCalc (https://ninjacalc.mbedded.ninja/calculators/software/crc-calculator).</Image>
+import ninja_calc_crc_calculator_example from './_assets/ninja-calc-crc-calculator-example.gif'
+
+<Image src={ninja_calc_crc_calculator_example} width="1094px">Example usage of the CRC Calculator within NinjaCalc (https://ninjacalc.mbedded.ninja/calculators/software/crc-calculator).</Image>
 
 ## Some Common CRC Algorithms
 

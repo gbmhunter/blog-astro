@@ -6,6 +6,8 @@ title: "Batch Files"
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 > MS-DOS commands use a `/` character to signify a flag. All command syntax on this page uses square brackets for optional parameters.
 
 ## Overview
@@ -55,9 +57,9 @@ set myVar=3
 set myVar=
 ```
 
-:::warning
+<Aside type="caution">
 When setting a variable, anything after the equals sign, including white-space, is part of the variable, up-to the last non-white character. You have to be careful you don't accidentally add space to strings when assigning to them:
-:::
+</Aside>
 
 ```text
 set myVar = This is a string

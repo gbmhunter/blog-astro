@@ -12,11 +12,15 @@ title: "S3"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 S3 is a popular key-value storage service provided by Amazon Web Services (AWS). It offers cheap and moderately fast (not as fast as a hard-drive, but faster than deep archive systems) mechanism for the storage and retrieval of arbitrary files.
 
-<Image src={require('./aws-s3-logo.png').default} width="300px">The AWS S3 logo.</Image>
+import aws_s3_logo from './aws-s3-logo.png'
+
+<Image src={aws_s3_logo} width="300px">The AWS S3 logo.</Image>
 
 ## S3 Doesn't Have Directories, But It Does?
 
@@ -36,9 +40,9 @@ aws s3 sync ~/my-dir/ s3://my-bucket/my-dir/
 
 Note that `aws s3 sync` will not re-sync a changed file if it has the exact same filesize as before, even though the timestamps are different. This could happen quite easily if for example you changed a single character in a text file and re-saved it. The `sync` command does not use checksums to verify the content is the same. This default behaviour is not what you would expect from a `sync` command, and deviates from the behaviour of other sync tools such as `rsync`. You can force `sync` to also look at the timestamps by adding the command-line option `--exact-timestamps`. 
 
-:::warning
+<Aside type="caution">
 Most of the time, you probably want to add the option `--exact-timestamps` so that `aws s3 sync` behaves as you would expect. 
-:::
+</Aside>
 
 ## Data Consistency
 

@@ -13,6 +13,8 @@ title: Choosing Random Serial Numbers for Embedded Products
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Serial numbers are crucial for embedded devices that you want to individually track. They are used for uniquely identifying devices for a bunch of reasons, including tracking metadata (location, firmware version, customer, e.t.c), used when talking to a server, for warranty purposes and more. There a few ways to go about generating serial numbers. We'll first discuss a few different methods, and then dive into how to calculate the probability of a collision when using random serial numbers.
@@ -21,13 +23,15 @@ Serial numbers are crucial for embedded devices that you want to individually tr
 
 If you want to assign you own (and typically write it to non-volatile memory (NVM) like EEPROM or flash) you can go with an incrementing serial number. This works well as long as you have a centralized place to store the last used serial number, and don't have to generate serial numbers across factories at the same time. The downside is that it's an extra step in the assembly process, and you may already need to use MAC addresses for others reasons, so now you have two serial numbers to keep track of. Of course, another option across multiple sites is to prefix a unique ID with a site ID.
 
-:::tip
+<Aside type="tip">
 
 Perhaps you want random numbers for serial numbers to obscure the number of devices you have sold. In WW2, Allied forces we able to estimate the number of tanks Axis forces had by looking at the serial numbers. Parts of the tank (e.g. chassis, gearbox, engine) where assigned sequential serial numbers. Based on the numbers of the tanks that the Allied forces captured, they were able to use statistics to estimate the total number[^wikipedia-german-tank-problem].
 
-<Image src={require('./_assets/tank-with-serial-number.png').default} width="400px"></Image>
+import tank_with_serial_number from './_assets/tank-with-serial-number.png'
 
-:::
+<Image src={tank_with_serial_number} width="400px"></Image>
+
+</Aside>
 
 ## Random Serial Numbers
 
@@ -97,7 +101,9 @@ def calc_p_of_collision_exact(num_of_serial_nums, num_of_bits):
 
 We can plot this for a more realistic 32-bit serial number and a varying number of devices from 1 to 200,000 (200k):
 
-<Image src={require('./_assets/probability-of-collision-32-bit.png').default} width="600px">The probability of a collision when generating 32-bit random serial numbers for different numbers of devices.</Image>
+import probability_of_collision_32_bit from './_assets/probability-of-collision-32-bit.png'
+
+<Image src={probability_of_collision_32_bit} width="600px">The probability of a collision when generating 32-bit random serial numbers for different numbers of devices.</Image>
 
 You can see that we start running into significant issues with 32-bit random serial numbers as soon as we start manufacturing 1000's of devices. At 25,000 devices the probability of a collision is already at about 10%.
 
@@ -109,13 +115,17 @@ P(A) &\approx 1 - e^{-\left(\dfrac{n \times (n-1)}{2 \times 2^b}\right)} \\
 
 This approximation is quite good. Due to the lack of any loops, this has $O(1)$ time complexity (assuming the maths operations like multiply, divide and exponent are $O(1)$). The other nice thing is that this can be calculated by hand. Here is a comparison of the approximation to the exact calculation for 32-bit serial numbers:
 
-<Image src={require('./_assets/probability-of-collision-32-bit-approx-vs-exact.png').default} width="600px">Comparing the approximate and exact equations for calculating the collision probability for 32-bit serial numbers and a varying number of devices.</Image>
+import probability_of_collision_32_bit_approx_vs_exact from './_assets/probability-of-collision-32-bit-approx-vs-exact.png'
+
+<Image src={probability_of_collision_32_bit_approx_vs_exact} width="600px">Comparing the approximate and exact equations for calculating the collision probability for 32-bit serial numbers and a varying number of devices.</Image>
 
 Can't see two lines? That's because the approximation is good. If we were diving deep into the maths we could plot the difference between the two. But for engineering purposes, this is proof enough!
 
 We can use this approximation to calculate collision probabilities for 64 bits. Below is the probability for 64-bit numbers, up to 1 billion (1e9 devices)! You can see that the probability starts to rise above 0 at about the 1 billion mark.
 
-<Image src={require('./_assets/probability-of-collision-64-bit.png').default} width="600px">The probability of a collision when generating 64-bit random serial numbers for different numbers of devices from 1 to up to 1 billion.</Image>
+import probability_of_collision_64_bit from './_assets/probability-of-collision-64-bit.png'
+
+<Image src={probability_of_collision_64_bit} width="600px">The probability of a collision when generating 64-bit random serial numbers for different numbers of devices from 1 to up to 1 billion.</Image>
 
 Here is the Python code for the above equation (if you need it):
 
@@ -161,7 +171,7 @@ P(A) &\approx \frac{n^2}{N} \\
 
 This fraction starts moving away from 0 towards 1 when $n^2 = N$ (when the top and bottom of the fraction are in the same order of magnitude), thus when $n = \sqrt{N}$.
 
-:::tip
+<Aside type="tip">
 
 You might be wondering how $\dfrac{n!}{2!(n-2)!}$ simplifies to $\dfrac{n \times (n-1)}{2}$. There is a handy simplification (which is really useful when dealing with factorials, because most calculators don't like computing $n!$ for $n > 1000$ or so) which makes the equation more manageable:
 
@@ -176,11 +186,11 @@ $$\begin{align*}
 \frac{n \times (n-1)}{2}
 \end{align*}$$
 
-:::
+</Aside>
 
 ## Examples
 
-:::example
+<Aside type="example">
 
 **100,000 Devices, 32-bit or 64-bit Serial Number?**
 
@@ -210,9 +220,9 @@ P(A) &= 1 - e^{-\dfrac{n^2}{2 \times 2^b}} \\
 
 This is better! There is a 1 in 3.7 billion ($\dfrac{1}{2.711e-10}$) chance of a collision if generating 64-bit random serial numbers for 100,000 devices. I don't know about your appetite for risk, but I would be happy with those odds!
 
-:::
+</Aside>
 
-:::example
+<Aside type="example">
 
 **The Birthday Problem**
 
@@ -231,7 +241,7 @@ P(A) &= 1 - e^{-\dfrac{n^2 }{2 \times 2^b}} \\
 
 Which gives us approx. a 50% chance of collision, as expected.
 
-:::
+</Aside>
 
 [^calculator-soup-combinations-calculator]: Calculator Soup. _Combinations Calculator (nCr)_. Retrieved 2024-06-02, from https://www.calculatorsoup.com/calculators/discretemathematics/combinations.php.
 [^wikipedia-german-tank-problem]: Wikipedia (2024, Jan 4). _German tank problem_. Retrieved 2024-06-03, from https://en.wikipedia.org/wiki/German_tank_problem.

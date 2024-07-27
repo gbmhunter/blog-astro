@@ -12,13 +12,17 @@ title: Zephyr
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <WarningIsNotes />
 
 ## Overview
 
 _Zephyr_ is the combination of a **real-time operating system, peripheral/system API framework, and build system** that is designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
-<Image src={require('./_assets/zephyr-project-logo.png').default} width="500px">The Zephyr Project logo.</Image>
+import zephyr_project_logo from './_assets/zephyr-project-logo.png'
+
+<Image src={zephyr_project_logo} width="500px">The Zephyr Project logo.</Image>
 
 Zephyr provides a firmware developer with a rich ecosystem of out-of-the-box OS and peripheral functionality that is consistent across MCU manufacturers (e.g. you can use the same UART API on both a STM32 and nRF53 MCU). It also features an integrated build system called `west`. 
 
@@ -42,9 +46,9 @@ Below are some basic Zephyr installation guides for various OSes. Another good r
 
 The easiest way to install Zephyr on Windows is to use the chocolatey package manager. Once that is installed, run the following steps from an elevated command prompt:
 
-:::warning
+<Aside type="caution">
 Make sure to use a command-prompt and not PowerShell, as PowerShell does not play nice with the `set` method of defining environment variables.
-:::
+</Aside>
 
 1. Enable global confirmation so that you don't have to manually confirm the installation of individual programs:
 
@@ -275,9 +279,9 @@ Follow these instructions to setup/install Zephyr on UNIX like systems, includin
     west flash
     ````
 
-:::note
+<Aside type="note">
 Both `west init` and `west update` can take some time to run (2-5mins each).
-:::
+</Aside>
 
 If you don't have a dev. board, you could always test out Zephyr by building it for Linux.
 
@@ -513,9 +517,9 @@ See https://docs.zephyrproject.org/latest/boards/index.html#boards for a compreh
 
 `native_sim` allows you to build a Zephyr application to run on POSIX-like OSes, e.g. Linux.
 
-:::note
+<Aside type="note">
 `native_sim` is a successor to the legacy `native_posix` Zephyr board. Use `native_sim` instead wherever possible.
-:::
+</Aside>
 
 To build for POSIX, provide `native_sim` as the build target to west with the `-b` option, e.g.:
 
@@ -728,11 +732,11 @@ void k_timer_init(&myTimer, &MyHandlerFn, NULL);
 
 `expiryFn` and `stopFn` are both optional and can be `NULL` if you don't want anything to be called when the timer expires or stops.
 
-:::warning
+<Aside type="caution">
 Note that the function you pass in as `expiryFn` gets executed in the system interrupt context. Thus you have to be careful not to block in the expiry function, take too much time processing or call things that are not ISR safe.
 
 `stopFn` gets called in the context of the thread which stopped the timer. Thus, if you stop the timer in a ISR, you need to make sure the stop function is ISR safe.
-:::
+</Aside>
 
 You can then start a timer with `void k_timer_start(struct k_timer * timer, k_timeout_t duration, k_timeout_t period)`.
 
@@ -767,7 +771,9 @@ int main(void) {
 }
 ```
 
-<Image src={require('./_assets/timers-basic-example-output.png').default} width="400px">Running the timer example code above and observing the expiry function run every second.</Image>
+import timers_basic_example_output from './_assets/timers-basic-example-output.png'
+
+<Image src={timers_basic_example_output} width="400px">Running the timer example code above and observing the expiry function run every second.</Image>
 
 
 You can read the official Zephyr documentation for Timers [here](https://docs.zephyrproject.org/latest/kernel/services/timing/timers.html).
@@ -809,9 +815,9 @@ int main() {
 }
 ```
 
-:::tip
+<Aside type="tip">
 Remember that a thread stack is a different object to just a general purpose "stack" (which Zephyr also provides to the user for general FILO functionality).
-:::
+</Aside>
 
 
 #### Dynamic Thread Stack Allocation
@@ -917,15 +923,15 @@ You then unlock a mutex with:
 k_mutex_unlock(&myMutex);
 ```
 
-:::warning
+<Aside type="caution">
 You must not unlock a mutex that has not been locked, and you must remember to unlock just as many times as you locked before any other thread can lock the mutex again. Be careful with unlocking in functions that have many exit points. A useful feature in [C++](/programming/languages/c-plus-plus/) (and many other languages) is the ability to turn a mutex into an object, and it's destructor is guaranteed to be called on function exit no matter how it exits (you don't need to unlock yourself!). Unfortunately C does not have this functionality.
-:::
+</Aside>
 
 Zephyr **mutexes support _reentrant locking_[^zephyr-docs-mutexes]**. This means that a thread is allowed to lock a mutex more than once. This is a useful feature that allows **a thread to lock the mutex more than once**. The same thread must unlock the mutex just as many times before it can be used by another thread. A common use of this pattern is if you have a shared resource that can be accessed via an API. You can lock the mutex inside the API functions themselves so that they are individually guaranteed to be exclusive, but also allow the caller access to the mutex so they can lock it if they want to chain together multiple API calls in one single "atomic" operation. 
 
-:::warning
+<Aside type="caution">
 Mutex objects should not be used from within ISRs[^zephyr-docs-mutexes]. Neither locking or unlocking from ISRs is supported. If you want to perform cross-thread communication from an ISR, use a semaphore instead.
-:::
+</Aside>
 
 Zephyr mutexes also support _priority inheritance_. The Zephyr kernel will elevate the priority of a thread that has currently locked the mutex if a thread of a higher priority begins waiting on the mutex. This works well if there is only ever one mutex locked at once by a thread. If multiple mutexes are locked, then less-than-ideal behaviour occurs if the mutex is not unlocked in the reverse order to which the owning thread's priority was originally raised. It is recommended that only one mutex is locked at a time when multiple mutexes are used between multiple threads of different priorities.
 
@@ -943,9 +949,9 @@ ASSERT_NO_MSG();
 
 Zephyr provides a software/hardware based watchdog API you can use to monitor your threads and perform actions (usually a system reset) in the case that your threads become unresponsive and do not feed the watchdog in time. The API provides the ability to monitor multiple application threads at once via it's software watchdog. This software watchdog can in turn be monitored by a hardware watchdog. A hardware watchdog (i.e. a physical peripheral provided by the MCU) can be trusted to reliably reset the device, even if the software watchdog locks up (which can be the case with certain errors).
 
-:::note
+<Aside type="note">
 Why not just use the hardware watchdog? The useful thing about the software watchdog thread is that is provides the ability to independently monitor multiple threads, with different timeouts associated with each thread. It provides a more granularly and control about what you watch and how often you expect each thread to "check in". 
-:::
+</Aside>
 
 To use the watchdog, first add the following to your `prf.conf`:
 
@@ -1032,7 +1038,9 @@ int main(void) {
 }
 ```
 
-<Image src={require('./_assets/watchdog-example.png').default} width="800px">Running the watchdog example code and seeing it timeout.</Image>
+import watchdog_example from './_assets/watchdog-example.png'
+
+<Image src={watchdog_example} width="800px">Running the watchdog example code and seeing it timeout.</Image>
 
 ### Semaphores
 
@@ -1082,9 +1090,9 @@ You can then wait until one or more of these events occurs by calling `k_poll()`
 k_poll(myEvents, 2, K_FOREVER); // This will block until 1 or more events occur
 ```
 
-:::warning
+<Aside type="caution">
 Semaphores are not taken as part of the call to `k_poll()`. After `k_poll()` returns, you have to check which event (e.g. semaphore) was available and then take it. But you are not necessarily **guaranteed that this semaphore is still available**, due to the possibility of another thread pre-empting this one and taking it first. You either have to handle the case where the semaphore can't be taken, or design your application so it's guaranteed to be available (one way is to make sure the thread that calls `k_poll()` is the only thread which takes the semaphore). 
-:::
+</Aside>
 
 #### Full Working Example
 
@@ -1169,7 +1177,9 @@ int main(void) {
 and the output is:
 
 
-<Image src={require('./_assets/semaphore-working-example-stdout.png').default} width="800px">The output from the full working Polling API example above, showing how a thread blocks on two separate semaphores.</Image>
+import semaphore_working_example_stdout from './_assets/semaphore-working-example-stdout.png'
+
+<Image src={semaphore_working_example_stdout} width="800px">The output from the full working Polling API example above, showing how a thread blocks on two separate semaphores.</Image>
 
 ## Logging
 
@@ -1249,15 +1259,17 @@ int main() {
 }
 ```
 
-:::tip
+<Aside type="tip">
 Remember to set `CONFIG_LOG_RUNTIME_FILTERING=y` in your `prj.conf` if you don't have the shell enabled and you want runtime log level adjustment.
-:::
+</Aside>
 
 ### X Messages Dropped Errors
 
 Zephyr implements a character based circular buffer for storing messages to be processed (remember -- Zephyr logging is typically done asynchronously). If other threads create logs too quickly for the log thread to process, at some point Zephyr will drop logs. You will typically see a log error generated when this happens stating `--- x messages dropped ---` (as shown below).
 
-<Image src={require('./_assets/zephyr-shell-x-messages-dropped-screenshot.png').default} width="700px">A screenshot of the \"x messages dropped\" error that can occur with Zephyr logging.</Image>
+import zephyr_shell_x_messages_dropped_screenshot from './_assets/zephyr-shell-x-messages-dropped-screenshot.png'
+
+<Image src={zephyr_shell_x_messages_dropped_screenshot} width="700px">A screenshot of the \"x messages dropped\" error that can occur with Zephyr logging.</Image>
 
 If you have extra RAM space, one way to reduce the probability of this error is to bump up the circular buffer Zephyr uses to write messages into in your `prj.conf`:
 
@@ -1511,9 +1523,9 @@ There is a working example in the Zephyr repo at `samples/drivers/adc/`.
 
 Zephyr provides an API for storing things in non-volatile storage (flash memory). The NVS API is provided by `#include <zephyr/fs/nvs.h>`.
 
-:::note
+<Aside type="note">
 Although different, Zephyr provides a similar service called the _Retention System_ for storing data whilst the device is powered on (i.e. it will persist across resets, but it will NOT persist across power cycles).
-:::
+</Aside>
 
 Typically a partition called `storage_partition` is setup in the main flash for the NVS system to use. This can be defined in the board files.
 
@@ -1651,7 +1663,9 @@ On one project I was working on, just setting `CONFIG_SIZE_OPTIMIZATIONS=y` in `
 
 You can execute the `west` command with `-t ram_report` to make Zephyr generate and print a table of RAM usage to the terminal.
 
-<Image src={require('./_assets/zephyr-ram-report-output-screenshot.png').default} width="500px">A screenshot of the output produce by the `west build -t ram_report` command.</Image>
+import zephyr_ram_report_output_screenshot from './_assets/zephyr-ram-report-output-screenshot.png'
+
+<Image src={zephyr_ram_report_output_screenshot} width="500px">A screenshot of the output produce by the `west build -t ram_report` command.</Image>
 
 puncover can be used to visualize the memory usage via a web GUI. Install puncover in the projects Python virtual environment:
 
@@ -1674,7 +1688,9 @@ west build -t puncover
 
 If you get the error `ninja: error: unknown target 'puncover'` (as shown below) when trying to run puncover, it might be because you have not done a clean rebuild. You must do a clean rebuild after installing puncover. This is needed because CMake looks for the puncover executable during the build process. If it can't find it, no target is made for it.
 
-<Image src={require('./_assets/puncover-build-error.png').default} width="500px">A screenshot of the build error you can get if you don't clean build after installing puncover.</Image>
+import puncover_build_error from './_assets/puncover-build-error.png'
+
+<Image src={puncover_build_error} width="500px">A screenshot of the build error you can get if you don't clean build after installing puncover.</Image>
 
 You can also look at reducing the stack size of some of the default stacks you will likely have in your project:
 
@@ -1735,9 +1751,9 @@ Let's create a directory called `tests` under `app`, and then copy all of the fi
 │     └── ...
 ```
 
-:::warning
+<Aside type="caution">
 When including sources from `app/src/` into your test application, make sure NOT to include the apps `main.c` (or wherever your `int main()` function is defined). The test application defines it's own `main()` which runs the unit test functions (which makes sense, you don't want to RUN your app normally, you want a new entry point which runs the unit test functions). If you include the apps `main()` you'll get a `multiple definition of main` compile error.
-:::
+</Aside>
 
 Assuming you are currently in the root of the west workspace, you can run your tests with the following command. You do not need to pass in the `tests` directory, `west twister` can work that out so you just need to pass in the directory to your app.
 
@@ -1809,7 +1825,9 @@ CMake Error at C:/Users/Geoffrey Hunter/temp/zephyrproject/zephyr/cmake/kconfig.
 
 It is due to there being one or more spaces in the path to your Zephyr project directory. This isn't a bug that is going to be fixed anytime soon, Zephyr is very clear on the matter in their documentation:
 
-<Image src={require('./_assets/spaces-in-path-not-supported-zephyr-documentation-warning.png').default} width="900px">A warning on Zephyr's documentation about using spaces in paths.</Image>
+import spaces_in_path_not_supported_zephyr_documentation_warning from './_assets/spaces-in-path-not-supported-zephyr-documentation-warning.png'
+
+<Image src={spaces_in_path_not_supported_zephyr_documentation_warning} width="900px">A warning on Zephyr's documentation about using spaces in paths.</Image>
 
 I found this out the hard way and went through all the trouble of [renaming my user directory](https://superuser.com/questions/890812/how-to-rename-the-user-folder-in-windows-10) to fix the issue.
 
@@ -1844,7 +1862,9 @@ C:/project/zephyr/include/zephyr/device.h:83:41: error: '__device_dts_ord_DT_N_N
 
 If you are using the VS Code and the nRF Connect extension, sometimes this can be fixed by making when you setup the build configuration you set the Configuration to "Use build system default" as shown below:
 
-<Image src={require('./_assets/selecting-use-build-system-default-in-nrf-connect.png').default} width="600px">Selecting \"Use build system default\" can sometimes fix device tree errors.</Image>
+import selecting_use_build_system_default_in_nrf_connect from './_assets/selecting-use-build-system-default-in-nrf-connect.png'
+
+<Image src={selecting_use_build_system_default_in_nrf_connect} width="600px">Selecting \"Use build system default\" can sometimes fix device tree errors.</Image>
 
 ### "ERROR: Build directory xxx is for application yyy, but source directory zzz was specified"
 
@@ -1883,7 +1903,9 @@ CMake Warning at CMakeLists.txt:3 (find_package):
   installed.
 ```
 
-<Image src={require('./_assets/by-not-providing-find-zephyr-cmake.png').default} width="700px">Screenshot of the error \"By not providing \"FindZephyr.cmake\" in CMAKE_MODULE_PATH ...\".</Image>
+import by_not_providing_find_zephyr_cmake from './_assets/by-not-providing-find-zephyr-cmake.png'
+
+<Image src={by_not_providing_find_zephyr_cmake} width="700px">Screenshot of the error \"By not providing \"FindZephyr.cmake\" in CMAKE_MODULE_PATH ...\".</Image>
 
 It usually can be due to forgetting to export Zephyr to the CMake user package registry. Run the following command from the west workspace directory:
 
@@ -1902,7 +1924,9 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'elftools'
 ```
 
-<Image src={require('./_assets/error-no-module-named-elftools.png').default} width="700px">Screenshot of the error \"No module named 'elftools'\".</Image>
+import error_no_module_named_elftools from './_assets/error-no-module-named-elftools.png'
+
+<Image src={error_no_module_named_elftools} width="700px">Screenshot of the error \"No module named 'elftools'\".</Image>
 
 can occur if you have forgotten to install the additional Zephyr dependencies into your Python environment (which can happen if you delete the existing virtual environment and recreate it). This can be fixed by running the following command, assuming you have activated the Python virtual environment if relevant:
 

@@ -12,12 +12,10 @@ title: GCC
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Logo
 
-<Image src={require('./gcc-compiler-logo.png').default} width="200px">The GCC logo.</Image>
+import gcc_compiler_logo from './gcc-compiler-logo.png'
 
-## Child Pages
-
-import DocCardList from '@theme/DocCardList';
-
-<DocCardList />
+<Image src={gcc_compiler_logo} width="200px">The GCC logo.</Image>

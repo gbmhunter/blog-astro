@@ -12,6 +12,8 @@ title: PID Control
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 _PID control_ (a.k.a. three-term control[^wikipedia-pid]) is a control technique using feedback that is very common in industrial applications. It is a good technique to use when you have a desired set-point for a process (system) to be in, and are able to control this with one variable. PID is an acronym for Proportional-Derivative-Integral, and describes the three mathematical processes used to calculate the output needed to control the process.
@@ -29,9 +31,9 @@ No matter the topology, the goal of a PID controller is to control a process, gi
 
 The state you want to get the process to is called the set-point ($r(t)$ or `SP`). The set-point has the same units as the process value. The units of the control value is whatever is used to control the process.
 
-:::tip
+<Aside type="tip">
 I chose to use the variables $ r(t), e(t), u(t), y(t)$ as used by [Introduction: PID Controller Design](https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=ControlPID) [^uni-of-michigan-intro-pid-controller-design].
-:::
+</Aside>
 
 The error ($e(t)$) is always defined as the set-point minus the process value, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
 
@@ -47,11 +49,11 @@ $$
 	$y(t)$ is the process value (PV)<br/>
   and everything else as previously mentioned<br/></p>
 
-:::example
+<Aside type="example">
 Imagine a simple process in where you want to control the temperature of a room of your house by using an electric heater. You can vary the voltage to the heaters coils to vary the amount of thermal energy added to the room. You also have a thermometer to read the current room temperature. You want to keep the temperature of the room at a comfortable $22^{\circ}C$. The process variable $y(t)$ is the measured temperature of the room from the thermometer. The set point $r(t)$ is the desired $22^{\circ}C$. The control value $u$ is the voltage applied to the heating coils.
 
 The error is $22^{\circ}C$ minus whatever the current measured temperature of the room is.
-:::
+</Aside>
 
 ## PID in Parallel Form
 
@@ -59,7 +61,9 @@ Inside a PID controller in _parallel form_ (a.k.a. _ideal form_, _non-interactin
 
 This is called the _parallel form_ because if you draw it as a block diagram, the proportional, integral and derivative terms all act in parallel to one another. The parallel form is easy to understand, but not so intuitive to tune[^opticontrols-pid-controller-algorithms]. Many academic related material will only mention this parallel form.
 
-<Image src={require('./pid-controller-diagram-process-error-setpoint-measured-value.webp').default} width="900px">A block diagram of a PID controller.</Image>
+import pid_controller_diagram_process_error_setpoint_measured_value from './pid-controller-diagram-process-error-setpoint-measured-value.webp'
+
+<Image src={pid_controller_diagram_process_error_setpoint_measured_value} width="900px">A block diagram of a PID controller.</Image>
 
 The governing equation of a PID controller in _parallel form_ is[^wikipedia-pid] [^opticontrols-pid-controller-algorithms]:
 
@@ -78,9 +82,9 @@ $$
 	$K_i$ is the integral gain<br/>
 	$K_d$ is the derivative gain<br/></p>
 
-:::tip
+<Aside type="tip">
 Notice that standard $t$ is used for the current time, and $\tau$ (tau) is used for the integration.
-:::
+</Aside>
 
 This can also be written in the Laplace domain as a transfer function[^wikipedia-pid]:
 
@@ -108,7 +112,9 @@ This equation is suitable for implementing in code. There also exists the Z tran
 
 A PID controller in _standard form_ (a.k.a. _ISA standard form_[^control-global-pid-form-trick-or-treat-tips] [^control-engineering-understanding-pid-control-and-loop-tuning]) is more common in industry than in parallel form[^wilderness-labs-standard-pid-algorithm]. The factor $K_p$ is not just applied to the proportional term but instead brought out and applied at the end to all three factors (so it can be thought of as a scaling factor). **Also, the factors that influence the integral and derivative terms now have better intuitive meaning**.
 
-<Image src={require('./standard-form-pid-controller-diagram.webp').default} width="800px">Diagram of a PID controller in standard form.</Image>
+import standard_form_pid_controller_diagram from './standard-form-pid-controller-diagram.webp'
+
+<Image src={standard_form_pid_controller_diagram} width="800px">Diagram of a PID controller in standard form.</Image>
 
 The governing equation of a PID controller in standard form is[^wikipedia-pid]:
 
@@ -126,9 +132,9 @@ The _integral time_ $T_i$ refers to a scenario in where the error starts at 0, a
 
 The _derivative time_ $T_d$ refers to a scenario where the error begins increasing at a fixed rate. The proportional term will start at 0 and begin to increase, whilst the derivative term will provide a fixed response. **The derivative time is the amount of time for the proportional term to equal the derivative term.**
 
-:::warning
+<Aside type="caution">
 Pay close attention to the fact that the integral term is multiplied by $\frac{1}{T_i}$ and not $T_i$. Unlike all other coefficients seen so far, this means that increasing $T_i$ does not strengthen the integral action, but weakens it. Also, you can never completely get rid of integral action when expressed this way, as for this $T_i$ would need to be $\infty$.
-:::
+</Aside>
 
 The parameters $K_i$ and $K_d$ in parallel form are related to the parameters $T_i$ and $T_d$ in standard form by:
 
@@ -189,7 +195,7 @@ One method to perform manual tuning with a PID controller in parallel form is[^s
 
 1. Increase $K_i$ until it removes the steady-state error in an appropriate amount of time.
 
-:::example
+<Aside type="example">
 
 Let's go through an example manual tuning step with a mass-spring-damper (MSD) simulation. The MSD system has the following properties:
 
@@ -201,25 +207,35 @@ The simulator time step is $1ms$. At $t=1s$, we change the set point from $0m$ t
 
 Let's start of by setting all the gains to 0. As expected, we get no response:
 
-<Image src={require('./msd-simulation/manual-tuning-01-p0-i0-d0.png').default} width="600px">1st step of tuning, set all gains to 0.</Image>
+import msd_simulation_manual_tuning_01_p0_i0_d0 from './msd-simulation/manual-tuning-01-p0-i0-d0.png'
+
+<Image src={msd_simulation_manual_tuning_01_p0_i0_d0} width="600px">1st step of tuning, set all gains to 0.</Image>
 
 Now let's increase $K_p$ until the system starts to oscillate continuously (increasing $K_p$ from left to right in the figure):
 
-<Image src={require('./msd-simulation/manual-tuning-02-increasing-kp-round-1.png').default} width="900px">2st step of tuning, increasing $K_p$ until system continuously oscillates.</Image>
+import msd_simulation_manual_tuning_02_increasing_kp_round_1 from './msd-simulation/manual-tuning-02-increasing-kp-round-1.png'
+
+<Image src={msd_simulation_manual_tuning_02_increasing_kp_round_1} width="900px">2st step of tuning, increasing $K_p$ until system continuously oscillates.</Image>
 
 At $K_p=100$, we get continuous oscillation. Now increase $K_d$ until the oscillations are critically dampened:
 
-<Image src={require('./msd-simulation/manual-tuning-03-increasing-kd-round-1.png').default} width="900px">3rd step of tuning, increasing $K_d$ until oscillations are dampened.</Image>
+import msd_simulation_manual_tuning_03_increasing_kd_round_1 from './msd-simulation/manual-tuning-03-increasing-kd-round-1.png'
+
+<Image src={msd_simulation_manual_tuning_03_increasing_kd_round_1} width="900px">3rd step of tuning, increasing $K_d$ until oscillations are dampened.</Image>
 
 When $K_d=19$, the oscillations get critically dampened.
 
 Repeat this process to see if we can still dampen the system. Let's increase $K_p$ again until we get continuous oscillation:
 
-<Image src={require('./msd-simulation/manual-tuning-04-increasing-kp-round-2.png').default} width="900px">4th step of tuning, increasing $K_p$ again.</Image>
+import msd_simulation_manual_tuning_04_increasing_kp_round_2 from './msd-simulation/manual-tuning-04-increasing-kp-round-2.png'
+
+<Image src={msd_simulation_manual_tuning_04_increasing_kp_round_2} width="900px">4th step of tuning, increasing $K_p$ again.</Image>
 
 At around $K_p=1800$ we start to get continuous oscillation. Can we dampen this by increasing $K_d$ again?
 
-<Image src={require('./msd-simulation/manual-tuning-05-increasing-kd-round-2.png').default} width="900px">5th step of tuning, increasing $K_d$ to see if we can critically dampen the oscillations.</Image>
+import msd_simulation_manual_tuning_05_increasing_kd_round_2 from './msd-simulation/manual-tuning-05-increasing-kd-round-2.png'
+
+<Image src={msd_simulation_manual_tuning_05_increasing_kd_round_2} width="900px">5th step of tuning, increasing $K_d$ to see if we can critically dampen the oscillations.</Image>
 
 No we can't! Somewhere between $K_d = 60{-}80$, rather than dampening the system further, we make the system unstable (see the right-most plot). Our loops of increasing $K_p$, $K_d$ are finished, and we go back to the last stable combination, which was $K_p=100$, $K_d=19$.
 
@@ -227,7 +243,9 @@ No we can't! Somewhere between $K_d = 60{-}80$, rather than dampening the system
 
 Now the final step, increase $K_i$ until the steady-state error is eliminated in a suitable amount of time:
 
-<Image src={require('./msd-simulation/manual-tuning-06-increasing-ki.png').default} width="900px">6th step of tuning, increasing $K_i$ until steady-state error is eliminated in a suitable amount of time.</Image>
+import msd_simulation_manual_tuning_06_increasing_ki from './msd-simulation/manual-tuning-06-increasing-ki.png'
+
+<Image src={msd_simulation_manual_tuning_06_increasing_ki} width="900px">6th step of tuning, increasing $K_i$ until steady-state error is eliminated in a suitable amount of time.</Image>
 
 At $K_i=200$, the system settles in about $1s$ with almost no steady-state error. So our final tuning parameters are:
 
@@ -237,7 +255,7 @@ At $K_i=200$, the system settles in about $1s$ with almost no steady-state error
 
 We get a little bit of overshoot, but this is fine for our application.
 
-:::
+</Aside>
 
 
 ## Integral Windup
@@ -312,15 +330,17 @@ This gets rid of derivative kick in the PID controller when the set point change
 
 In the context of PID control, _feedforward_ is the act of computing a best guess at the needed control value from measured process variables, and using this information to assist the PID control. Generally you are **making predictions on what the control value will need to be based of physical laws and knowledge of how the system works**. PID without feedforward does not predict what is going to happen before it happens --- it only operates on the error once it has occurred. Feedforward can help by providing some prediction of what is going to happen, before it happens (proactively)[^incatools-feedforward-pid-controllers].
 
-<Image src={require('./pid-controller-with-feedforward-diagram.webp').default} width="800px">A PID controller with feedforward added.</Image>
+import pid_controller_with_feedforward_diagram from './pid-controller-with-feedforward-diagram.webp'
+
+<Image src={pid_controller_with_feedforward_diagram} width="800px">A PID controller with feedforward added.</Image>
 
 In typical PID controllers with feedforward, a large proportion of the control value is actually generated by the feedforward, and only a small amount by the PID loop, which aims to correct for any inaccuracies in the feedforward model of the system.
 
-:::example
+<Aside type="example">
 Imagine a basic PID controller which wants to set the voltage across the fixed resistor (with known resistance). It is able to measure the voltage across the resistor and change this voltage by changing the current (i.e. the output of the PID controller is connected to a current source). A primitive PID loop would accept a set point, and then change the current based on the error between the set point and process value.
 
 A PID controller with feedforward might improve on this by realizing that we can calculate the current needed to get to the set point based on Ohm's law, i.e. $I = \frac{V}{R}$. This feedforward will give us most of the required control value, but we still want to keep the PID loop to modify the control value slightly to fix any inaccuracies, e.g. measurement error in the resistance or accuracy of the current source. 
-:::
+</Aside>
 
 Feedforward control can be difficult to implement when the **process behaviour is not well understood**, or it's **hard to measure the variables which disturb** the process. In many cases, when basic PID control alone is sufficient, adding feedforward is not worth the extra complexity.
 
@@ -328,7 +348,9 @@ Feedforward control can be difficult to implement when the **process behaviour i
 
 Lets assume a mass/spring/damper process (aka plant or system) which consists of a mass attached to a fixed wall by spring and damper. We want to control the position of the mass, relative to it's resting point (which will be when the spring exerts no force). We can control the mass by applying an external force to the mass, $F_{ext}$.
 
-<Image src={require('./mass-spring-damper-system-diagram-pid.png').default} width="600px">A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning.</Image>
+import mass_spring_damper_system_diagram_pid from './mass-spring-damper-system-diagram-pid.png'
+
+<Image src={mass_spring_damper_system_diagram_pid} width="600px">A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning.</Image>
 
 ### The Physics
 
@@ -393,25 +415,33 @@ $$
 
 Let's begin by just adding some proportional gain. Let's set $K_p=10, K_i=0, K_d=0$:
 
-<Image src={require('./msd-simulation/msd-response-plot-p10-i0-d0.png').default} width="800px">The response of the mass-spring-damper system with just proportional gain.</Image>
+import msd_simulation_msd_response_plot_p10_i0_d0 from './msd-simulation/msd-response-plot-p10-i0-d0.png'
+
+<Image src={msd_simulation_msd_response_plot_p10_i0_d0} width="800px">The response of the mass-spring-damper system with just proportional gain.</Image>
 
 You can clearly see that this PID controller does not work very well. It only moves the block to about $0.3m$ and then stops. Let's bump up the proportional gain to see if we can reduce the error further:
 
-<Image src={require('./msd-simulation/msd-response-plot-p300-i0-d0.png').default} width="800px">The response of the mass-spring-damper system with more proportional gain.</Image>
+import msd_simulation_msd_response_plot_p300_i0_d0 from './msd-simulation/msd-response-plot-p300-i0-d0.png'
+
+<Image src={msd_simulation_msd_response_plot_p300_i0_d0} width="800px">The response of the mass-spring-damper system with more proportional gain.</Image>
 
 It's better, but we still have significant steady-state error, and we've now got overshoot. Steady-state error is almost unavoidable with only pure proportional control. Integral control is perfect at fixing steady-state error, so let's add some. We'll fix the overshoot later:
 
-<Image src={require('./msd-simulation/msd-response-plot-p300-i300-d0.png').default} width="800px">The response of the mass-spring-damper system with more proportional gain.</Image>
+import msd_simulation_msd_response_plot_p300_i300_d0 from './msd-simulation/msd-response-plot-p300-i300-d0.png'
+
+<Image src={msd_simulation_msd_response_plot_p300_i300_d0} width="800px">The response of the mass-spring-damper system with more proportional gain.</Image>
 
 Getting better! You can see the effect of adding the integral control, the steady state error is now eventually removed. Now let's see if we can get rid of the overshoot by adding some derivative control:
 
-<Image src={require('./msd-simulation/msd-response-plot-p300-i300-d20.png').default} width="800px">The response of the mass-spring-damper system with derivative control added.</Image>
+import msd_simulation_msd_response_plot_p300_i300_d20 from './msd-simulation/msd-response-plot-p300-i300-d20.png'
+
+<Image src={msd_simulation_msd_response_plot_p300_i300_d20} width="800px">The response of the mass-spring-damper system with derivative control added.</Image>
 
 Now we are looking pretty good! We've completely removed the oscillations at the process reaches the setpoint pretty quickly. Note though that the derivative terms introduces a huge "kick" when the step change happens (this makes sense, because at that point there is a huge change in error!). This may saturate the actual thing connected to the control output (e.g. a linear motor which provides the external force), and control value limiting may need to be added to the PID controller.
 
-:::tip
+<Aside type="tip">
 I'm not claiming to have just stumbled across coefficients that seemed to work well, to get to these values I spent a bit of time experimenting with the numbers. I didn't follow any specific tuning method.
-:::
+</Aside>
 
 If you are interested in the Python code that was used to perform this simulation, see [here](./msd-simulation/main.py).
 
@@ -429,7 +459,9 @@ If you are looking for PID code for an embedded system, check out my [Pid projec
 
 [pidtuner.com](https://pidtuner.com/) is a free, open-source PID tuning web application. It works by allowing you to import measured output/input data, then select a single step change within the data, apply a mathematical model to the system, and then play around with P, I and D coefficients and see how the system responds[^pid-tuner-dot-com-homepage].
 
-<Image src={require('./pid-tuner-screenshot.png').default} width="900px">Screenshot of the PID tuning app at pidtuner.com[^pid-tuner-dot-com-homepage].</Image>
+import pid_tuner_screenshot from './pid-tuner-screenshot.png'
+
+<Image src={pid_tuner_screenshot} width="900px">Screenshot of the PID tuning app at pidtuner.com[^pid-tuner-dot-com-homepage].</Image>
 
 ## References
 

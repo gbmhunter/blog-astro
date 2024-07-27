@@ -7,6 +7,8 @@ title: socat
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 `socat` is a very powerful utility program for establishing bi-directional data streams between two data sinks/sources. It can be used for creating two virtual COM ports that relay information to each other.
@@ -33,9 +35,9 @@ A little explanation: The `-d -d` instructs socat to print fatal, error and warn
 
 Once you type this and press enter, socat will report back with the COM ports it decided to use. The program will not return (the terminal will hang) until you wish to cancel the link (press `Ctrl-C`).
 
-:::warning
+<Aside type="caution">
 These virtual serial ports do not fully emulate a hardware serial port. Things like baud rate, hardware flow signals e.t.c are not taken into account.
-:::
+</Aside>
 
 If you get a `bash: /dev/pts/x: Permission denied error`, run the following command:
 

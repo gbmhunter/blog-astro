@@ -10,6 +10,8 @@ title: Serialization for Embedded Systems
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 This page details one way of serializing messages for embedded systems. The method described here is based on Google's protobuf serialization format.
@@ -182,9 +184,9 @@ What does the receiver do? The receiver throws away bytes until it receives a st
 
 If you decided to use the enum method to determine the message type, you would need to add the message type to the start of the encoded protobuf message before the escaping and framing process. You would then unpack this during decoding and calling the correct decode function based on the message type. Another thing you may want to do is add a CRC checksum. This would be added to the header similarly to the message type, and ideally be calculated over the protobuf encoded message and the message type enum (if used).
 
-:::tip
+<Aside type="tip">
 If you are worried about how many extra bytes the escaping might add, take a look at [COBS (Constant Overhead Byte Stuffing)](/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/). It's a clever method of escaping and framing which has a maximum escaping overhead of 1 byte per 254 bytes of data.
-:::
+</Aside>
 
 ## nanopb
 
@@ -281,7 +283,9 @@ Luckily, there are alternatives. [danielgtaylor/python-betterproto](https://gith
 
 [bitproto](https://bitproto.readthedocs.io/en/latest/) is a protobuf-like serialization format which allows you to specify variable widths on the bit level, eliminating some of protobuf's shortcomings when it comes to specifying small data types. It uses similar looking files to protobuf to describe messages.
 
-<Image src={require('./_assets/bitproto-logo.png').default} width="200px">The bitproto logo.</Image>
+import bitproto_logo from './_assets/bitproto-logo.png'
+
+<Image src={bitproto_logo} width="200px">The bitproto logo.</Image>
 
 [NordicSemiconductor/zcbor](https://github.com/NordicSemiconductor/zcbor) is a C (it's also C++ compatible) CBOR library that uses CDDL to essentially provide a "schema" for defining the messages. C/C++ code is generated from this schema. As of May 2024, it has 100 stars on GitHub.
 

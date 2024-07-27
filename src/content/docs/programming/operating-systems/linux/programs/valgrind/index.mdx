@@ -11,11 +11,15 @@ title: "valgrind"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Valgrind is a tool that can be used to detect memory management and threading bugs.
 
-<Image src={require('./valgrind-logo.jpg').default} width="316px">The Valgrind logo.</Image>
+import valgrind_logo from './valgrind-logo.jpg'
+
+<Image src={valgrind_logo} width="316px">The Valgrind logo.</Image>
 
 ## Installation
 
@@ -82,9 +86,9 @@ To run callgrind, use the following command:
 
 The order of the optional parameters to valgrind is important! Make sure `--tool=callgrind` comes BEFORE the path to your executable.
 
-:::warning
+<Aside type="caution">
 Again, callgrind will make your program run 4-10x slower than usual. If this slow down is unacceptable for whatever reason, but you still want to profile your application, you may want to check out GCC's `gprof` which in my experience, causes much less of a performance drop.
-:::
+</Aside>
 
 This will generate a profile data file called `callgrind.out.<pid>` in the same folder as the exectuable. To display the results of the profiling:
 
@@ -110,4 +114,6 @@ $ kcachegrind
 
 You should then be presented with wonderful profiling data as shown below!
 
-<Image src={require('./callgrind-profiling-output-displayed-in-kcachegrind.png').default} width="1310px">The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping).</Image>
+import callgrind_profiling_output_displayed_in_kcachegrind from './callgrind-profiling-output-displayed-in-kcachegrind.png'
+
+<Image src={callgrind_profiling_output_displayed_in_kcachegrind} width="1310px">The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping).</Image>

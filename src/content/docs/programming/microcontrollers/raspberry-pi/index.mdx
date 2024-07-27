@@ -11,11 +11,12 @@ title: RaspberryPi
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 The RaspberryPi is a family of cheap, fully-functional micro-computers.
 
-<Image src={require('/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg').default} width="800px">The RaspberryPi while testing.</Image>
 
 ## Quick Setup
 
@@ -162,7 +163,9 @@ Check out the [Quick2wire Python API repo](https://github.com/quick2wire/quick2w
 
 There is also the [pi-gpio module](https://npmjs.org/package/pi-gpio) for controlling GPIO with [nodejs](/programming/website-design/nodejs/). Good for when you are wanting to control the RPi GPIO from across a network (remotely).
 
-<Image src={require('/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg').default} width="800px">I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing.</Image>
+// import _images_project_autoelectricblanket_simple_led_connected_to_raspberry_pi_gpio from '/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg'
+
+// <Image src={_images_project_autoelectricblanket_simple_led_connected_to_raspberry_pi_gpio} width="800px">I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing.</Image>
 
 ## PWM
 

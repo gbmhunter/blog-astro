@@ -8,6 +8,8 @@ title: Volumes
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <h2>Overview</h2>
 
 <p>Volumes is a docker concept which allows you to have persistent storage within a docker container. It also allows files to be shared between the docker container and the host machine.</p>
@@ -22,9 +24,9 @@ type: page
 $ docker run -it -v my-volume:/root container
 ```
 
-:::note
+<Aside type="note">
 Any existing files in <code>/root/</code> will be shadowed by this mount. This means that you cannot expose pre-existing files that reside in the container to the root system using this method.
-:::
+</Aside>
 
 ## Using A Dockerfile
 

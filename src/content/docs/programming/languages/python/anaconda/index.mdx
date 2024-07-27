@@ -11,11 +11,15 @@ title: Anaconda
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Anaconda exposes two important command-line tools, conda and source.
 
-<Image src={require('./_assets/anaconda-python-logo.png').default} width="598px">The logo for Anaconda (Python distribution/environment).</Image>
+import anaconda_python_logo from './_assets/anaconda-python-logo.png'
+
+<Image src={anaconda_python_logo} width="598px">The logo for Anaconda (Python distribution/environment).</Image>
 
 ## How To Create And Use A Virtual Environment
 
@@ -39,9 +43,9 @@ Install your required packages:
 $ conda install -n <your environment name> <package>
 ```
 
-:::note
+<Aside type="note">
 If you don't specify an environment to install to (as above), Anaconda will install to the currently active environment. To install to any environment which is not currently active, add the option `-n <your environment name>` to the above command.
-:::
+</Aside>
 
 Now you can run your python code!
 

@@ -6,6 +6,8 @@ title: Non-local Jumps (setjmp(), longjmp())
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 The C functions `setjmp()` and `longjmp()` provide the ability to perform non-local jumps. A non-local jump is a jump in code execution between two separate functions. This is opposed the the local jump, goto which can perform jumps as long as you stay within the same function.

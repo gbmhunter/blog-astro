@@ -10,6 +10,8 @@ title: Data Types
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## The Basic Data Types
 
 The C programming languages supports the following basic data types:
@@ -24,9 +26,9 @@ The C programming languages supports the following basic data types:
 
 Some of these types can be prefixed with the modifiers `short` and `long`, which change the size of the data type, and the modifiers `signed` and `unsigned` which change whether a number can stored negative numbers or not (in this case, the size of the type does not change, but the range of numbers it can represent does). Every other data type/structure is made up from a combination of these basic data types and the modifiers.
 
-:::warning
+<Aside type="caution">
 It is strongly recommended that you don't use the numeric data types which can vary in size such as `int`, and instead use fixed-width data types such as `uint8_t`, `int32_t`, e.t.c. This increases the portability of your code and increases the readability (it makes it very obvious to a reader of each integer variable's capacity). These fixed-width types are almost always specified by architecture specific headers which essentially `typedef` to the correct `int`/`long int`/e.t.c for that architecture.
-:::
+</Aside>
 
 The fixed-width data types are usually defined in `stdint.h`. These include:
 

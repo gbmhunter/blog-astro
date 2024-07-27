@@ -7,11 +7,15 @@ title: Gradle
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Gradle is an open-source build automation system. It is primarily targeted towards languages running on the JVM (Java Virtual Machine).
 
-<Image src={require('./gradlephant-gradle-logo-v2.png').default} width="271px">The Gradle logo.</Image>
+import gradlephant_gradle_logo_v2 from './gradlephant-gradle-logo-v2.png'
+
+<Image src={gradlephant_gradle_logo_v2} width="271px">The Gradle logo.</Image>
 
 One of it's big advantages over Maven is it's use of a domain-specific language (DSL) rather than XML to specify the project configuration and build steps.
 

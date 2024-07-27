@@ -11,6 +11,8 @@ title: "C# Programming"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## String Manipulation
 
 `<string type>.IndexOf` - Searches for a particular character within a string, and returns the position of the first instance found. Can specify where in the string to start looking, as well as how many characters to look through
@@ -153,7 +155,9 @@ You can manipulate Microsoft Office applications quite easily within the .NET fr
 
 I recommend a package manager like NuGet is used to install third-party libraries/packages whenever possible. NuGet allows you to select a pre-compiled third-part library from a large online database and then install it into a Visual Studio project at the click of a button. It also removes a library just as quickly. The image below shows the NuGet package management screen
 
-<Image src={require('./_assets/screenshot-of-nuget-plugin-for-visual-studio.jpg').default} width="700px">A screenshot of the NuGet plugin for Visual Studio.</Image>
+import screenshot_of_nuget_plugin_for_visual_studio from './_assets/screenshot-of-nuget-plugin-for-visual-studio.jpg'
+
+<Image src={screenshot_of_nuget_plugin_for_visual_studio} width="700px">A screenshot of the NuGet plugin for Visual Studio.</Image>
 
 ## Other Resources
 

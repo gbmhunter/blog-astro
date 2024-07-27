@@ -10,6 +10,8 @@ title: Bash
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Bash, apart from being a UNIX shell, is also a **programming language in it's own right**. It is commonly referred to as a _scripting language_ because the script is not compiled, but rather interpreted at runtime.
@@ -112,9 +114,9 @@ flags:
 
 As shown above, it also supports automatic help! Although the shebang in the above example is `#!/bin/sh`, this can be changed to `#!/usr/bin/env bash` without any issues. 
 
-:::warning
+<Aside type="caution">
 If using bash, make sure that `set -e` is not active when `shflags` is sourced, otherwise your script will crash when sourcing, with no helpful error message displayed.
-:::
+</Aside>
 
 ## Refreshing The Current Working Directory After It Was Deleted And Recreated
 

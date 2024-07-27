@@ -6,6 +6,8 @@ title: Shields And Hardware
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Infrared Sensors
 
 Supplier: [DealExtreme](http://dx.com/)  
@@ -14,7 +16,9 @@ Price: (unknown)
 
 A simple three PIN device that is good for binary (on/off) short-range detection between 0-30mm. Uses a POT to adjust the threshold. This came with the Arduino 4WD Robot platform.
 
-<Image src={require('./_assets/arduino-infrared-sensors.jpg').default} width="400px">Arduino-compatible infrared sensors.</Image>
+import arduino_infrared_sensors from './_assets/arduino-infrared-sensors.jpg'
+
+<Image src={arduino_infrared_sensors} width="400px">Arduino-compatible infrared sensors.</Image>
 
 ## Freetronics LCD And Keypad Shield
 
@@ -45,11 +49,15 @@ void loop() {
 
 ## Motor Controller
 
-<Image src={require('./_assets/arduino-4wd-robot-motor-controller.jpg').default} width="400px">The controller for a Arduino 4WD robot.</Image>
+import arduino_4wd_robot_motor_controller from './_assets/arduino-4wd-robot-motor-controller.jpg'
+
+<Image src={arduino_4wd_robot_motor_controller} width="400px">The controller for a Arduino 4WD robot.</Image>
 
 ## Sensor Shield
 
-<Image src={require('./_assets/arduino-sensor-shield.jpg').default} width="400px">An Arduino sensor shield.</Image>
+import arduino_sensor_shield from './_assets/arduino-sensor-shield.jpg'
+
+<Image src={arduino_sensor_shield} width="400px">An Arduino sensor shield.</Image>
 
 ## Ultrasonic Ranging Module HCSR-04
 
@@ -60,11 +68,15 @@ Price: US$4.00 (as of 2012)
 
 Very easy to interface to, due there being a native Arduino API function called pulseIn(), which returns the length of a digital pulse measured on one of it's pins. Example firmware code for this module can be found on the [xAppSoftware Blog](http://www.xappsoftware.com/wordpress/2012/03/15/how-to-interface-the-hc-sr04-ultrasonic-ranging-module-to-arduino/). Included in the Arduino 4WD Robot Platform.
 
-<Image src={require('./_assets/arduino-ultrasound-module.jpg').default} width="600px">An Arduino compatible ultrasound module.</Image>
+import arduino_ultrasound_module from './_assets/arduino-ultrasound-module.jpg'
+
+<Image src={arduino_ultrasound_module} width="600px">An Arduino compatible ultrasound module.</Image>
 
 ## The DealExtreme Robotic Platform
 
-<Image src={require('./_assets/bottom-side-of-arduino-4wd-robot.jpg').default} width="200px">The bottom side of the 4WD Arduino robot.</Image>
+import bottom_side_of_arduino_4wd_robot from './_assets/bottom-side-of-arduino-4wd-robot.jpg'
+
+<Image src={bottom_side_of_arduino_4wd_robot} width="200px">The bottom side of the 4WD Arduino robot.</Image>
 
 Supplier: [DealExtreme](http://dx.com/)  
 Product Link: (http://dx.com/p/multi-function-4wd-arduino-robot-raider-car-kits-128715, **as of Dec 2017, URL is unavailable**)  
@@ -74,4 +86,6 @@ A cheap, versatile, easy-to-use (well, kind of, but read the next paragraph) rob
 
 No instructions come with this! You are left on your own to figure out how to assemble and then use it. That said, you can find instructions written by users for most of the individual components on online blogs.
 
-<Image src={require('./_assets/arduino-4wd-robot-base-wheels-motor-driver.jpg').default} width="600px">A Arduino robot base.</Image>
+import arduino_4wd_robot_base_wheels_motor_driver from './_assets/arduino-4wd-robot-base-wheels-motor-driver.jpg'
+
+<Image src={arduino_4wd_robot_base_wheels_motor_driver} width="600px">A Arduino robot base.</Image>
