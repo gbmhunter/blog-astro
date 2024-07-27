@@ -6,7 +6,7 @@ import rehypeMathJax from 'rehype-mathjax';
 import AutoImport from 'astro-auto-import';
 
 
-console.log(import.meta.glob('./**/*.md'));
+// console.log(import.meta.glob('./**/*.md'));
 
 // https://astro.build/config
 export default defineConfig({
@@ -80,6 +80,26 @@ export default defineConfig({
 				{
 					label: 'Programming',					
 					autogenerate: { directory: 'programming' },
+				},
+				{
+					label: 'Project Management',					
+					autogenerate: { directory: 'project-management' },
+				},
+				{
+					label: 'Pyrotechnics',					
+					autogenerate: { directory: 'pyrotechnics' },
+				},
+				{
+					label: 'Robotics',					
+					autogenerate: { directory: 'robotics' },
+				},
+				{
+					label: 'Site Info',					
+					autogenerate: { directory: 'site-info' },
+				},
+				{
+					label: 'Space',					
+					autogenerate: { directory: 'space' },
 				},
 				{
 					label: 'Test',
