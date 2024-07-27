@@ -11,9 +11,13 @@ title: TO-Leadless Component Package
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
-<Image src={require('./_assets/to-leadless-component-package-3d-render.jpg').default} width="200px">A 3D render of the TO-Leadless component package.</Image>
+import to_leadless_component_package_3d_render from './_assets/to-leadless-component-package-3d-render.jpg'
+
+<Image src={to_leadless_component_package_3d_render} width="200px">A 3D render of the TO-Leadless component package.</Image>
 
 TO-Leadless is a component package is solely used by Infineon for a range of it's high power MOSFETs[^infineon-to-leadless]. In this package, Infineon's MOSFETs can achieve on-resistances as low as 0.4mΩ. It's package size is 60% smaller than the D2PAK 7-pin package.
 
@@ -21,7 +25,9 @@ The package has 8 leads plus and exposed pad[^infineon-ipt026n10n5-mosfet-ds].
 
 Below is a size comparison between DPAK (left) and TO-Leadless (right):
 
-<Image src={require('./_assets/to-leadless-component-package-size-comparison-with-d2pak.png').default} width="500px">Size comparison between the TO-Leadless and DPAK component packages.</Image>
+import to_leadless_component_package_size_comparison_with_d2pak from './_assets/to-leadless-component-package-size-comparison-with-d2pak.png'
+
+<Image src={to_leadless_component_package_size_comparison_with_d2pak} width="500px">Size comparison between the TO-Leadless and DPAK component packages.</Image>
 
 ## Synonyms
 
@@ -29,13 +35,19 @@ Below is a size comparison between DPAK (left) and TO-Leadless (right):
 
 ## Dimensions
 
-<Image src={require('./_assets/to-leadless-component-package-dimensions.png').default} width="800px">The dimensions of the TO-Leadless component package.</Image>
+import to_leadless_component_package_dimensions from './_assets/to-leadless-component-package-dimensions.png'
+
+<Image src={to_leadless_component_package_dimensions} width="800px">The dimensions of the TO-Leadless component package.</Image>
 
 ## Footprint
 
-<Image src={require('./_assets/to-leadless-component-package-recommended-land-pattern.png').default} width="800px">The recommended land pattern for the TO-Leadless component package.</Image>
+import to_leadless_component_package_recommended_land_pattern from './_assets/to-leadless-component-package-recommended-land-pattern.png'
 
-<Image src={require('./_assets/to-leadless-component-package-recommended-stencil.png').default} width="600px">The recommended stencil pattern for the TO-Leadless component package.</Image>
+<Image src={to_leadless_component_package_recommended_land_pattern} width="800px">The recommended land pattern for the TO-Leadless component package.</Image>
+
+import to_leadless_component_package_recommended_stencil from './_assets/to-leadless-component-package-recommended-stencil.png'
+
+<Image src={to_leadless_component_package_recommended_stencil} width="600px">The recommended stencil pattern for the TO-Leadless component package.</Image>
 
 ## Solderability
 

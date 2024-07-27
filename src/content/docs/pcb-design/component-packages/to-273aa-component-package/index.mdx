@@ -12,6 +12,8 @@ title: TO-273AA Component Package
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 TO-273AA (Transistor Outline 273AA) is a through-hole component package.
@@ -24,11 +26,15 @@ The TO-273AA (also known as the Super-220) can be considered a variant of the TO
 
 ## 3D Render
 
-<Image src={require('./_assets/to-273aa-super-to-220-component-package-3d-render.png').default} width="200px">A 3D render of the TO-273AA (Super TO-220) component package. Image from http://www.irf.com/part/INTELLIGENT-POWER-SWITCH-1-CHANNEL-LOW-SIDE-DRIVER-IN-A-SUPER-220-TO-273AA-PACKAGE/_/A~IPS0551T.</Image>
+import to_273aa_super_to_220_component_package_3d_render from './_assets/to-273aa-super-to-220-component-package-3d-render.png'
+
+<Image src={to_273aa_super_to_220_component_package_3d_render} width="200px">A 3D render of the TO-273AA (Super TO-220) component package. Image from http://www.irf.com/part/INTELLIGENT-POWER-SWITCH-1-CHANNEL-LOW-SIDE-DRIVER-IN-A-SUPER-220-TO-273AA-PACKAGE/_/A~IPS0551T.</Image>
 
 ## Dimensions
 
-<Image src={require('./_assets/component-package-to-273aa-super-to-220-case-outline-dimensions.png').default} width="700px">The case outline and dimensions of the TO-273AA component package (Super TO-220). Image from http://www.irf.com/product-info/datasheets/data/ips0551t.pdf.</Image>
+import component_package_to_273aa_super_to_220_case_outline_dimensions from './_assets/component-package-to-273aa-super-to-220-case-outline-dimensions.png'
+
+<Image src={component_package_to_273aa_super_to_220_case_outline_dimensions} width="700px">The case outline and dimensions of the TO-273AA component package (Super TO-220). Image from http://www.irf.com/product-info/datasheets/data/ips0551t.pdf.</Image>
 
 Pitch is 2.54mm (100mil).
 

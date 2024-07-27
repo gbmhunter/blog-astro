@@ -12,6 +12,8 @@ title: "PCB Design Tools"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Here's a list of some useful design tools which come in useful when making PCBs.
@@ -26,7 +28,9 @@ Altium is a professional, licensed electronic CAD design package, whose two core
 
 Very simple but extensive PCB design aid. And it's free! Includes a via current calculator, trace width calculator, bandwidth calculator, differential pair calculator, mechanical data, conductor impedance calculator, unit conversions, planar inductor calculator, thermal resistance calculator and more!
 
-<Image src={require('./saturn-pcb-toolkit-screenshot.gif').default} width="500px">A screen-shot of the Saturn PCB toolkit.</Image>
+import saturn_pcb_toolkit_screenshot from './saturn-pcb-toolkit-screenshot.gif'
+
+<Image src={saturn_pcb_toolkit_screenshot} width="500px">A screen-shot of the Saturn PCB toolkit.</Image>
 
 ## Standard Resistor Calculator
 
@@ -34,4 +38,6 @@ Very simple but extensive PCB design aid. And it's free! Includes a via current 
 
 Invaluable when working out the closest manufactured resistor to the value you need in your design. There are tons of web-based calculators out there, and most let you choose a resistor series (e.g. E12, E24 e.t.c), or a precision (e.g. 5%, 1%). The higher the precision (1% is higher than 5%), the more expensive the resistor.
 
-<Image src={require('./resistor-calculator-screenshot.jpg').default} width="500px">Screenshot of the resistor calculator.</Image>
+import resistor_calculator_screenshot from './resistor-calculator-screenshot.jpg'
+
+<Image src={resistor_calculator_screenshot} width="500px">Screenshot of the resistor calculator.</Image>

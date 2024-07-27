@@ -6,6 +6,8 @@ title: Prototyping
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 PCBs are costly and take time. Complex ones even more so. Even the best PCB designers make mistakes. Prototyping is the building and testing of any circuit before the point where the designer considers the design finished and tested.
@@ -14,7 +16,9 @@ You may wish to build up a small prototype circuit on stripboard of the analogue
 
 Try and use development kits wherever possible.
 
-<Image src={require('./_assets/first-electric-skateboard-prototype-circuit.jpg').default} width="504px">The first prototype circuit for the electric skateboard.</Image>
+import first_electric_skateboard_prototype_circuit from './_assets/first-electric-skateboard-prototype-circuit.jpg'
+
+<Image src={first_electric_skateboard_prototype_circuit} width="504px">The first prototype circuit for the electric skateboard.</Image>
 
 ## Grid Generators
 

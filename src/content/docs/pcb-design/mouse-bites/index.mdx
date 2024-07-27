@@ -12,6 +12,8 @@ title: Mouse Bites
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 Mouse bites are a set of drill holes arranged in a small semi-circle on the edge of the board. They are used when the board is going to be panelised, routed, and populated with a pick and place machine.
@@ -22,7 +24,9 @@ There is no standardised symbol for mouse bites. In fact, mouse bites may be dir
 
 I use the following symbol to define mouse bites on schematics:
 
-<Image src={require('./mouse-bite-schematic-symbol-three-circles.png').default} width="248px">A schematic symbol for a mouse bite. Mouse bites may be added directly to the PCB and not feature on the schematics.</Image>
+import mouse_bite_schematic_symbol_three_circles from './mouse-bite-schematic-symbol-three-circles.png'
+
+<Image src={mouse_bite_schematic_symbol_three_circles} width="248px">A schematic symbol for a mouse bite. Mouse bites may be added directly to the PCB and not feature on the schematics.</Image>
 
 ## PCB Considerations
 

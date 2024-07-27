@@ -12,11 +12,13 @@ title: SOIC Component Package
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 SOIC is the name for a family of SMD component packages that have gull-wing leads on two sides of the package. SOIC is a very popular package and is commonly used to house integrated circuits (ICs).
 
-:::warning
+<Aside type="caution">
 There are are three different widths of SOIC packages, all which can be referred to as just SOIC by manufacturers in component datasheets! When designing a PCB, make sure to double-check the exact package width matches the PCB footprint/land pattern you've chosen.
 
 1. Package body width of 3.80mm (0.150"). JEDEC standard, commonly used for SOIC packages with a small pin count (16 or less).
@@ -24,7 +26,7 @@ There are are three different widths of SOIC packages, all which can be referred
 1. Package body width of 7.52mm (0.300"). JEDEC standard, commonly called SOIC Wide or `SOIC-W` (e.g. Maxim package `SOIC (W)` variant `W20+6`)[^bib-maxim-soicw-20-28].
 
 More on these different width SOIC packages below.
-:::
+</Aside>
 
 ## Synonyms
 
@@ -45,11 +47,15 @@ The JEDEC version of the `SOIC` (a.k.a `SOIC-xN` (SOIC narrow)) family of packag
 
 The dimensions for the `SOIC-8N` package are shown below:
 
-<Image src={require('./_assets/soic-8-component-package-dimensions.png').default} width="555px">The dimensions for the SOIC-8N component package.</Image>
+import soic_8_component_package_dimensions from './_assets/soic-8-component-package-dimensions.png'
+
+<Image src={soic_8_component_package_dimensions} width="555px">The dimensions for the SOIC-8N component package.</Image>
 
 The dimensions for the `SOIC-16N` component package are shown below:
 
-<Image src={require('./_assets/soic-16-component-package-dimensions.jpg').default} width="575px">The dimensions for the SOIC-16N component package.</Image>
+import soic_16_component_package_dimensions from './_assets/soic-16-component-package-dimensions.jpg'
+
+<Image src={soic_16_component_package_dimensions} width="575px">The dimensions for the SOIC-16N component package.</Image>
 
 Land area:
 
@@ -98,23 +104,29 @@ Adapter PCBs for the `SOIC` family of packages are widely available due to the p
 
 SparkFun makes a `SOIC-8` to `DIP-8-300` adapter PCB.
 
-<Image src={require('./_assets/soic-8-component-package-sparkfun-breakout-board.jpg').default} width="272px">A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.</Image>
+import soic_8_component_package_sparkfun_breakout_board from './_assets/soic-8-component-package-sparkfun-breakout-board.jpg'
+
+<Image src={soic_8_component_package_sparkfun_breakout_board} width="272px">A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.</Image>
 
 ## Thermal Resistance And Power Dissipation
 
 This graph shows the maximum power dissipation for the `SOIC-8N` component package, for various PCB copper areas.
 
-<Image src={require('./_assets/maximum-power-dissapation-graphs-so-8.png').default} width="701px">Maximum power dissipation graphs for the SOIC-8N component package.</Image>
+import maximum_power_dissapation_graphs_so_8 from './_assets/maximum-power-dissapation-graphs-so-8.png'
+
+<Image src={maximum_power_dissapation_graphs_so_8} width="701px">Maximum power dissipation graphs for the SOIC-8N component package.</Image>
 
 ## Standard Pinout For MOSFETs
 
 The `SOIC-8` component package is commonly used for medium-power N and P-channel MOSFETs. Most of these MOSFETs have the exact same pinout (both N and P-Channels!), as shown in the below diagram.
 
-:::note
+<Aside type="note">
 As far I'm aware, this is not specified in any standard, but is just an industry default. Also, this only applies to `SOIC-8` packages with 1 MOSFET inside them.
-:::
+</Aside>
 
-<Image src={require('./_assets/soic-8-component-package-standard-mosfet-pinout.png').default} width="334px">The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.</Image>
+import soic_8_component_package_standard_mosfet_pinout from './_assets/soic-8-component-package-standard-mosfet-pinout.png'
+
+<Image src={soic_8_component_package_standard_mosfet_pinout} width="334px">The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.</Image>
 
 Examples that follow this pinout include the [ST STS25NH3LL (N-channel)](https://www.sparkfun.com/datasheets/Robotics/sts25nh3ll.pdf), the [International Rectifier IRF8721PbF-1 (N-channel)](http://www.irf.com/product-info/datasheets/data/irf8721pbf-1.pdf), and the [Vishay SI9407BDY-T1-GE3 (P-channel)](http://www.vishay.com/docs/69902/si9407bd.pdf).
 

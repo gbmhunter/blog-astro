@@ -11,6 +11,8 @@ title: "Desmear And Etchback"
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 The mechanical of vias in multi-layer PCBs crates a residual resin that smears along the walls of the vias, preventing a good electrical connection between the copper layers and the via itself. The residue is due the the heat of the drill bit melting the resin and smearing it across the inner-layer copper surfaces in the via barrel. The idea behind desmear is to remove this residue so that a good connection is achieved when the via is plated (metallized). Etchback is the idea that one can go further than just removing resin, and etch away some of the epoxy/resin from the via barrel wall, giving what people call a "three-point connection" which could provide even better connectivity (this is a controversial topic). This is commonly used on high reliability PCBs (such as military, aerospace and medical PCBs).
@@ -22,9 +24,24 @@ The images below show positive etchback.
 <table>
   <tbody>
     <tr>
-      <td><Image src={require('./etchback-none.png').default} width="200px">Cross-section of a via hole with no etchback (hole has not been plated yet).</Image></td>
-      <td><Image src={require('./etchback-before-plating.png').default} width="220px">Cross-section of a via hole that has positive etchback (hole has not been plated yet).</Image></td>
-      <td><Image src={require('./etchback-after-plating.png').default} width="200px">Cross-section of a via which has been plated after positive etchback was done, notice the 'three-point connection'.</Image></td>
+      <td>
+      
+import etchback_none from './etchback-none.png'
+
+<Image src={etchback_none} width="200px">Cross-section of a via hole with no etchback (hole has not been plated yet).</Image>
+</td>
+      <td>
+
+import etchback_before_plating from './etchback-before-plating.png'
+
+<Image src={etchback_before_plating} width="220px">Cross-section of a via hole that has positive etchback (hole has not been plated yet).</Image>
+</td>
+      <td>
+
+import etchback_after_plating from './etchback-after-plating.png'
+
+<Image src={etchback_after_plating} width="200px">Cross-section of a via which has been plated after positive etchback was done, notice the 'three-point connection'.</Image>
+</td>
     </tr>
   </tbody>
 </table>
@@ -33,7 +50,9 @@ The images below show positive etchback.
 
 Negative etchback is when the copper layers recede from the edge of the via hole, as shown in the diagram below.
 
-<Image src={require('./etchback-negative.png').default} width="314px">The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole.</Image>
+import etchback_negative from './etchback-negative.png'
+
+<Image src={etchback_negative} width="314px">The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole.</Image>
 
 ## Methods
 

@@ -12,6 +12,8 @@ title: SOT-323 Component Package
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 SOT-323 (Small-Outline Transistor 323) is a small family of SMD component packages.
@@ -29,7 +31,9 @@ If the pin number isn't specified, it is likely to be the 3 pin variant (this is
 
 ## SOT-323-3
 
-<Image src={require('./_assets/component-package-sot-323-3-3d-model.jpg').default} width="200px">3D model of the SOT-323-3 (SC-70-3) component package.</Image>
+import component_package_sot_323_3_3d_model from './_assets/component-package-sot-323-3-3d-model.jpg'
+
+<Image src={component_package_sot_323_3_3d_model} width="200px">3D model of the SOT-323-3 (SC-70-3) component package.</Image>
 
 SOT-323-3 is the 3 lead variant in the SOT-223 family. This package is also commonly known by it's EIAJ name `SC-70`. It is commonly used for discrete semiconductors such as diodes, transistors, and voltage regulators.
 
@@ -43,11 +47,15 @@ SOT-323-3 is the 3 lead variant in the SOT-223 family. This package is also comm
 
 ### Dimensions
 
-<Image src={require('./_assets/sot323-3-dimensions-nxp.png').default} width="800px">Dimensions for the SOT-323-3 (SC-70-3) component package from NXP[^nxp-sot-323].</Image>
+import sot323_3_dimensions_nxp from './_assets/sot323-3-dimensions-nxp.png'
+
+<Image src={sot323_3_dimensions_nxp} width="800px">Dimensions for the SOT-323-3 (SC-70-3) component package from NXP[^nxp-sot-323].</Image>
 
 ### Recommend Land Pattern
 
-<Image src={require('./_assets/sot-323-recommended-land-pattern-reflow-nxp.png').default} width="800px">Recommended reflow land pattern for the SOT-323-3 (SC-70-3) component package from NXP[^nxp-sot-323].</Image>
+import sot_323_recommended_land_pattern_reflow_nxp from './_assets/sot-323-recommended-land-pattern-reflow-nxp.png'
+
+<Image src={sot_323_recommended_land_pattern_reflow_nxp} width="800px">Recommended reflow land pattern for the SOT-323-3 (SC-70-3) component package from NXP[^nxp-sot-323].</Image>
 
 The occupied PCB area of the SOT-323-3 is $ 6.23mm^2\ (2.65mm \times 2.35mm) $ when included with the recommended reflow PCB footprint above.
 
@@ -58,7 +66,9 @@ The occupied PCB area of the SOT-323-3 is $ 6.23mm^2\ (2.65mm \times 2.35mm) $ w
 
 ## SOT-323-5
 
-<Image src={require('./_assets/component-package-sot-323-5-3d-model.jpg').default} width="200px">3D model of the SOT-323-5 (SC-70-5) component package.</Image>
+import component_package_sot_323_5_3d_model from './_assets/component-package-sot-323-5-3d-model.jpg'
+
+<Image src={component_package_sot_323_5_3d_model} width="200px">3D model of the SOT-323-5 (SC-70-5) component package.</Image>
 
 SOT-323-5 is the 5 lead variant in the SOT-323 family.
 
@@ -69,15 +79,17 @@ SOT-323-5 is the 5 lead variant in the SOT-323 family.
 
 ### Dimensions and Land Pattern
 
-<Image src={require('./_assets/component-package-sot-323-5-dimensions-and-land-pattern.png').default} width="800px">Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package.</Image>
+import component_package_sot_323_5_dimensions_and_land_pattern from './_assets/component-package-sot-323-5-dimensions-and-land-pattern.png'
+
+<Image src={component_package_sot_323_5_dimensions_and_land_pattern} width="800px">Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package.</Image>
 
 ## SOT-323-6
 
 SOT-323-6 is the 6 lead variant in the SOT-323 family.
 
-:::note
+<Aside type="note">
 From a few sources I found online, the SOT-323-6 seems dimensionally identical to the [SOT-363 package](/pcb-design/component-packages/sot-363-component-package/). However, I have kept a separate page on the SOT-363 since I could not find conclusive evidence that they are identical.
-:::
+</Aside>
 
 ### Synonyms
 
@@ -89,7 +101,9 @@ From a few sources I found online, the SOT-323-6 seems dimensionally identical t
 
 Below are the dimensions and recommended land pattern for the SOT-323-6 package (SC6, SC70-6) from Analog Devices:
 
-<Image src={require('./_assets/sot-323-6-dimensions-and-land-pattern-analog-devices.png').default} width="800px">Dimensions and recommended land pattern for the SOT-323-6 (SC-70-6) component package from Analog Devices[^analog-devices-sc6-package].</Image>
+import sot_323_6_dimensions_and_land_pattern_analog_devices from './_assets/sot-323-6-dimensions-and-land-pattern-analog-devices.png'
+
+<Image src={sot_323_6_dimensions_and_land_pattern_analog_devices} width="800px">Dimensions and recommended land pattern for the SOT-323-6 (SC-70-6) component package from Analog Devices[^analog-devices-sc6-package].</Image>
 
 ## SOT-323-8
 
@@ -106,7 +120,9 @@ Synonyms for the SOT-323-8 include:
 
 Below are the package dimensions for the SOT-323-8 package from Analog Devices:
 
-<Image src={require('./_assets/sc8-sot-223-8-package-dimensions-analog-devices.png').default} width="900px">Dimensions of the SC8 (SOT-223-8) package from Analog Devices[^analog-devices-sc8-package].</Image>
+import sc8_sot_223_8_package_dimensions_analog_devices from './_assets/sc8-sot-223-8-package-dimensions-analog-devices.png'
+
+<Image src={sc8_sot_223_8_package_dimensions_analog_devices} width="900px">Dimensions of the SC8 (SOT-223-8) package from Analog Devices[^analog-devices-sc8-package].</Image>
 
 ## Similar To
 

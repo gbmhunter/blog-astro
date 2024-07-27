@@ -74,6 +74,10 @@ export default defineConfig({
 					autogenerate: { directory: 'mathematics' },
 				},
 				{
+					label: 'PCB Design',					
+					autogenerate: { directory: 'pcb-design' },
+				},
+				{
 					label: 'Test',
 					autogenerate: { directory: 'test' },
 				},

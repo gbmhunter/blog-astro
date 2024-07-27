@@ -10,11 +10,15 @@ title: "General Routing Tips"
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 See below for PCB routing tips and tricks.
 
-<Image src={require('./screenshot-during-routing-a-track-on-pcb-in-altium.png').default} width="321px">Screenshot during the routing of a track on a PCB in Altium.</Image>
+import screenshot_during_routing_a_track_on_pcb_in_altium from './screenshot-during-routing-a-track-on-pcb-in-altium.png'
+
+<Image src={screenshot_during_routing_a_track_on_pcb_in_altium} width="321px">Screenshot during the routing of a track on a PCB in Altium.</Image>
 
 ## Always Have Schematics In-Front Of You
 
@@ -28,7 +32,9 @@ Having the schematic visible also lets you place the components in a logical man
 
 Antennas can also be used for stress relief during soldering for stress-sensitive parts, such as accelerometers and gyros. Un-used pins on the stress-sensitive component package are routed a minimum distance from the pad, just like the used pins, so that when soldering using reflow or infrared techniques, all the solder on the pads melts and solidifies at the same time, reducing the stress on the component.
 
-<Image src={require('./routed-accelrometer-footprint-showing-thermal-relief-on-not-connects-for-stress-relief.png').default} width="800px">Routing un-used pins on a accelerometer component package a minimum distance away from the IC to reduce stress when infrared/reflow soldering.</Image>
+import routed_accelrometer_footprint_showing_thermal_relief_on_not_connects_for_stress_relief from './routed-accelrometer-footprint-showing-thermal-relief-on-not-connects-for-stress-relief.png'
+
+<Image src={routed_accelrometer_footprint_showing_thermal_relief_on_not_connects_for_stress_relief} width="800px">Routing un-used pins on a accelerometer component package a minimum distance away from the IC to reduce stress when infrared/reflow soldering.</Image>
 
 ## Undesired Antennas
 
@@ -42,4 +48,6 @@ Make sure to provide copper (and component) clearance around mechanical screw ho
 1. Short out two tracks running underneath the screw head.
 1. Rip tracks of the PCB and make the nets go open circuit.
 
-<Image src={require('./pcb-damaged-by-screw-head.jpg').default} width="500px">Ouch. This is what can happen if you don't provide clearance on a PCB for screw heads.</Image>
+import pcb_damaged_by_screw_head from './pcb-damaged-by-screw-head.jpg'
+
+<Image src={pcb_damaged_by_screw_head} width="500px">Ouch. This is what can happen if you don't provide clearance on a PCB for screw heads.</Image>

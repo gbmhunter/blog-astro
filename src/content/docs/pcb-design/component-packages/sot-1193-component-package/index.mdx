@@ -8,6 +8,8 @@ title: SOT-1193 Component Package
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 SOT-1193 (Small Outline Transistor 1193) is a SMD component package. This package is used for NXP RFID ICs. NXP seems to be the only manufacturer who uses this package.
@@ -19,11 +21,15 @@ There are two variants in this family:
 
 ## 3D Renders
 
-<Image src={require('./_assets/sot-1193-component-package-3d-render.jpg').default} width="360px">A 3D render of the SOT-1193 component package.</Image>
+import sot_1193_component_package_3d_render from './_assets/sot-1193-component-package-3d-render.jpg'
+
+<Image src={sot_1193_component_package_3d_render} width="360px">A 3D render of the SOT-1193 component package.</Image>
 
 ## Dimensions
 
-<Image src={require('./_assets/component-package-sot-1193-2-nxp-xqfn8-dimensions.png').default} width="600px">The dimensions for the SOT-1193-2 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1193-2_po.pdf.</Image>
+import component_package_sot_1193_2_nxp_xqfn8_dimensions from './_assets/component-package-sot-1193-2-nxp-xqfn8-dimensions.png'
+
+<Image src={component_package_sot_1193_2_nxp_xqfn8_dimensions} width="600px">The dimensions for the SOT-1193-2 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1193-2_po.pdf.</Image>
 
 ## Footprint
 
