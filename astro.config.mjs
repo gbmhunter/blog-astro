@@ -70,6 +70,10 @@ export default defineConfig({
 					autogenerate: { directory: 'electronics' },
 				},
 				{
+					label: 'Mathematics',					
+					autogenerate: { directory: 'mathematics' },
+				},
+				{
 					label: 'Test',
 					autogenerate: { directory: 'test' },
 				},

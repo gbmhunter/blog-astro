@@ -12,6 +12,8 @@ title: "The Three Classical Pythagorean Means"
 type: "page"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 In mathematics, there are many different types of "mean". The most common type of mean is the arithmetic mean (AM), which along with the geometric mean (GM) and the harmonic mean (HM), form the three classical Pythagorean means. They are called the Pythagorean means because they were studied by Pythagoras and later generations of Greek mathematicians with their use in geometry and music[^wikipedia-harmonic-mean].
@@ -59,11 +61,15 @@ The geometric means of 2 and 3 numbers can be intuitively visualized:
 
 1) In 2D, it two numbers were the width and height of a rectangle, the geometric mean gives you the length of the side of a square (equal sided rectangle) which would have the same **area** as the rectangle.
 
-    <Image src={require('./geometric-mean-2d-same-area.png').default} width="500px">Taking the geometric mean of a rectangle (side lengths of 4 and 9) gives you length of the sides of a square (side length of 6) with the same area.</Image>
+import geometric_mean_2d_same_area from './geometric-mean-2d-same-area.png'
+
+<Image src={geometric_mean_2d_same_area} width="500px">Taking the geometric mean of a rectangle (side lengths of 4 and 9) gives you length of the sides of a square (side length of 6) with the same area.</Image>
 
 2) Similarly, in 3D if the three numbers were the width, height and depth of a rectangular cuboid (box), the geometric mean gives you the length of the side of a cube (equal sided cuboid) which would have the same **volume**.
 
-    <Image src={require('./geometric-mean-3d-same-volume.png').default} width="500px">Taking the geometric mean of a box (side lengths of 8, 2 and 4) gives you length of the sides of a cube (side length of 4) with the same volume.</Image>
+import geometric_mean_3d_same_volume from './geometric-mean-3d-same-volume.png'
+
+<Image src={geometric_mean_3d_same_volume} width="500px">Taking the geometric mean of a box (side lengths of 8, 2 and 4) gives you length of the sides of a cube (side length of 4) with the same volume.</Image>
 
 ### Uses
 

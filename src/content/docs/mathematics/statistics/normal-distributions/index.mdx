@@ -8,6 +8,8 @@ title: Normal Distributions
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 <h2>Probability Density Function</h2>
 
 <p>The probability density function of a normal distribution is given by:</p>
@@ -18,7 +20,9 @@ $$ f(x, \mu | \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{
 $ \mu $ is the mean of the distribution<br/>
 $ \sigma $ is the standard deviation<br/></p>
 
-<Image src={require('./normal-distribution-pdf-examples.png').default} width="500px">A few example probability density functions (PDFs) for the normal distribution.</Image>
+import normal_distribution_pdf_examples from './normal-distribution-pdf-examples.png'
+
+<Image src={normal_distribution_pdf_examples} width="500px">A few example probability density functions (PDFs) for the normal distribution.</Image>
 
 <p>See <a href="https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution">https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution</a> for the code which generated these graphs.</p>
 
