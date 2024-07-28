@@ -164,6 +164,9 @@ export default defineConfig({
       social: {
         github: "https://github.com/withastro/starlight",
       },
+      components: {
+        Head: "./src/components/starlight/Head.astro",
+      },  
       customCss: [
         // Relative path to your custom CSS file
         "./src/styles/custom.css",
