@@ -24,6 +24,9 @@ for (const path in pagePaths) {
     break;
   }
 
+  // console.log('path:', await pagePaths[path]());
+
+
   // Skip all .mdx files that are in a directory starting with an underscore or the file itself starts with an underscore
   // (we use this to indicate the file is a partial)
   if (path.includes('/_')) {
@@ -57,22 +60,27 @@ for (const path in pagePaths) {
     if (foundChildNodes.length === 0) {
       // console.log(`Node with id ${pathPart} not found in ${JSON.stringify(currentNode)}. Creating new node...`);
 
+     
+      // Create a new node
+      let newNode;
       if (i === pathParts.length - 1) {
-        // We are at the end of the path, so add the file to the currentItems
-        // console.log('At end of path');
-        currentNode.items.push({
-            label: pathPart,
-            slug: slug,
-        });
+        // This is a leaf node
+        newNode = {
+          label: pathPart,
+          items: [],
+          slug: slug,
+        };
       } else {
-        // Create a new node
-        const newNode = {
+        // This is a leaf node
+        newNode = {
           label: pathPart,
           items: [],
         };
-        currentNode.items.push(newNode);
-        currentNode = newNode;
       }
+      
+      currentNode.items.push(newNode);
+      currentNode = newNode;
+      
     } else if (foundChildNodes.length === 1) {
       // Node already exists
       if (i === pathParts.length - 1) {
@@ -93,6 +101,32 @@ for (const path in pagePaths) {
 
   }
 }
+
+// console.log('before converting leaf nodes:', JSON.stringify(sidebarNodes, null, 2));
+
+function convertLeafNodes(node) {
+  if (node.items.length === 0) {
+    // Delete items array
+    delete node.items;
+    // Delete label
+    delete node.label;
+    // Leave slugs
+    return;
+  }
+
+  // Must not be a leaf node
+  // Change from page-name to Page Name
+  node.label = node.label.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+  node.collapsed = true;
+
+  for (let i = 0; i < node.items.length; i++) {
+    convertLeafNodes(node.items[i]);
+  } 
+}
+
+console.log('Converting leaf nodes...');
+convertLeafNodes(sidebarNodes);
 
 // console.log('sidebar finished:', JSON.stringify(sidebarNodes, null, 2));
 
