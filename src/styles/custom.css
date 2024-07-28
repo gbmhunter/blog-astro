@@ -5,3 +5,7 @@
 .katex-html {
     display: none;
 }
+
+.centered {
+    text-align: center;
+}

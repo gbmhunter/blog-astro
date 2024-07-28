@@ -1,11 +1,11 @@
 ---
 import { Image as AstroImage } from 'astro:assets';
 
-const { src, width } = Astro.props;
+const { src, width, ...attrs } = Astro.props;
 ---
 
 <div class="image-wrapper">
-<AstroImage src={src} width={width} alt="" />
+  <a href={src.src}><AstroImage src={src} width={width} alt="" {...attrs} /></a>
 <figcaption><slot /></figcaption>
 </div>
 
