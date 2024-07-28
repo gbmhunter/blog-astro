@@ -3,7 +3,6 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2019-12-19
 description: ""
-draft: true
 last_update:
   date: 2019-12-19
   author: Geoffrey Hunter
