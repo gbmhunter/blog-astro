@@ -84,7 +84,7 @@ for (const path in pagePaths) {
     } else if (foundChildNodes.length === 1) {
       // Node already exists
       if (i === pathParts.length - 1) {
-        console.error('At end of path, node already exists.');
+        console.error(`Found .mdx file at already existing branch node. Make sure directories with .mdx files do not contain any child directories with more .mdx files. Path: ${path}.`);
       } else {
         // console.log(`Node with label ${pathPart} found in ${currentNode}.`);
         currentNode = foundChildNodes[0];
@@ -160,7 +160,10 @@ export default defineConfig({
     }),
     // Make sure the MDX integration is included AFTER astro-auto-import
     starlight({
-      title: "My Docs",
+      title: 'mbedded.ninja',
+      logo: {
+        src: './src/assets/logo.jpg',
+      },
       social: {
         github: "https://github.com/withastro/starlight",
       },
@@ -183,53 +186,6 @@ export default defineConfig({
       //     label: "Reference",
       //     autogenerate: { directory: "reference" },
       //   },
-      //   {
-      //     label: "Electronics",
-      //     // items: [
-      //     // 	{ label: 'Circuit Design',
-      //     // 		items: [
-      //     // 			'electronics/circuit-design/antenna-design',
-      //     // 		]
-      //     // 	 }
-      //     // ]
-      //     autogenerate: { directory: "electronics" },
-      //   },
-      //   {
-      //     label: "Mathematics",
-      //     autogenerate: { directory: "mathematics" },
-      //   },
-      //   {
-      //     label: "PCB Design",
-      //     autogenerate: { directory: "pcb-design" },
-      //   },
-      //   {
-      //     label: "Programming",
-      //     autogenerate: { directory: "programming" },
-      //   },
-      //   {
-      //     label: "Project Management",
-      //     autogenerate: { directory: "project-management" },
-      //   },
-      //   {
-      //     label: "Pyrotechnics",
-      //     autogenerate: { directory: "pyrotechnics" },
-      //   },
-      //   {
-      //     label: "Robotics",
-      //     autogenerate: { directory: "robotics" },
-      //   },
-      //   {
-      //     label: "Site Info",
-      //     autogenerate: { directory: "site-info" },
-      //   },
-      //   {
-      //     label: "Space",
-      //     autogenerate: { directory: "space" },
-      //   },
-      //   {
-      //     label: "Test",
-      //     autogenerate: { directory: "test" },
-      //   },
       // ],
       sidebar: sidebarNodes.items,
     }),
@@ -238,6 +194,5 @@ export default defineConfig({
     extendDefaultPlugins: true,
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
-    // rehypePlugins: [rehypeMathJax],
   },
 });

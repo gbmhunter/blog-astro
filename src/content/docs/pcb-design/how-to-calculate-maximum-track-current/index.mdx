@@ -11,6 +11,8 @@ title: How To Calculate Maximum Track Current
 type: page
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Overview
 
 All tracks (a.k.a. traces) on a PCB have a maximum current limit. For most of the PCB routing process, the PCB designer does not have to worry about this, as most tracks are far larger than than they need to be to carry the tiny currents associated with digital and analogue signals (i.e. the track width is limited by manufacturing tolerances rather than the maximum current it can take).
@@ -35,7 +37,9 @@ The first standard, IPC-2221A is quite old, and is based of an older standard ca
 
 IPC-2221A has a single graph (currently figure 6-4), which the following equation for calculating the track current $I$ is derived from:
 
-$$ I = k\Delta T^b A^c $$
+$$
+I = k\Delta T^b A^c
+$$
 
 <p className="centered">    where:<br/>
     $ k $ = 0.048 for external traces, 0.024 for internal tracks<br/>
@@ -67,18 +71,20 @@ Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
 1. Firstly, use the _Universal Chart_ to calculate an unadjusted cross-sectional area.  
 
-    <Image src={require('./ipc-2152-universal-chart.png').default} width="641px">The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise.</Image>  
+import ipc_2152_universal_chart from './_assets/ipc-2152-universal-chart.png'
 
-2. Then, a bunch of coefficients (modifiers) are found based on a number of other parameters. The parameters include:  
+    <Image src={ipc_2152_universal_chart} width="641px">The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise.</Image>  
+
+1. Then, a bunch of coefficients (modifiers) are found based on a number of other parameters. The parameters include:  
 
     - Thermal conductivity of the PCB  
     - The PCB thickness  
     - The proximity of the current-carrying track to a copper plane  
     - The thickness of the current-carrying track  
 
-3. Once all the coefficients are found, they are multiplied with the unadjusted cross-sectional area to give an adjusted cross-sectional area.  
+1. Once all the coefficients are found, they are multiplied with the unadjusted cross-sectional area to give an adjusted cross-sectional area.  
 
-4. The adjusted cross-sectional area
+1. The adjusted cross-sectional area
 
 ### That's Hard Work, Can It Be Any Easier?
 
@@ -90,6 +96,6 @@ You can get to the IPC-2152 calculator directly by going to https://ninjacalc.mb
 
 ## External Resources
 
-[Jack Olsen - How To 2152 (pdf)](./JackOlson-HowTo2152.pdf)
+[Jack Olsen - How To 2152 (pdf)](/pdfs/JackOlson-HowTo2152.pdf)
 
-[Jack Olsen - How To 2152 (Excel based calculator)](./JackOlson-HowTo2152.xls)
+[Jack Olsen - How To 2152 (Excel based calculator)](/pdfs/JackOlson-HowTo2152.xls)
