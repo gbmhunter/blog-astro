@@ -12,11 +12,15 @@ title: "April 2020 Updates"
 type: "post"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * Added a section on [mypy And Reusing Variables With Different Types](/programming/languages/python/python-type-annotations#mypy-and-reusing-variables-with-different-types) to the Python Type Annotations page.
 
 * Added a new page on [Shift Registers](/electronics/components/shift-registers) (a digital logic circuit).
 
-    <Image src={require('/docs/electronics/components/shift-registers/serial-in-serial-out-shift-register.svg').default} width="500px">Schematic for building a 4-bit SISO shift register from flip flops.</Image>
+    import _docs_electronics_components_shift_registers_serial_in_serial_out_shift_register from '/docs/electronics/components/shift-registers/serial-in-serial-out-shift-register.svg'
+
+<Image src={_docs_electronics_components_shift_registers_serial_in_serial_out_shift_register} width="500px">Schematic for building a 4-bit SISO shift register from flip flops.</Image>
 
 * Added a section on [Tags to the AWS S3 page](/programming/cloud/aws/s3#tags).
 
@@ -26,6 +30,8 @@ type: "post"
 
 * Added a section on [Flyback Transformers to the Transformers page](/electronics/components/transformers#flyback-transformers).
 
-    <Image src={require('/docs/electronics/components/transformers/typical-flyback-schematic.png').default} width="600px"></Image>
+    import _docs_electronics_components_transformers_typical_flyback_schematic from '/docs/electronics/components/transformers/typical-flyback-schematic.png'
+
+<Image src={_docs_electronics_components_transformers_typical_flyback_schematic} width="600px"></Image>
 
 * Added info on [non-standard QFN packages to the QFN Component Package page](/pcb-design/component-packages/qfn-component-package#completely-non-standard-qfn-packages).

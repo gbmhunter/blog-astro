@@ -12,8 +12,12 @@ title: "August 2019 Updates"
 type: "post"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * New tutorial on [Standard Deviations](/mathematics/statistics/standard-deviation).
 
 * Updated the [Qt page](/programming/languages/c-plus-plus/qt) with a section on how to allow file names with capital letters in Qt Creator.
 
-    <Image src={require('/docs/programming/languages/c-plus-plus/qt/qt-creator-uncheck-lower-case-filenames.png').default} width="300px"></Image>
+    import _docs_programming_languages_c_plus_plus_qt_qt_creator_uncheck_lower_case_filenames from '/docs/programming/languages/c-plus-plus/qt/qt-creator-uncheck-lower-case-filenames.png'
+
+<Image src={_docs_programming_languages_c_plus_plus_qt_qt_creator_uncheck_lower_case_filenames} width="300px"></Image>

@@ -10,9 +10,13 @@ title: September 2014 Updates
 type: post
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * Logo added!  
 
-    <Image src={require('./cartoon-ninja.jpg').default} width="500px">cartoon-ninja</Image>
+    import cartoon_ninja from './cartoon-ninja.jpg'
+
+<Image src={cartoon_ninja} width="500px">cartoon-ninja</Image>
 
 * Reformatted page header.
 

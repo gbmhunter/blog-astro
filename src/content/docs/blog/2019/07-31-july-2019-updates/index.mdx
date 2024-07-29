@@ -12,9 +12,13 @@ title: "July 2019 Updates"
 type: "post"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * New tutorial on the [Modality Independent Neighbourhood Descriptor (MIND)](/programming/signal-processing/image-processing/image-registration/modality-independent-neighbourhood-descriptor-mind).
 
-    <Image src={require('/docs/programming/signal-processing/image-processing/image-registration/modality-independent-neighbourhood-descriptor-mind/mind_descriptor_search_space.svg').default} width="300px"></Image>
+    import _docs_programming_signal_processing_image_processing_image_registration_modality_independent_neighbourhood_descriptor_mind_mind_descriptor_search_space from '/docs/programming/signal-processing/image-processing/image-registration/modality-independent-neighbourhood-descriptor-mind/mind_descriptor_search_space.svg'
+
+<Image src={_docs_programming_signal_processing_image_processing_image_registration_modality_independent_neighbourhood_descriptor_mind_mind_descriptor_search_space} width="300px"></Image>
 
 * New tutorial on the [Self-Similarity Context (SSC)](/programming/signal-processing/image-processing/image-registration/self-similarity-context-ssc). This is related to MIND.
 
@@ -24,6 +28,8 @@ type: "post"
 
 * New tutorial on [Jupyter](/programming/integrated-development-environments-ides/jupyter) (incl. Jupyter Notebooks and Jupyter Labs).
 
-    <Image src={require('/docs/programming/integrated-development-environments-ides/jupyter/jupyter-logo.svg').default} width="100px"></Image>  
+    import _docs_programming_integrated_development_environments_ides_jupyter_jupyter_logo from '/docs/programming/integrated-development-environments-ides/jupyter/jupyter-logo.svg'
+
+<Image src={_docs_programming_integrated_development_environments_ides_jupyter_jupyter_logo} width="100px"></Image>  
 
 * Updated the [rm (remove) page](/programming/operating-systems/linux/programs/rm-remove) with workaround examples for when you get the `argument list too long` error.

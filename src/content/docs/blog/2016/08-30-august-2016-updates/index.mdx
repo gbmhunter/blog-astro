@@ -13,6 +13,10 @@ tags:
 - RF
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * New [PIN Diodes page](/electronics/components/diodes/pin-diodes).  
 
-    <Image src={require('./_assets/pin-diode-photo-small.jpg').default} width="192px">A photo of a small, through-hole PIN diode.</Image>
+    import pin_diode_photo_small from './_assets/pin-diode-photo-small.jpg'
+
+<Image src={pin_diode_photo_small} width="192px">A photo of a small, through-hole PIN diode.</Image>

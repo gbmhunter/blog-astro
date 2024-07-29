@@ -11,15 +11,21 @@ title: November 2013 Updates!
 type: post
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 It's been a buuuussssyyyyyy month around here. A list of the updates for this month:
 
 * [candy-calc firmware project](https://github.com/gbmhunter/candy-calc) has been started on GitHub. I am hoping to eventually convert all calculators on this site to use this framework.  
 
-  	<Image src={require('./candy-calc-readme-screenshot.jpg').default} width="500px">A screenshot of the candy-calc repo on GitHub.</Image>
+  	import candy_calc_readme_screenshot from './candy-calc-readme-screenshot.jpg'
+
+<Image src={candy_calc_readme_screenshot} width="500px">A screenshot of the candy-calc repo on GitHub.</Image>
 
 * LT3745 Design Guide page (**as of Dec 2017, URL not available**) and calculator using the [candy-calc](https://github.com/gbmhunter/candy-calc) framework  
 
-  	<Image src={require('./lt3745-calculator-screenshot.jpg').default} width="500px">A screenshot of the calculator on the LT3745 Design Guide page.</Image>
+  	import lt3745_calculator_screenshot from './lt3745-calculator-screenshot.jpg'
+
+<Image src={lt3745_calculator_screenshot} width="500px">A screenshot of the calculator on the LT3745 Design Guide page.</Image>
 
 * New [1-wire Communications Protocol page](/electronics/communication-protocols/1-wire-protocol/)
 
@@ -31,7 +37,9 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * Info on ~LED lens types~.
 
-    <Image src={require('./led-lens-shapes-screenshot.jpg').default} width="400px">A screenshot of the calculator on the LT3745 Design Guide page.</Image>
+    import led_lens_shapes_screenshot from './led-lens-shapes-screenshot.jpg'
+
+<Image src={led_lens_shapes_screenshot} width="400px">A screenshot of the calculator on the LT3745 Design Guide page.</Image>
 
 * More info added to the [Windows](/programming/operating-systems/windows) and [Batch](/programming/languages/batch) pages
 
@@ -41,7 +49,9 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * New page on [Antenna Design](/electronics/circuit-design/antenna-design), incorporating the use of [Google Charts](https://developers.google.com/chart/)
 
-  	<Image src={require('./antenna-page-screenshot.jpg').default} width="500px">A screenshot of the Antenna page.</Image>
+  	import antenna_page_screenshot from './antenna-page-screenshot.jpg'
+
+<Image src={antenna_page_screenshot} width="500px">A screenshot of the Antenna page.</Image>
 
 * New page on the [TI C2000 MCU architecture](/programming/cpu-architectures/c2000).
 

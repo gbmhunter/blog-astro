@@ -17,13 +17,17 @@ tags:
 - Wordpress
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 O.K., so the menu system in Wordpress just started crashing after trying to add a page, giving me a "The given object id is not of that menu item" error many times over.
 
 Argh, so simple things such as reloading the old menu (using the back button on the browser), or disabling all plugins has not fixed this. One source claims that it could be a problem with the maximum php memory limit being set to low (something the server owners have to change).
 
 Worst case scenario is I have to recreate the entire menu structure again. My website was basically entirely linked from within this menu. Groan...
 
-<Image src={require('./clablab-menus-gone.jpg').default} width="650px">The CladLabs menus disappeared after a menu crash.</Image>
+import clablab_menus_gone from './clablab-menus-gone.jpg'
+
+<Image src={clablab_menus_gone} width="650px">The CladLabs menus disappeared after a menu crash.</Image>
 
 _**EDIT (03-09-2012)**_
 

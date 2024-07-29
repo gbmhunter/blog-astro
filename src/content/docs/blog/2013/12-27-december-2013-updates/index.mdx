@@ -10,6 +10,8 @@ title: December 2013 Updates
 type: post
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 There have been many updates this month!
 
 * A new [Ultrasonic Sensors page.](/electronics/components/sensors/ultrasonic-sensors/)
@@ -26,7 +28,9 @@ There have been many updates this month!
 
 * New [MOSFET gate-drive graph](/electronics/components/transistors/mosfets/#dead-time) on the [MOSFETs page](/electronics/components/transistors/mosfets/).  
 
-    <Image src={require('./two-mosfet-gate-drives-with-deadtime-graph-screenshot.png').default} width="500px">Screenshot of the MOSFET gate drive graph on the MOSFETs page.</Image>
+    import two_mosfet_gate_drives_with_deadtime_graph_screenshot from './two-mosfet-gate-drives-with-deadtime-graph-screenshot.png'
+
+<Image src={two_mosfet_gate_drives_with_deadtime_graph_screenshot} width="500px">Screenshot of the MOSFET gate drive graph on the MOSFETs page.</Image>
       
 * New [eng-graphs-js repo](https://github.com/gbmhunter/eng-graphs-js), which holds all the data/code for the graphs displayed in various places on this website.
 

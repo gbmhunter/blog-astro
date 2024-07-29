@@ -12,11 +12,15 @@ title: April 2024 Updates
 type: post
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 [NinjaTerm](https://ninjaterm.mbedded.ninja/) got four releases this May! Given all the time I spent on NinjaTerm there were no updates to this blog.
 
 NinjaTerm can now display numerical data types such as hex, uint8, uint16, float32, e.t.c.:
 
-<Image src={require('./_assets/ninjaterm-number-types-screenshot.jpg').default} width="600px"></Image>
+import ninjaterm_number_types_screenshot from './_assets/ninjaterm-number-types-screenshot.jpg'
+
+<Image src={ninjaterm_number_types_screenshot} width="600px"></Image>
 
 You can now send a 200ms break signal by pressing Ctrl-Shift-B when the terminal is focused and the serial port open.
 
@@ -26,12 +30,18 @@ A circular progress modal is shown while the port is being opened.
 
 NinjaTerm has a new macros feature which lets you send pre-defined ASCII or HEX sequences out the serial port:
 
-<Image src={require('./_assets/ninjaterm-macros-screenshot.png').default} width="900px"></Image>
+import ninjaterm_macros_screenshot from './_assets/ninjaterm-macros-screenshot.png'
+
+<Image src={ninjaterm_macros_screenshot} width="900px"></Image>
 
 You now have the ability to select the flow-control method (none or hardware) when opening a serial port:
 
-<Image src={require('./_assets/ninjaterm-flow-control-screenshot.png').default} width="700px"></Image>
+import ninjaterm_flow_control_screenshot from './_assets/ninjaterm-flow-control-screenshot.png'
+
+<Image src={ninjaterm_flow_control_screenshot} width="700px"></Image>
 
 NinjaTerm has a new profiles feature which lets you save and load different serial port configurations.
 
-<Image src={require('./_assets/ninjaterm-profiles-screenshot.jpg').default} width="900px"></Image>
+import ninjaterm_profiles_screenshot from './_assets/ninjaterm-profiles-screenshot.jpg'
+
+<Image src={ninjaterm_profiles_screenshot} width="900px"></Image>

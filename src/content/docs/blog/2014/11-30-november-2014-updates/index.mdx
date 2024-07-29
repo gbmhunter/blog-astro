@@ -11,9 +11,13 @@ title: November 2014 Updates
 type: post
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * Added [Desmear and Etch/pcb-design/desmear-and-etchback/nd-etchback) under Electronics->PCB Design.  
 
-    <Image src={require('./etchback-after-plating.png').default} width="219px">A via which has been plated after etchback was done, notice the 'three-point connection'.</Image>
+    import etchback_after_plating from './etchback-after-plating.png'
+
+<Image src={etchback_after_plating} width="219px">A via which has been plated after etchback was done, notice the 'three-point connection'.</Image>
 
 * Update to the [sed page](/programming/operating-systems/linux/programs/sed) with a new example on replacing a date format.
 
@@ -26,7 +30,9 @@ type: post
 * New [IMS (Insulated Metallic Substrate) PCBs page under Electronics->PCB Design. Includes tikz drawn diagrams.
 ](/pcb-design/ims-insulated-metal-substrate-pcbs/).
 
-    <Image src={require('./ims-pcb-aluminium-side-on-photo.png').default} width="653px">A side on photo of a IMS PCB with an aluminium base.</Image>
+    import ims_pcb_aluminium_side_on_photo from './ims-pcb-aluminium-side-on-photo.png'
+
+<Image src={ims_pcb_aluminium_side_on_photo} width="653px">A side on photo of a IMS PCB with an aluminium base.</Image>
 
 * New [.bss Section page](/programming/languages/c/bss-section) under Programming->Languages->C.
 
@@ -62,7 +68,9 @@ type: post
 
 * New [page on 2D Coordinate Rotation](/mathematics/geometry/2d-coordinate-rotation/) under Mathematics.  
 
-    <Image src={require('./2d-co-ordinate-rotation-equations.png').default} width="375px">2D co-ordinate rotation equations.</Image>
+    import n_2d_co_ordinate_rotation_equations from './2d-co-ordinate-rotation-equations.png'
+
+<Image src={n_2d_co_ordinate_rotation_equations} width="375px">2D co-ordinate rotation equations.</Image>
 
 * New info about SEPICs added to the [Power Converters page](/electronics/components/power-regulators).
 

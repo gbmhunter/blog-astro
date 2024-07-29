@@ -12,6 +12,8 @@ title: "December 2019 Updates"
 type: "post"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * A new section on Hugo timeouts added to the [Hugo page](/programming/website-design/static-website-generators/hugo#page-rendering-timeouts).
 
 * Fixed three issues preventing me from upgrading from Hugo `v0.54.0` to `v0.60.1`, and then upgraded! The two issues were:
@@ -26,7 +28,9 @@ type: "post"
 
         but only when building on the CICD server (Netlify). I removed this `columbus-radio` page and would fail on another specific page. While these specific pages didn't use any unique shortcodes that the other pages didn't, I did notice that these pages contained a large number of image resources.
 
-        <Image src={require('./screenshot-columbus-radio-directory.png').default} width="500px">A screenshot showing the number of image resources in the `columbus-radio` page.</Image>
+        import screenshot_columbus_radio_directory from './screenshot-columbus-radio-directory.png'
+
+<Image src={screenshot_columbus_radio_directory} width="500px">A screenshot showing the number of image resources in the `columbus-radio` page.</Image>
 
         Hugo had a default timeout of 10s per page, and pages with a large number of image resources were taking longer than this to process (the images are scaled and resampled). This was an easy fix, I just increased Hugo's timeout to 30s in `config.toml`:
 

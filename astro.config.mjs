@@ -18,6 +18,12 @@ let sidebarNodes = {
   items: [], 
 };
 
+const menuDirectoryBlackList = [
+  'blog',
+  'site-info',
+  'test',
+];
+
 for (const path in pagePaths) {
   maxNum++;
   console.log(path);
@@ -52,6 +58,15 @@ for (const path in pagePaths) {
   let currentNode = sidebarNodes;
   for (let i = 0; i < pathParts.length; i++) {
     const pathPart = pathParts[i];
+
+    // If we are looking at the first directory under docs/
+    // check the names against the blacklist
+    if (i === 0) {
+      if (menuDirectoryBlackList.includes(pathPart)) {
+        // console.log(`Skipping directory ${pathPart} as it is in the blacklist.`);
+        break;
+      }
+    }
     // console.log(pathPart);
 
     // See if object with label=pathPart exists in currentNode
@@ -175,7 +190,16 @@ export default defineConfig({
         // Relative path to your custom CSS file
         "./src/styles/custom.css",
       ],
-      plugins: [starlightBlog()],
+      plugins: [starlightBlog({
+        authors: {
+          gbmhunter: {
+            name: 'Geoffrey Hunter',
+            title: 'Starlight Aficionado',
+            picture: '/hideoo.png', // Images in the `public` directory are supported.
+            url: 'https://hideoo.dev',
+          },
+        },
+      })],
       // sidebar: [
       //   {
       //     label: "Guides",

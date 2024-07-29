@@ -11,6 +11,8 @@ type: post
 tags: []
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 The biggest update for March was the switch from a Linux/CPanel shared server to a managed Wordpress service, and the theme change to Avada! See the [Move To Managed Wordpress Hosting For Speed Increase post](/updates/2015/04/03/move-to-managed-wordpress-hosting-for-speed-increase) for more info.
 
 A heap load of information added to the [USB Protocol page](/electronics/communication-protocols/usb-protocol).This includes oscilloscope images of surge currents on the VBUS trace. Added the child page [Chargers](/electronics/communication-protocols/usb-protocol/chargers).
@@ -19,11 +21,15 @@ Information on the body connection inside MOSFETs added to the [MOSFET page](/el
 
 New page on [Made For Apple (MFi)](/electronics/circuit-design/made-for-ipod-iphone-ipad-mfi).
 
-<Image src={require('./apple-logo.png').default} width="152px">The Apple logo.</Image>
+import apple_logo from './apple-logo.png'
+
+<Image src={apple_logo} width="152px">The Apple logo.</Image>
 
 New [WLCSP package](/pcb-design/component-packages/wlcsp-component-package) added to the Component Package database.
 
-<Image src={require('./wlcsp5-component-package-3d-render.jpg').default} width="236px">A 3D render of the WLCSP5 component package.</Image>
+import wlcsp5_component_package_3d_render from './wlcsp5-component-package-3d-render.jpg'
+
+<Image src={wlcsp5_component_package_3d_render} width="236px">A 3D render of the WLCSP5 component package.</Image>
 
 Added [Civil Footnotes plugin](https://wordpress.org/plugins/civil-footnotes/) for adding footnotes to posts/pages.
 
@@ -33,7 +39,9 @@ Moved the info on SEPIC converters from the Power Regulators page onto it's own 
 
 Moved the [Load Switches page](/electronics/circuit-design/load-switches/) so that it is a child of [Power Management](/electronics/circuit-design/power-management).
 
-<Image src={require('./high-side-mosfet-load-switch-schematic.png').default} width="608px">A high-side load switch made from a N-Channel and P-Channel MOSFET.</Image>
+import high_side_mosfet_load_switch_schematic from './high-side-mosfet-load-switch-schematic.png'
+
+<Image src={high_side_mosfet_load_switch_schematic} width="608px">A high-side load switch made from a N-Channel and P-Channel MOSFET.</Image>
 
 New page on [Analogue Switches](/electronics/components/analogue-switches-transmission-gates/).
 
@@ -41,4 +49,6 @@ Information added about ESD Diodes On CMOS I/O to the ESD Protection page.
 
 [SOT-1226](/pcb-design/component-packages/sot-1226-2-component-package) added to the [Component Package Database](/pcb-design/component-packages).
 
-<Image src={require('./sot-1226-component-package-3d-render-top-bottom.gif').default} width="166px">A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html.</Image>
+import sot_1226_component_package_3d_render_top_bottom from './sot-1226-component-package-3d-render-top-bottom.gif'
+
+<Image src={sot_1226_component_package_3d_render_top_bottom} width="166px">A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html.</Image>

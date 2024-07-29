@@ -12,23 +12,31 @@ title: "June 2020 Updates"
 type: "post"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * Completed the unfinished worked example on the [Finding The Intersection Of Two Arcs That Lie On A Sphere](/) page.
 
 * Fixed a bug with the custom `img` shortcode used on this site which was causing the wrong image to be displayed, or in some cases, no image at all.
 
 * Added a section on [CAN Bus Repeaters to the CAN Protocol page](/electronics/communication-protocols/can-protocol#can-bus-repeaters).
 
-    <Image src={require('/docs/electronics/communication-protocols/can-protocol/_assets/iso-11898-2-can-bus-repeater.png').default} width="500px"></Image>
+    import _docs_electronics_communication_protocols_can_protocol__assets_iso_11898_2_can_bus_repeater from '/docs/electronics/communication-protocols/can-protocol/_assets/iso-11898-2-can-bus-repeater.png'
+
+<Image src={_docs_electronics_communication_protocols_can_protocol__assets_iso_11898_2_can_bus_repeater} width="500px"></Image>
 
 * Updated the [CANopen section on the CAN Protocol page](/electronics/communication-protocols/can-protocol#canopen).
 
-    <Image src={require('/docs/electronics/communication-protocols/can-protocol/_assets/can-open-logo.jpg').default} width="500px"></Image>
+    import _docs_electronics_communication_protocols_can_protocol__assets_can_open_logo from '/docs/electronics/communication-protocols/can-protocol/_assets/can-open-logo.jpg'
+
+<Image src={_docs_electronics_communication_protocols_can_protocol__assets_can_open_logo} width="500px"></Image>
 
 * Added the new [How To Write Python Scripts For KiCAD page](/electronics/general/kicad/how-to-write-python-scripts-for-kicad).
 
 * Added information on [number-to-string functions in the C programming language to the String Manipulation page](/programming/languages/c/string-manipulation-in-c/).
 
-    <Image src={require('./c-string-manipulation-itoa-section-screenshot.png').default} width="500px"></Image>
+    import c_string_manipulation_itoa_section_screenshot from './c-string-manipulation-itoa-section-screenshot.png'
+
+<Image src={c_string_manipulation_itoa_section_screenshot} width="500px"></Image>
 
 * Updated the [Debouncing page](/electronics/circuit-design/debouncing).
 
@@ -36,7 +44,9 @@ type: "post"
 
 * Added the new [Silicon Controlled Rectifiers (SCRS) page](/electronics/components/transistors/silicon-controlled-rectifiers-scrs).
 
-    <Image src={require('/docs/electronics/components/transistors/silicon-controlled-rectifiers-scrs/scr-pn-junction-diagram.svg').default} width="300px"></Image>
+    import _docs_electronics_components_transistors_silicon_controlled_rectifiers_scrs_scr_pn_junction_diagram from '/docs/electronics/components/transistors/silicon-controlled-rectifiers-scrs/scr-pn-junction-diagram.svg'
+
+<Image src={_docs_electronics_components_transistors_silicon_controlled_rectifiers_scrs_scr_pn_junction_diagram} width="300px"></Image>
 
 * Added a section on [floating-gate MOSFETS to the MOSFET page](/electronics/components/transistors/mosfets#floating-gate-mosfets).
 

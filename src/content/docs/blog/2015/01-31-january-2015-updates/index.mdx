@@ -11,6 +11,8 @@ title: January 2015 Updates
 type: post
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * Removed the hyperlink underlining from all images inserted into posts/pages with the Wordpress media manager by tweaking the theme's style.css file.
 
 * Moved the Communication Protocols page from under Electronics->Circuit Design to sit directly under it's parent Electronics.
@@ -25,7 +27,9 @@ type: post
 
 * Moved info from the PCB Design page to a new child page called [Pads, Vias And Holes](/pcb-design/pads-vias-holes). Added information to this page about direct-connect vs. thermal-relief style pad/via connections.  
   
-    <Image src={require('./pads-with-direct-connect-and-thermal-relief.png').default} width="440px">The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.</Image>
+    import pads_with_direct_connect_and_thermal_relief from './pads-with-direct-connect-and-thermal-relief.png'
+
+<Image src={pads_with_direct_connect_and_thermal_relief} width="440px">The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.</Image>
 
 * Installation of the [Easy FancyBox Wordpress plugin](https://wordpress.org/plugins/easy-fancybox/) which should make images throughout the site look much better when clicked upon.
 

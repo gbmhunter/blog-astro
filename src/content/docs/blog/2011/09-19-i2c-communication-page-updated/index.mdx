@@ -8,8 +8,12 @@ type: post
 categories: [ "Electronics", "Updates" ]
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 The I2C communication has been updated with new info.
 
-<Image src={require('./i2c-logo.gif').default} width="320px">The I2C logo.</Image>
+import i2c_logo from './i2c-logo.gif'
+
+<Image src={i2c_logo} width="320px">The I2C logo.</Image>
 
 Check it out [here](/electronics/communication-protocols/i2c-communication-protocol).

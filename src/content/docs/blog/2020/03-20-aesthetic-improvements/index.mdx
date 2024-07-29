@@ -12,15 +12,23 @@ title: "Aesthetic Improvements"
 type: "post"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 ## Aligning The Sidebar And Main Content
 
-<Image src={require('./misalignment-between-sidebar-and-main-content.png').default} width="800px">The top of the sidebar and the top of the main content were not at the same height.</Image>
+import misalignment_between_sidebar_and_main_content from './misalignment-between-sidebar-and-main-content.png'
+
+<Image src={misalignment_between_sidebar_and_main_content} width="800px">The top of the sidebar and the top of the main content were not at the same height.</Image>
 
 ## Changing The "Recent Updates" Section
 
 <div style={{ display: 'flex' }}>
-  <Image src={require('./screenshot-of-old-recent-updates-section.png').default} width="300px">The appearance of the old 'Recent Updates' section in the sidebar. I got feedback that it looked too much like ads.</Image>
-  <Image src={require('./screenshot-of-new-recent-updates-section.png').default} width="300px">The appearance of the new 'Recent Updates' section.</Image>
+  import screenshot_of_old_recent_updates_section from './screenshot-of-old-recent-updates-section.png'
+
+<Image src={screenshot_of_old_recent_updates_section} width="300px">The appearance of the old 'Recent Updates' section in the sidebar. I got feedback that it looked too much like ads.</Image>
+  import screenshot_of_new_recent_updates_section from './screenshot-of-new-recent-updates-section.png'
+
+<Image src={screenshot_of_new_recent_updates_section} width="300px">The appearance of the new 'Recent Updates' section.</Image>
 </div>
 
 ## Removing Shurikens
