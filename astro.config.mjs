@@ -4,6 +4,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeMathJax from "rehype-mathjax";
 import AutoImport from "astro-auto-import";
+import starlightBlog from 'starlight-blog'
 
 // Build menu for starlight sidebar
 
@@ -174,6 +175,7 @@ export default defineConfig({
         // Relative path to your custom CSS file
         "./src/styles/custom.css",
       ],
+      plugins: [starlightBlog()],
       // sidebar: [
       //   {
       //     label: "Guides",

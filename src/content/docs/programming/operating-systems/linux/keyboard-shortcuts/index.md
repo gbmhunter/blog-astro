@@ -1,7 +1,7 @@
 ---
 title: "Keyboard Shortcuts"
 authors: [ "Geoffrey Hunter" ]
-date: "2014-01-08"
+date: 2014-01-08
 type: "page"
 draft: false
 ---
