@@ -21,3 +21,11 @@ const fullPageUrl = `https://www.falstad.com/circuit/circuitjs.html?ctz=${data}`
 <iframe src={url} width={width} height={height}></iframe>
 <div>(<a href={fullPageUrl} target="_blank">full page version</a>)</div>
 </div>
+
+<style>
+  /* This was the only way I could find to make the iframe
+  height be set correctly. */
+  iframe {
+    height: revert-layer !important;
+  }
+</style>

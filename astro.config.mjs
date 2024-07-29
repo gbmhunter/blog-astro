@@ -26,7 +26,7 @@ const menuDirectoryBlackList = [
 
 for (const path in pagePaths) {
   maxNum++;
-  console.log(path);
+  // console.log(path);
   if (maxNum > 9999) {
     break;
   }
@@ -87,7 +87,7 @@ for (const path in pagePaths) {
           slug: slug,
         };
       } else {
-        // This is a leaf node
+        // This is a branch node
         newNode = {
           label: pathPart,
           items: [],
@@ -100,7 +100,12 @@ for (const path in pagePaths) {
     } else if (foundChildNodes.length === 1) {
       // Node already exists
       if (i === pathParts.length - 1) {
-        console.error(`Found .mdx file at already existing branch node. Make sure directories with .mdx files do not contain any child directories with more .mdx files. Path: ${path}.`);
+        // console.error(`Found .mdx file at already existing branch node. Make sure directories with .mdx files do not contain any child directories with more .mdx files. Path: ${path}.`);
+        // This will happen if we hit a branch index page after we have already processed
+        // a child node
+        // Add a slug so we know there is a page here
+        // console.error(`Node ${foundChildNodes[0].label} is getting a slug added with slug ${slug}`);
+        foundChildNodes[0].slug = slug;
       } else {
         // console.log(`Node with label ${pathPart} found in ${currentNode}.`);
         currentNode = foundChildNodes[0];
@@ -138,7 +143,21 @@ function convertLeafNodes(node) {
 
   for (let i = 0; i < node.items.length; i++) {
     convertLeafNodes(node.items[i]);
-  } 
+  }
+
+  // If the slug is defined, then this branch node also has a page. Add it
+  // to the items array
+  if (node.slug !== undefined) {
+    // Insert Overview page at the top
+    // so it is shown as the first item
+    // in the UI
+    node.items.unshift({
+      label: '[Overview]',
+      slug: node.slug,
+    });
+    // Delete the slug
+    delete node.slug;
+  }
 }
 
 console.log('Converting leaf nodes...');
