@@ -194,8 +194,8 @@ export default defineConfig({
         authors: {
           gbmhunter: {
             name: 'Geoffrey Hunter',
-            title: 'Starlight Aficionado',
-            picture: '/hideoo.png', // Images in the `public` directory are supported.
+            title: 'mbedded.ninja Author',
+            picture: '/images/authors/gbmhunter.png', // Images in the `public` directory are supported.
             url: 'https://hideoo.dev',
           },
         },

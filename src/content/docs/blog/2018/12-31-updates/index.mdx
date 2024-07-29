@@ -6,6 +6,8 @@ title: "December 2018 Updates"
 type: "post"
 ---
 
+import { Aside, CircuitJs, Image, WarningIsNotes } from '/src/components/General.astro';
+
 * Site was migrated from Wordpress to Hugo! See [/blog/2018/12/15/site-migration-to-hugo-complete/](/updates/2018/12/15/site-migration-to-hugo-complete/) for more info.
 
 * A new [Python Dictionaries page](/programming/languages/python/python-dictionaries/) created.
@@ -20,13 +22,10 @@ type: "post"
 
 * Site is now mobile friendly! I learnt a bit on responsive web design over the Christmas break and updated the HTML/CSS of this site so it looks good on mobile devices.
 
-    <div style={{ display: 'flex' }}>
-
 import blog_mbedded_ninja_mobile_before from './blog-mbedded-ninja-mobile-before.png'
-
-<Image src={blog_mbedded_ninja_mobile_before} width="300px">What blog.mbedded.ninja looked like before I made it mobile compatible.</Image>
-
 import blog_mbedded_ninja_mobile_after from './blog-mbedded-ninja-mobile-after.png'
 
+<div style={{ display: 'flex' }}>
+<Image src={blog_mbedded_ninja_mobile_before} width="300px">What blog.mbedded.ninja looked like before I made it mobile compatible.</Image>
 <Image src={blog_mbedded_ninja_mobile_after} width="300px">What blog.mbedded.ninja looked like after I made it mobile compatible (using a Galaxy S5 viewport).</Image>
-    </div>
+</div>
